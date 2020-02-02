@@ -19,6 +19,7 @@
     <Folder Include="fonts\roboto\" />
     <Folder Include="js\" />
     <Folder Include="fonts\" />
+    <Folder Include="sql\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\materialize.css" />
@@ -41,5 +42,6 @@
   <ItemGroup>
     <Compile Include="2.php" />
     <Compile Include="index.php" />
+    <Compile Include="sql\connection.php" />
   </ItemGroup>
 </Project>
