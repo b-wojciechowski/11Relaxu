@@ -23,7 +23,7 @@ html, body {
   
   margin: 0;
   padding: 0;
-  background-color: #d9e2fd;
+  background-color: #efefef;
   width: 100%;
   height: 100%;
 }
@@ -65,16 +65,16 @@ img {
   margin: 0 20px;
   transition: transform 500ms ease;
 }
-.carousel-wrapper .carousel .carousel-cell .more {
-  display: block;
-  opacity: 0;
-  margin: 5px 0 0px 0;
-  text-align: center;
-  font-size: 10px;
-  color: #CFCFCF;
-  text-decoration: none;
-  transition: opacity 300ms ease;
-}
+            .carousel-wrapper .carousel .carousel-cell .more {
+                display: block;
+                opacity: 0;
+                margin: 5px 0 0px 0;
+                text-align: center;
+                font-size: 10px;
+                color: #CFCFCF;
+                text-decoration: none;
+                transition: opacity 300ms ease;
+            }
 .carousel-wrapper .carousel .carousel-cell .more:hover, .carousel-wrapper .carousel .carousel-cell .more:active, 
 .carousel-wrapper .carousel .carousel-cell .more:visited, .carousel-wrapper .carousel .carousel-cell .more:focus {
   color: #CFCFCF;
