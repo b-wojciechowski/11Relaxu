@@ -146,18 +146,19 @@ img {
       </ul>
     </div>
   </nav>
-
+  <div><center><h5>Obrońcy</h5></center> </div>   
 	<div class="carousel-wrapper">
 		<div class="carousel" data-flickity>
 
 			<?php
 	require_once "sql/connection.php";
+	include 'tools/tools.php';
 	$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 	if ($polaczenie->connect_errno!=0)
 	{
 		echo "Error: ".$polaczenie->connect_errno. " Opis: ".$polaczenie->connect_error;
 	}
-	$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players order by Id desc";
+	$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Obrońca' order by Id desc";
 	$result = $polaczenie->query($sql);
 
      if ($result->num_rows > 0)
@@ -166,12 +167,14 @@ img {
     // output data of each row
         while($row = $result->fetch_assoc())
         {
+            $id = $row["Id"];
             $name = $row["Name"];
             $lastname = $row["Lastname"];
             $position = $row["Position"];
             $votes = $row["Votes"];
             $DateFrom = $row["DateFrom"];
             $DateTo = $row["DateTo"];
+            $toastInfo = $name." dodany";
     //   echo "id: " . $row["Id"]. " - Name: " . $row["Name"]. " " . $row["Lastname"]. "<br>";
             echo
 
@@ -180,7 +183,7 @@ img {
 				<div class="card sticky-action">
 
 					<div class="card-image waves-effect waves-block waves-light">
-						<img class="activator" src="images/Kacper-Wojciechowski.png" />
+						<img class="activator" src="images/'.playerImgName($name, $lastname).'" />
 					</div>
 
 					<div class="card-content">
@@ -192,8 +195,8 @@ img {
 					</div>
 
 					<div class="card-action tooltipped" data-position="bottom" data-delay="50" data-tooltip="Zaznacz, aby oddać głos na tego zawodnika">
-						<input type="checkbox" id="test4" onclick="Materialize.toast("Dodałeś Kacpra do Jedenastki 50-lecia", 4000)" />
-						<label for="test4">Jedenastka 50-lecia</label>
+						<input type="checkbox" id="checkbox'.$id.'" onclick="Materialize.toast("'.$toastInfo.'", 4000)"/>
+						<label for="checkbox'.$id.'">Jedenastka 50-lecia</label>
 					</div>
 
 					<div class="card-reveal">
@@ -201,20 +204,22 @@ img {
 							O zawodniku
 							<i class="material-icons right">close</i>
 						</span>
-						<p>Informacje o zawodniku bla bla bla bla</p>
+						<h5>'.$name." ".$lastname.'</h5>
+                        <b>Nominalna pozycja:</b><br> '.$position.'</p>
+                        <b>Lata gry w Relaxie:</b><br> '.$DateFrom."-".$DateTo.'.
 					</div>
 
 				</div>
 
 			</div><!--<div class="carousel-cell">-->';
      }
-    } 
-    else 
+    }
+    else
     {
         echo "0 results";
     };
 
-    ?>
+			?>
 
 
 
@@ -241,161 +246,75 @@ img {
       <div class="carousel" data-flickity>
    
       
-          <div class="carousel-cell">
+          <?php
 
-              <div class="card sticky-action">
-    
-                <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="images/Kacper-Wojciechowski.png">
-                </div>
-                
-                  <div class="card-content">
-                     <span class="card-title activator grey-text text-darken-4">Kacper Wojciechowski<i class="material-icons right">more_vert</i></span>
-                        <p>Obrońca</p>
-                  </div>
-             
-                  <div class="card-action tooltipped" data-position="bottom" data-delay="50" data-tooltip="Zaznacz, aby oddać głos na tego zawodnika">
-                  <input type="checkbox" id="test4" onclick="Materialize.toast('Dodałeś Kacpra do Jedenastki 50-lecia', 4000)"> 
-                  <label for="test4">Jedenastka 50-lecia</label>
-                  </div>
+          $sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Pomocnik' order by Id desc";
+	$result = $polaczenie->query($sql);
 
-                    <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">O zawodniku<i class="material-icons right">close</i></span>
-                    <p>Informacje o zawodniku bla bla bla bla</p>
-                   </div>
+     if ($result->num_rows > 0)
+    {
 
-              </div>
+    // output data of each row
+        while($row = $result->fetch_assoc())
+        {
+            $id = $row["Id"];
+            $name = $row["Name"];
+            $lastname = $row["Lastname"];
+            $position = $row["Position"];
+            $votes = $row["Votes"];
+            $DateFrom = $row["DateFrom"];
+            $DateTo = $row["DateTo"];
+            $toastInfo = $name." dodany";
+    //   echo "id: " . $row["Id"]. " - Name: " . $row["Name"]. " " . $row["Lastname"]. "<br>";
+			echo
 
-          </div>   <!--<div class="carousel-cell">-->
+			'<div class="carousel-cell">
 
+				<div class="card sticky-action">
 
-      <div class="carousel-cell">
-       <div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="images/Paweł-Widuliński.png">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Paweł Widuliński<i class="material-icons right">more_vert</i></span>
-     <p>Obrońca</p>
-    </div>
-            <div class="card-action">
-           <input type="checkbox" id="test5" />
-      <label for="test5">Jedenastka 50-lecia</label>
-        </div>
+					<div class="card-image waves-effect waves-block waves-light">
+						<img class="activator" src="images/'.playerImgName($name, $lastname).'" />
+					</div>
 
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-    </div>
-  </div>
+					<div class="card-content">
+						<span class="card-title activator grey-text text-darken-4">
+							'.$name." ".$lastname.'
+							<i class="material-icons right">more_vert</i>
+						</span>
+						<p>'.$position.'</p>
+					</div>
 
+					<div class="card-action tooltipped" data-position="bottom" data-delay="50" data-tooltip="Zaznacz, aby oddać głos na tego zawodnika">
+						<input type="checkbox" id="checkbox'.$id.'" onclick="Materialize.toast("'.$toastInfo.'", 4000)"/>
+						<label for="checkbox'.$id.'">Jedenastka 50-lecia</label>
+					</div>
 
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">
+							O zawodniku
+							<i class="material-icons right">close</i>
+						</span>
+						<h5>'.$name." ".$lastname.'</h5>
+                        <b>Nominalna pozycja:</b><br> '.$position.'</p>
+                        <b>Lata gry w Relaxie:</b><br> '.$DateFrom."-".$DateTo.'.
+					</div>
 
-          
-    </div>
-      <div class="carousel-cell">
-       <div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="images/Michał-Mojski.png">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Michał Mojski<i class="material-icons right">more_vert</i></span>
-     <p>Obrońca</p>
-    </div>
+				</div>
 
-            <div class="card-action">
-           <input type="checkbox" id="test6" />
-      <label for="test6">Jedenastka 50-lecia</label>
-        </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-    </div>
-  </div>
+			</div><!--<div class="carousel-cell">-->';
+		}
+    }
+    else
+    {
+        echo "0 results";
+    };
 
-            </div>
-      <div class="carousel-cell">
-       <div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="images/Mateusz-Piątek.png">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Mateusz Piątek<i class="material-icons right">more_vert</i></span>
-     <p>Obrońca</p>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-    </div>
-  </div>
+          ?>
 
 
-            </div>
-      <div class="carousel-cell">
-       <div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="images/Michał-Mojski.png">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Michał Mojski<i class="material-icons right">more_vert</i></span>
-     <p>Obrońca</p>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-    </div>
-  </div>
 
 
-            </div>
-      <div class="carousel-cell">
-       <div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="images/Michał-Kośmider.png">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Michał Kośmider<i class="material-icons right">more_vert</i></span>
-     <p>Obrońca</p>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-    </div>
-  </div>
-
-
-            </div>
-      <div class="carousel-cell">
-       <div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="images/Łukasz-Kujawa.png">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Łukasz Kujawa<i class="material-icons right">more_vert</i></span>
-     <p>Obrońca</p>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-    </div>
-  </div>
-       </div>
-      <div class="carousel-cell">
-       <div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="images/Darek-Zawadzki.jpg">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Darek Zawadzki<i class="material-icons right">more_vert</i></span>
-     <p>Bramkarz</p>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-    </div>
-  </div>
-
-
+ 
 
     </div> <!--   <div class="carousel-wrapper"> -->
 </div>
