@@ -80,7 +80,7 @@ img {
   color: #CFCFCF;
   text-decoration: none;
 }
-            .carousel-wrapper .carousel .carousel-cell .line {
+   .carousel-wrapper .carousel .carousel-cell .line {
                 position: absolute;
                 width: 2px;
                 height: 0;
@@ -89,7 +89,7 @@ img {
                 margin: 5px 0 0 -1px;
                 transition: height 300ms ease;
                 display: block;
-            }
+            }         
 .carousel-wrapper .carousel .carousel-cell .price {
   position: absolute;
   font-weight: 700;
@@ -150,35 +150,35 @@ img {
 	<div class="carousel-wrapper">
 		<div class="carousel" data-flickity>
 
-			<?php
-	require_once "sql/connection.php";
-	include 'tools/tools.php';
-	$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-	if ($polaczenie->connect_errno!=0)
-	{
-		echo "Error: ".$polaczenie->connect_errno. " Opis: ".$polaczenie->connect_error;
-	}
-	$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Obrońca' order by Id desc";
-	$result = $polaczenie->query($sql);
+<?php
+			require_once "sql/connection.php";
+			include 'tools/tools.php';
+			$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+			if ($polaczenie->connect_errno!=0)
+			{
+				echo "Error: ".$polaczenie->connect_errno. " Opis: ".$polaczenie->connect_error;
+			}
+			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players order by Id desc";
+			$result = $polaczenie->query($sql);
 
-     if ($result->num_rows > 0)
-    {
+			if ($result->num_rows > 0)
+			{
 
-    // output data of each row
-        while($row = $result->fetch_assoc())
-        {
-            $id = $row["Id"];
-            $name = $row["Name"];
-            $lastname = $row["Lastname"];
-            $position = $row["Position"];
-            $votes = $row["Votes"];
-            $DateFrom = $row["DateFrom"];
-            $DateTo = $row["DateTo"];
-            $toastInfo = $name." dodany";
-    //   echo "id: " . $row["Id"]. " - Name: " . $row["Name"]. " " . $row["Lastname"]. "<br>";
-            echo
+				// output data of each row
+				while($row = $result->fetch_assoc())
+				{
+					$id = $row["Id"];
+					$name = $row["Name"];
+					$lastname = $row["Lastname"];
+					$position = $row["Position"];
+					$votes = $row["Votes"];
+					$DateFrom = $row["DateFrom"];
+					$DateTo = $row["DateTo"];
+					$toastInfo = $name." dodany";
+					//   echo "id: " . $row["Id"]. " - Name: " . $row["Name"]. " " . $row["Lastname"]. "<br>";
+					echo
 
-			'<div class="carousel-cell">
+					'<div class="carousel-cell">
 
 				<div class="card sticky-action">
 
@@ -213,14 +213,14 @@ img {
 				</div>
 
 			</div><!--<div class="carousel-cell">-->';
-     }
-    }
-    else
-    {
-        echo "0 results";
-    };
+				}
+			}
+			else
+			{
+				echo "0 results";
+			};
 
-            ?>
+?>
 
 
 
@@ -244,15 +244,18 @@ img {
 		
 		<!-- Modal Structure -->
 		<div id="modal1" class="modal" style="max-width: 500px">
-         
+         <div class="row" style="background-color:lightskyblue;padding:10px;">
+                          <h7 style="margin-bottom:0px!important">Dodajesz nowego zawodnika do bazy</h7>
+                    </div>
 			<div class="modal-content">
-		    <h5 style="padding-bottom:10px; margin-top:-5px">Dodajesz nowego zawodnika do bazy</h5>
-				<div class="row"">
+		            
+              
+				<div class="row">
 					<form class="col s10">
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="first_name" type="text" class="validate" required />
-								<label for="first_name">Imię zawodnika</label>
+								<label for="first_name" data-error="pole wymagane">Imię zawodnika (*)</label>
 							</div>
 
 						</div>
@@ -260,7 +263,24 @@ img {
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="last_name" type="text" class="validate" required />
-								<label for="last_name" data-error="wrong">Nazwisko zawodnika</label>
+								<label for="last_name" data-error="pole wymagane">Nazwisko zawodnika (*)</label>
+								
+							</div>
+
+						</div>
+
+
+                        
+						<div class="row">
+							<div class="input-field col s6">
+								<input id="last_name" type="text" class="validate" required />
+								<label for="last_name" data-error="pole wymagane">W Relaxie od</label>
+								
+							</div>
+
+                            <div class="input-field col s6">
+								<input id="last_name" type="text" class="validate" required />
+								<label for="last_name" data-error="pole wymagane">W Relaxie do</label>
 								
 							</div>
 
@@ -270,16 +290,16 @@ img {
                         <div class="row">
 					            
                                
-               <div class="input-field col s12" class = "browser-default">
-    <select>
-      <option value="" disabled selected>Wybierz pozycję</option>
-      <option value="1">Bramkarz</option>
-      <option value="2">Obrońca</option>
-      <option value="3">Pomocnik</option>
-       <option value="3">Napastnik</option>
-    </select>
-    <label>Pozycja</label>
-  </div><br /><br />
+                             <div class="input-field col s12 browser-default">
+                                <select>
+                                       <option value="2">Obrońca</option>
+                                    <option value="1">Bramkarz</option>
+                                     
+                                      <option value="3">Pomocnik</option>
+                                      <option value="3">Napastnik</option>
+                                </select>
+                            <label>Pozycja</label>
+                          </div>
 
 						</div>
 					
@@ -293,11 +313,15 @@ img {
 									<input type="file" multiple />
 								</div>
 								<div class="file-path-wrapper">
-									<input class="file-path validate" type="text" placeholder="Wczytaj zdjęcie zawodnika" />
+									<input class="file-path validate" type="text" placeholder="Wczytaj zdjęcie" />
 								</div>
 							</div>
-
-						</div>
+                          </div>
+                            <div class="row" style="padding-left:5px;margin-top:-20px;">
+                            <input type="checkbox" id="test5" />
+                            <label for="test5">Nie posiadam zdjęcia</label>
+                            </div>
+						
 
 
 
@@ -307,9 +331,9 @@ img {
 
 
 			</div>
-			<div class="modal-footer">
-				<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Dodaj zawodnika</a>
-				<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Dodaj zawodnika</a>
+			<div class="modal-footer" style="background-color:lightgrey">
+				<a href="#!" class="waves-effect waves-light btn red"><i class="material-icons left">clear</i>Anuluj</a>
+				<a href="#!" class="waves-effect waves-light btn green"><i class="material-icons left">check</i>Dodaj zawodnika</a>
 			</div>
 		</div>
 
@@ -332,26 +356,26 @@ img {
           <?php
 
           $sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Pomocnik' order by Id desc";
-	$result = $polaczenie->query($sql);
+		  $result = $polaczenie->query($sql);
 
-     if ($result->num_rows > 0)
-    {
+		  if ($result->num_rows > 0)
+		  {
 
-    // output data of each row
-        while($row = $result->fetch_assoc())
-        {
-            $id = $row["Id"];
-            $name = $row["Name"];
-            $lastname = $row["Lastname"];
-            $position = $row["Position"];
-            $votes = $row["Votes"];
-            $DateFrom = $row["DateFrom"];
-            $DateTo = $row["DateTo"];
-            $toastInfo = $name." dodany";
-    //   echo "id: " . $row["Id"]. " - Name: " . $row["Name"]. " " . $row["Lastname"]. "<br>";
-			echo
+			  // output data of each row
+			  while($row = $result->fetch_assoc())
+			  {
+				  $id = $row["Id"];
+				  $name = $row["Name"];
+				  $lastname = $row["Lastname"];
+				  $position = $row["Position"];
+				  $votes = $row["Votes"];
+				  $DateFrom = $row["DateFrom"];
+				  $DateTo = $row["DateTo"];
+				  $toastInfo = $name." dodany";
+				  //   echo "id: " . $row["Id"]. " - Name: " . $row["Name"]. " " . $row["Lastname"]. "<br>";
+				  echo
 
-			'<div class="carousel-cell">
+				  '<div class="carousel-cell">
 
 				<div class="card sticky-action">
 
@@ -385,12 +409,12 @@ img {
 				</div>
 
 			</div><!--<div class="carousel-cell">-->';
-		}
-    }
-    else
-    {
-        echo "0 results";
-    };
+			  }
+		  }
+		  else
+		  {
+			  echo "0 results";
+		  };
 
           ?>
 
