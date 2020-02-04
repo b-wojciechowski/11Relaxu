@@ -19,6 +19,7 @@
     <Folder Include="fonts\roboto\" />
     <Folder Include="js\" />
     <Folder Include="fonts\" />
+    <Folder Include="NewFolder1\" />
     <Folder Include="tools\" />
     <Folder Include="sql\" />
   </ItemGroup>

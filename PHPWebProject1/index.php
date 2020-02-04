@@ -207,7 +207,7 @@ img {
 						<h5>'.$name." ".$lastname.'</h5>
                         <b>Nominalna pozycja:</b><br> '.$position.'</p>
                         <b>Lata gry w Relaxie:</b><br> '.$DateFrom."-".$DateTo.'
-                   
+
 					</div>
 
 				</div>
@@ -220,7 +220,7 @@ img {
         echo "0 results";
     };
 
-			?>
+            ?>
 
 
 
@@ -232,8 +232,90 @@ img {
 
 
 
-			</div><!--   <div class="carousel-wrapper"> -->
+		</div><!--   <div class="carousel-wrapper"> -->
+		<div style="position: absolute; bottom: 0; right:0; padding:25px;">
+			<a class="btn-floating btn-small waves-effect waves-light green pulse modal-trigger" href="#modal1">
+				
+					<i class="material-icons">add</i>
+				</a>
+			</div>
 		</div>
+
+		
+		<!-- Modal Structure -->
+		<div id="modal1" class="modal" style="max-width: 500px">
+         
+			<div class="modal-content">
+		    <h5 style="padding-bottom:10px; margin-top:-5px">Dodajesz nowego zawodnika do bazy</h5>
+				<div class="row"">
+					<form class="col s10">
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="first_name" type="text" class="validate" required />
+								<label for="first_name">Imię zawodnika</label>
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="last_name" type="text" class="validate" required />
+								<label for="last_name" data-error="wrong">Nazwisko zawodnika</label>
+								
+							</div>
+
+						</div>
+
+
+                        <div class="row">
+					            
+                               
+               <div class="input-field col s12" class = "browser-default">
+    <select>
+      <option value="" disabled selected>Wybierz pozycję</option>
+      <option value="1">Bramkarz</option>
+      <option value="2">Obrońca</option>
+      <option value="3">Pomocnik</option>
+       <option value="3">Napastnik</option>
+    </select>
+    <label>Pozycja</label>
+  </div><br /><br />
+
+						</div>
+					
+						
+
+						<div class="row">
+
+							<div class="file-field input-field">
+								<div class="btn">
+									<span>Zdjęcie</span>
+									<input type="file" multiple />
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text" placeholder="Wczytaj zdjęcie zawodnika" />
+								</div>
+							</div>
+
+						</div>
+
+
+
+
+					</form>
+				</div>
+
+
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Dodaj zawodnika</a>
+				<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Dodaj zawodnika</a>
+			</div>
+		</div>
+
+
+   
+ 
 
 	
 
@@ -352,7 +434,19 @@ img {
         </footer>
 
 
+    <script>
+$( document ).ready(function() {
+  $('.modal').modal();
+  $('#modal1').on('click', function() {
+  });
+});
+</script>
 
+    <script>
+		$(document).ready(function () {
+			$('select').material_select();
+		});
+    </script>
 
     
     </body>
