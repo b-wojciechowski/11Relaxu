@@ -1,4 +1,4 @@
-<?php
+Ôªø<?php
 
 session_start();
 
@@ -48,8 +48,8 @@ else
 
 		} else {
 
-			$_SESSION['blad'] = '<span style="color:red">Nieprawid≥owy login lub has≥o!</span>';
-			header('Location: index.php');
+			$_SESSION['blad'] = '<span style="color:red">Nieprawid≈Çowy login lub has≈Ço!</span>';
+			header('Location: login.php');
 
 		}
 
