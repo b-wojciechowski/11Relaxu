@@ -114,7 +114,7 @@ html, body {
 }
 .carousel-wrapper .flickity-viewport, .carousel-wrapper .flickity-slider {
 	overflow: visible;
-	    transform: translateX(-20.24%);
+	    /*transform: translateX(-20.24%);*/
 }
 </style>
 </head>
@@ -144,7 +144,7 @@ html, body {
 				
 				
 				
-				<li><a href="mobile.html">
+				<li><a class="modal-trigger" href="#modal2_help">
 						<i class="material-icons left">help_outline</i>Pomoc 
 					</a>
 				</li>
@@ -199,7 +199,7 @@ html, body {
 					
 		</div>  
 		<hr>
-		<div class="carousel" data-flickity style="margin:10px;">
+		<div class="carousel" data-flickity='{ "initialIndex": 3, "autoPlay": 4500 }' style="margin:10px;">
 
 			<?php
 			require_once "sql/connection.php";
@@ -259,9 +259,7 @@ html, body {
 						<h5>'.$name." ".$lastname.'</h5>
                         <b>Nominalna pozycja:</b><br> '.$position.'</p>
                         <b>Lata gry w Relaxie:</b><br> '.$DateFrom."-".$DateTo.'
-
 					</div>
-
 				</div>
 
 			</div><!--<div class="carousel-cell">-->';
@@ -289,11 +287,10 @@ html, body {
 <!-- Modal Structure -->
 <div id="modal1" class="modal" style="max-width: 500px">
     <div class="row" style="background-color:lightskyblue;padding:10px;">
-                    <h7 style="margin-bottom:0px!important">Dodajesz nowego zawodnika do bazy</h7>
-            </div>
+		<h7 style="margin-bottom:0px!important">Dodajesz nowego zawodnika do bazy</h7>
+    </div>
+	
 	<div class="modal-content">
-
-
 		<div class="row">
 			<form class="col s10" action="_addPlayer.php" method="post">
 				<div class="row">
@@ -359,14 +356,38 @@ html, body {
 			<?php if(isset($_SESSION['adderor'])) echo $_SESSION['adderror']; ?>
 			</div>
 		</div>
-		
 
-			</div>
+	</div>
 				
 </div>
 
+<div id="modal2_help" class="modal" style="max-width: 700px">
+    <div class="row" style="background-color:lightskyblue;padding:10px;">
+		<h7 style="margin-bottom:0px!important">Pomoc</h7>
+    </div>
 	
+	<div class="modal-content">
+		<div class="row">
+			
+  <div class="chip">
+    <img src="images/kacper-wojciechowski.jpg" alt="Contact Person">
+    Kacper Wojciechowski
+  </div>
 
+			 <div class="chip">
+    <img src="images/rafal-wojciechowski.jpg" alt="Contact Person">
+    Rafał Wojciechowski
+  </div>
+
+			
+			 <div class="chip">
+    <img src="images/michal-kosmider.jpg" alt="Contact Person">
+    Michał Kośmider
+  </div>
+
+	</div>
+		</div>
+</div>
 
 <?php include $footerContent; ?>
 	
