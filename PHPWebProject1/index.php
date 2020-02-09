@@ -10,6 +10,7 @@ session_start();
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--Import materialize.css-->
 <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -26,7 +27,7 @@ html, body {
 	width: 100%;
 	height: 100%;
 }
-.carousel-wrapper {
+ .carousel-wrapper {
 	position: relative;
 	width: 70%;
 	height: 80%;
@@ -64,16 +65,16 @@ html, body {
 	margin: 0 20px;
 	transition: transform 500ms ease;
 }
-.carousel-wrapper .carousel .carousel-cell .more {
-	display: block;
-	opacity: 0;
-	margin: 5px 0 0px 0;
-	text-align: center;
-	font-size: 10px;
-	color: #CFCFCF;
-	text-decoration: none;
-	transition: opacity 300ms ease;
-}
+	.carousel-wrapper .carousel .carousel-cell .more {
+		display: block;
+		opacity: 0;
+		margin: 5px 0 0px 0;
+		text-align: center;
+		font-size: 10px;
+		color: #CFCFCF;
+		text-decoration: none;
+		transition: opacity 300ms ease;
+	}
 .carousel-wrapper .carousel .carousel-cell .more:hover, .carousel-wrapper .carousel .carousel-cell .more:active,
 .carousel-wrapper .carousel .carousel-cell .more:visited, .carousel-wrapper .carousel .carousel-cell .more:focus {
 	color: #CFCFCF;
@@ -121,26 +122,53 @@ html, body {
 <body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
-     
-     
+
+
 <nav>
 	<div class="nav-wrapper">
       <a href="#!" class="brand-logo">Logo</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 		  
 			<ul class="right hide-on-med-and-down">
-       
-				<li><a href="mobile.html">Zalogowany: 
+				
+				<li><a href="mobile.html">
+						<i class="material-icons left">insert_chart</i>Rankingi
+					</a>
+				</li>
+				
+				<li><a href="mobile.html">
+						<i class="material-icons left">people</i>Moja 11-stka 
+					</a>
+				</li>
+				
+				
+				
+				
+				<li><a href="mobile.html">
+						<i class="material-icons left">help_outline</i>Pomoc 
+					</a>
+				</li>
+
+				<li><a href="mobile.html">
+					<div><i class="material-icons left">person</i>
+
+					Zalogowany: 
 					<?php echo ' '.$_SESSION['Name']; ?>
+					</div>
 					</a>
 				</li>
 			</ul>
 
 			<ul class="side-nav" id="mobile-demo">
-				<li><a href="sass.html">Sass</a></li>
+				
+				<li><a href="mobile.html">
+						<i class="material-icons left">insert_chart</i>Rankingi
+					</a>
+				</li>
 				<li><a href="badges.html">Components</a></li>
 				<li><a href="collapsible.html">Javascript</a></li>
-				<li><a href="mobile.html">Zalogowany: 
+				<li><a href="mobile.html">
+					Zalogowany: 
 					<?php
 					echo $_SESSION['Name'];
                     ?>
@@ -155,7 +183,7 @@ html, body {
 	<div class="carousel-wrapper">
 		<div class="row" style="padding:7px; background-color:white;margin-bottom:0px!important">
 					<div>
-						<div class"col s12" style="margin-left:5%; float:left">
+						<div class"col s6" style="margin-left:5%; float:left">
 						<h4><b>Wybierz 4 obrońców</b> (krok 1 z 4)</h4>
 						<p>Zaznacz "Jedenastka 50-lecia" na kartach 4 wybranych zawodników a następnie kliknij <b>"Przejdź dalej"</b>.</p>
 						</div>

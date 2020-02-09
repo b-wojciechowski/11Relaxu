@@ -48,17 +48,22 @@ session_start();
 
 
 			<div class="row">
-				<div class="input-field col s10">
+				<div class="input-field col s14">
 					<button class="btn waves-effect waves-light" type="submit" name="action">
 						Zaloguj
 						<i class="material-icons right">send</i>
 					</button>
 
 					<button class="btn waves-effect waves-light grey" name="action">
-						Utwórz konto
-						<i class="material-icons right">add</i>
+						Zaloguj przez Facebooka
+						<i class="material-icons right">exit_to_app</i>
 					</button>
 				</div>
+			</div>
+			<div class="row">
+				
+				<a class="btn-flat">Utwórz nowe konto</a>
+
 			</div>
 
 			
