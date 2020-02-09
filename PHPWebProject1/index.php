@@ -2,6 +2,7 @@
   <html>
 <?php
 include 'configuration.php';
+session_start();
 ?>
     <head>
       <!--Import Google Icon Font-->
@@ -149,7 +150,10 @@ img {
       </ul>
     </div>
   </nav>
-  <div><center><h5>Obrońcy</h5></center> </div>   
+  <div><center><h5>Obrońcy</h5></center> </div>  
+	  <?php
+	  if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
+      ?>
 	<div class="carousel-wrapper">
 		<div class="carousel" data-flickity>
 
@@ -452,7 +456,7 @@ $( document ).ready(function() {
 		});
     </script>
 
-    
+  
     </body>
   </html>
         

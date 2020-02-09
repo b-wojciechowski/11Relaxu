@@ -31,10 +31,10 @@
 
 	
 <div class="row">
-	<form class="col s12" action="login.php">
+	<form class="col s12" action="_login.php" method="post">
 		<div class="row">
 			<div class="input-field col s10">
-				<input  id="first_name" type="email" class="validate" />
+				<input  id="login" type="email" class="validate" name="login" />
 				<label for="first_name">Adres email</label>
 			</div>
 			
@@ -42,7 +42,7 @@
 	
 		<div class="row">
 			<div class="input-field col s10">
-				<input id="password" type="password" class="validate" />
+				<input id="password" type="password" class="validate" name="password" />
 				<label for="password">Password</label>
 			</div>
 		</div>

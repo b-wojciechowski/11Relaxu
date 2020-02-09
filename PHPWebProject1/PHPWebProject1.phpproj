@@ -42,6 +42,7 @@
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="_login.php" />
     <Compile Include="2.php" />
     <Compile Include="index.php" />
     <Compile Include="login.php" />
