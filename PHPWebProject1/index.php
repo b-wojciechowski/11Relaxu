@@ -151,9 +151,15 @@ img {
     </div>
   </nav>
   <div><center><h5>Obrońcy</h5></center> </div>  
-	  <?php
+	
+<!-- informacja o blednym logowaniu-->
+  
+  <?php
 	  if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
-      ?>
+  ?>
+
+<!-- informacja o blednym logowaniu-->
+
 	<div class="carousel-wrapper">
 		<div class="carousel" data-flickity>
 
