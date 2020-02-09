@@ -30,7 +30,7 @@ html, body {
 	position: relative;
 	width: 70%;
 	height: 80%;
-	top: 50%;
+	top: 45%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-color: #FFFFFF;
@@ -48,7 +48,7 @@ html, body {
 }
 .carousel-wrapper .carousel {
 	position: absolute;
-	top: 50%;
+	top: 55%;
 	transform: translateY(-50%);
 	width: 100%;
 	height: auto;
@@ -113,6 +113,7 @@ html, body {
 }
 .carousel-wrapper .flickity-viewport, .carousel-wrapper .flickity-slider {
 	overflow: visible;
+	    transform: translateX(-20.24%);
 }
 </style>
 </head>
@@ -142,24 +143,35 @@ html, body {
 				<li><a href="mobile.html">Zalogowany: 
 					<?php
 					echo $_SESSION['Name'];
-					?>
+                    ?>
 					</a>
 				</li>
 			</ul>
     </div>
 </nav>
-  <div><center><h5>Obrońcy</h5></center> </div>  
-	
-<!-- informacja o blednym logowaniu-->
   
-  <?php
-	  if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
-  ?>
-
-<!-- informacja o blednym logowaniu-->
+	
 
 	<div class="carousel-wrapper">
-		<div class="carousel" data-flickity>
+		<div class="row" style="padding:7px; background-color:white;margin-bottom:0px!important">
+					<div>
+						<div class"col s12" style="margin-left:5%; float:left">
+						<h4><b>Wybierz 4 obrońców</b> (krok 1 z 4)</h4>
+						<p>Zaznacz "Jedenastka 50-lecia" na kartach 4 wybranych zawodników a następnie kliknij <b>"Przejdź dalej"</b>.</p>
+						</div>
+						<div class="col s2" style="float:right; padding-top:10px">
+								 <button class="btn-large waves-effect waves-light" type="submit" name="action">Przejdź dalej
+									<i class="material-icons right">navigate_next</i>
+								 </button>
+
+
+						</div>
+					
+					</div>
+					
+		</div>  
+		<hr>
+		<div class="carousel" data-flickity style="margin:10px;">
 
 			<?php
 			require_once "sql/connection.php";
@@ -238,14 +250,14 @@ html, body {
 
 		</div><!--   <div class="carousel-wrapper"> -->
 		<div style="position: absolute; bottom: 0; right:0; padding:25px;">
-			<a class="btn-floating btn-small waves-effect waves-light green pulse modal-trigger" href="#modal1">
+			<a class="btn-floating btn-large waves-effect waves-light green pulse modal-trigger" href="#modal1">
 
 					<i class="material-icons">add</i>
 				</a>
 			</div>
 		</div>
 
-
+	
 <!-- Modal Structure -->
 <div id="modal1" class="modal" style="max-width: 500px">
     <div class="row" style="background-color:lightskyblue;padding:10px;">
@@ -319,95 +331,17 @@ html, body {
 			<?php if(isset($_SESSION['adderor'])) echo $_SESSION['adderror']; ?>
 			</div>
 		</div>
-
+		
 
 			</div>
-			
-		</div>
-
-
-
-    <br /> <br />
-
-     <div class="carousel-wrapper">
-
-
-
-
-      <div class="carousel" data-flickity>
-
-
-          <?php
-
-          $sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Pomocnik' order by Id desc";
-		  $result = $polaczenie->query($sql);
-
-		  if ($result->num_rows > 0)
-		  {
-
-			  // output data of each row
-			  while($row = $result->fetch_assoc())
-			  {
-				  $id = $row["Id"];
-				  $name = $row["Name"];
-				  $lastname = $row["Lastname"];
-				  $position = $row["Position"];
-				  $votes = $row["Votes"];
-				  $DateFrom = $row["DateFrom"];
-				  $DateTo = $row["DateTo"];
-				  $toastInfo = $name." dodany";
-				  //   echo "id: " . $row["Id"]. " - Name: " . $row["Name"]. " " . $row["Lastname"]. "<br>";
-				  echo
-
-				  '<div class="carousel-cell">
-
-				<div class="card sticky-action">
-
-					<div class="card-image waves-effect waves-block waves-light">
-						<img class="activator" src="images/'.playerImgName($name, $lastname).'" />
-					</div>
-
-					<div class="card-content">
-						<span class="card-title activator grey-text text-darken-4">
-							'.$name." ".$lastname.'
-							<i class="material-icons right">more_vert</i>
-						</span>
-						<p>'.$position.'</p>
-					</div>
-
-					<div class="card-action tooltipped" data-position="bottom" data-delay="50" data-tooltip="Zaznacz, aby oddać głos na tego zawodnika">
-						<input type="checkbox" id="checkbox'.$id.'" onclick="Materialize.toast("'.$toastInfo.'", 4000)"/>
-						<label for="checkbox'.$id.'">Jedenastka 50-lecia</label>
-					</div>
-
-					<div class="card-reveal">
-						<span class="card-title grey-text text-darken-4">
-							O zawodniku
-							<i class="material-icons right">close</i>
-						</span>
-						<h5>'.$name." ".$lastname.'</h5>
-                        <b>Nominalna pozycja:</b><br> '.$position.'</p>
-                        <b>Lata gry w Relaxie:</b><br> '.$DateFrom."-".$DateTo.'.
-					</div>
-
-				</div>
-
-			</div><!--<div class="carousel-cell">-->';
-			  }
-		  }
-		  else
-		  {
-			  echo "0 results";
-		  };
-
-			?>
-
-
-    </div> <!--   <div class="carousel-wrapper"> -->
+				
 </div>
 
-    
+	
+
+
 <?php include $footerContent; ?>
+	
 
 	<script>
 		$(document).ready(function ()

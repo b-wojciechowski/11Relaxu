@@ -1,5 +1,4 @@
 ﻿<?php
-
 session_start();
 
 if ((!isset($_POST['login'])) || (!isset($_POST['password'])))
@@ -9,8 +8,6 @@ if ((!isset($_POST['login'])) || (!isset($_POST['password'])))
 }
 
 require_once "sql/connection.php";
-
-
 
 $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 
@@ -40,7 +37,6 @@ else
 			$_SESSION['id'] = $wiersz['Id'];
 			$_SESSION['Name'] = $wiersz['Name'];
 			$_SESSION['email'] = $wiersz['email'];
-
 
 			unset($_SESSION['blad']);
 			$rezultat->free_result();
