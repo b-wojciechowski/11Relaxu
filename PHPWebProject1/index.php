@@ -257,7 +257,7 @@ html, body {
 							<i class="material-icons right">close</i>
 						</span>
 						<h5>'.$name." ".$lastname.'</h5>
-                        <b>Nominalna pozycja:</b><br> '.strtoupper($position).'</p>
+                        <b>Nominalna pozycja:</b><br> '.$position.'</p>
                         <b>Lata gry w Relaxie:</b><br> '.$DateFrom."-".$DateTo.'
 
 					</div>
