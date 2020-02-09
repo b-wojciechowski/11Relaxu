@@ -1,0 +1,5 @@
+<?php
+
+$footerContent = 'footer.php';
+
+?>

@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="2.php" />
     <Compile Include="index.php" />
+    <Compile Include="login.php" />
+    <Compile Include="myPlayers.php" />
     <Compile Include="sql\connection.php" />
     <Compile Include="tools\tools.php" />
   </ItemGroup>

@@ -1,5 +1,8 @@
   <!DOCTYPE html>
   <html>
+<?php
+include 'configuration.php';
+?>
     <head>
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -150,7 +153,7 @@ img {
 	<div class="carousel-wrapper">
 		<div class="carousel" data-flickity>
 
-<?php
+			<?php
 			require_once "sql/connection.php";
 			include 'tools/tools.php';
 			$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
@@ -175,7 +178,8 @@ img {
 					$DateFrom = $row["DateFrom"];
 					$DateTo = $row["DateTo"];
 					$toastInfo = $name." dodany";
-					//   echo "id: " . $row["Id"]. " - Name: " . $row["Name"]. " " . $row["Lastname"]. "<br>";
+					$deafultPhoto = "onerror= this.onerror=null;this.src='images/bartlomiej-wojciechowski.jpg';";
+					//   echo 'id: " . $row["Id"]. " - Name: " . $row["Name"]. " " . $row["Lastname"]. "<br>";
 					echo
 
 					'<div class="carousel-cell">
@@ -183,7 +187,7 @@ img {
 				<div class="card sticky-action">
 
 					<div class="card-image waves-effect waves-block waves-light">
-						<img class="activator" src="images/'.playerImgName($name, $lastname).'" />
+						<img class="activator"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'"  />
 					</div>
 
 					<div class="card-content">
@@ -191,7 +195,7 @@ img {
 							'.$name." ".$lastname.'
 							<i class="material-icons right">more_vert</i>
 						</span>
-						<p>'.$position.'</p>
+						<p>'.($position).'</p>
 					</div>
 
 					<div class="card-action tooltipped" data-position="bottom" data-delay="50" data-tooltip="Zaznacz, aby oddać głos na tego zawodnika">
@@ -205,7 +209,7 @@ img {
 							<i class="material-icons right">close</i>
 						</span>
 						<h5>'.$name." ".$lastname.'</h5>
-                        <b>Nominalna pozycja:</b><br> '.$position.'</p>
+                        <b>Nominalna pozycja:</b><br> '.strtoupper($position).'</p>
                         <b>Lata gry w Relaxie:</b><br> '.$DateFrom."-".$DateTo.'
 
 					</div>
@@ -235,21 +239,21 @@ img {
 		</div><!--   <div class="carousel-wrapper"> -->
 		<div style="position: absolute; bottom: 0; right:0; padding:25px;">
 			<a class="btn-floating btn-small waves-effect waves-light green pulse modal-trigger" href="#modal1">
-				
+
 					<i class="material-icons">add</i>
 				</a>
 			</div>
 		</div>
 
-		
+
 		<!-- Modal Structure -->
 		<div id="modal1" class="modal" style="max-width: 500px">
          <div class="row" style="background-color:lightskyblue;padding:10px;">
                           <h7 style="margin-bottom:0px!important">Dodajesz nowego zawodnika do bazy</h7>
                     </div>
 			<div class="modal-content">
-		            
-              
+
+
 				<div class="row">
 					<form class="col s10">
 						<div class="row">
@@ -264,37 +268,37 @@ img {
 							<div class="input-field col s12">
 								<input id="last_name" type="text" class="validate" required />
 								<label for="last_name" data-error="pole wymagane">Nazwisko zawodnika (*)</label>
-								
+
 							</div>
 
 						</div>
 
 
-                        
+
 						<div class="row">
 							<div class="input-field col s6">
 								<input id="last_name" type="text" class="validate" required />
 								<label for="last_name" data-error="pole wymagane">W Relaxie od</label>
-								
+
 							</div>
 
                             <div class="input-field col s6">
 								<input id="last_name" type="text" class="validate" required />
 								<label for="last_name" data-error="pole wymagane">W Relaxie do</label>
-								
+
 							</div>
 
 						</div>
 
 
                         <div class="row">
-					            
-                               
+
+
                              <div class="input-field col s12 browser-default">
                                 <select>
                                        <option value="2">Obrońca</option>
                                     <option value="1">Bramkarz</option>
-                                     
+
                                       <option value="3">Pomocnik</option>
                                       <option value="3">Napastnik</option>
                                 </select>
@@ -302,8 +306,8 @@ img {
                           </div>
 
 						</div>
-					
-						
+
+
 
 						<div class="row">
 
@@ -321,7 +325,7 @@ img {
                             <input type="checkbox" id="test5" />
                             <label for="test5">Nie posiadam zdjęcia</label>
                             </div>
-						
+
 
 
 
@@ -338,21 +342,21 @@ img {
 		</div>
 
 
-   
- 
 
-	
+
+
+
 
     <br /> <br />
 
      <div class="carousel-wrapper">
-      
-      
+
+
 
 
       <div class="carousel" data-flickity>
-   
-      
+
+
           <?php
 
           $sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Pomocnik' order by Id desc";
@@ -416,7 +420,7 @@ img {
 			  echo "0 results";
 		  };
 
-          ?>
+			?>
 
 
 
@@ -431,31 +435,7 @@ img {
 
 
     
-        <footer class="page-footer" style="margin-top:150px;">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2014 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
-          </div>
-        </footer>
+      <?php include $footerContent; ?>
 
 
     <script>
