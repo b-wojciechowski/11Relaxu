@@ -37,6 +37,8 @@ else
 			$_SESSION['id'] = $wiersz['Id'];
 			$_SESSION['Name'] = $wiersz['Name'];
 			$_SESSION['email'] = $wiersz['email'];
+			$_SESSION['login'] = $login; 
+			$_SESSION['password'] = $password;
 
 			unset($_SESSION['blad']);
 			$rezultat->free_result();

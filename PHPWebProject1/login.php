@@ -1,6 +1,14 @@
 <?php
 include 'configuration.php';
 session_start();
+
+if ((isset($_SESSION['login'])) || (isset($_SESSION['password'])))
+{
+	header('Location: index.php');
+	exit();
+}
+
+
 ?>
 <html>
 <head>
@@ -34,7 +42,7 @@ session_start();
 		<form class="col s12" action="_login.php" method="post">
 			<div class="row">
 				<div class="input-field col s10">
-					<input id="login" type="email" class="validate" name="login" />
+					<input id="login" type="email" class="validate" name="login" minlength=5/ />
 					<label for="first_name">Adres email</label>
 				</div>
 			</div>
