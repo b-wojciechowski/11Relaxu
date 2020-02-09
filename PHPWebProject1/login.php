@@ -13,45 +13,7 @@ session_start();
 <style>
 /*@import url("https://fonts.googleapis.com/css?family=Hind:400,700");*/
 
-	html, body {
-	margin: 0;
-	padding: 0;
-	background-color: #efefef;
-	width: 100%;
-	height: 100%;
-}
-.login-popup 
-{
-	padding: 25px 25px 5px 25px;
-	background-color: white;
-}
-@media screen and (max-width: 2500px)
-{
-	.login-popup
-	{
-		margin-top:10%;
-		margin-left:35%;
-		margin-right:35%;			
-	}
-}
-	@media screen and (max-width: 1200px) {
-		.login-popup {
-			margin-top: 5%;
-			margin-left: 25%;
-			margin-right: 25%;
-			padding: 15px 15px 5px 15px;
-		}
-	}
 
-	@media screen and (max-width: 602px) {
-		.login-popup {
-			margin: 10%;
-		}
-
-		h3 {
-			font-size: 24px;
-		}
-	}
 </style>
 </head>
 

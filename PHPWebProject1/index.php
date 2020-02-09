@@ -409,7 +409,6 @@ html, body {
     
 <?php include $footerContent; ?>
 
-
 	<script>
 		$(document).ready(function ()
 		{

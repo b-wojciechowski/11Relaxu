@@ -35,28 +35,26 @@ else
 	//echo	'<br>$player_position '.$player_position;
 	//echo	'<br>$player_noImage '.$player_noImage;
 
-	$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-			if ($polaczenie->connect_errno!=0)
-			{
-				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
-			}
-			$sql = "INSERT INTO `players` (`Id`, `Name`, `LastName`, `Position`, `Votes`, `DateFrom`, `DateTo`, `CreatedDate`, `CreatedBy`, `IsDeleted`) VALUES
+$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+	if ($polaczenie->connect_errno!=0)
+	{
+		echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
+	}
+	else
+		$sql = "INSERT INTO `players` (`Id`, `Name`, `LastName`, `Position`, `Votes`, `DateFrom`, `DateTo`, `CreatedDate`, `CreatedBy`, `IsDeleted`) VALUES
 (NULL, '$player_name', '$player_lastName', '$player_position', NULL, $player_dateFrom, '$player_dateTo', NULL, '$voter', 0);";
 
-			if ($polaczenie->query($sql) === TRUE) {
-				echo "New record created successfully";
-			} else {
-				echo "Error: " . $sql . "<br>" . $conn->error;
-				$_SESSION['adderror'] = '<span style="color:red">123!</span>';
-				header('Location: index.php');
-			}
-
-
-
-
-
+	if ($polaczenie->query($sql) === TRUE) 
+	{
+		echo "New record created successfully";
+	} 
+	else 
+	{
+		echo "Error: " . $sql . "<br>" . $conn->error;
+		$_SESSION['adderror'] = '<span style="color:red">123!</span>';
+		header('Location: index.php');
+	}
 
 	$polaczenie->close();
 }
-
 ?>
