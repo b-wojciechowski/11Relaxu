@@ -40,8 +40,10 @@
     <Content Include="js\materialize.min.js" />
     <Content Include="LICENSE" />
     <Content Include="README.md" />
+    <Content Include="sql\CreateTriggerGUID.sql" />
     <Content Include="sql\players.sql" />
     <Content Include="sql\users.sql" />
+    <Content Include="sql\VotesView.sql" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="_addPlayer.php" />
