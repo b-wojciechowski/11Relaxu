@@ -44,6 +44,13 @@ html, body {
 	float:left; 
 	
 }
+@media screen and (max-width: 1200px) 
+{
+		.playerCardCheckboxLabel {
+			font-size:12px!important;
+		}
+}
+
 
 @media screen and (max-width: 800px)
 {
@@ -60,35 +67,35 @@ html, body {
 	}
 
 	.instructionContainer 
-{
-	margin-left:10px; 
-	float:left; 
-	width: 400px;
-}
-
-}
-
-
- .carousel-wrapper {
-	position: relative;
-	width: 70%;
-	height: 80%;
-	top: 45%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: #FFFFFF;
-	/* background-image: linear-gradient(#FFFFFF 50%, #FFFFFF 50%, #F0F3FC 50%); */
-	box-shadow: 0px 12px 39px -19px rgba(0, 0, 0, 0.75);
-	overflow: hidden;
-}
-@media screen and (max-width: 1400px)
-{
-	.carousel-wrapper
 	{
-		width: 90%;
-		height: 85%;
+		margin-left:10px; 
+		float:left; 
+		width: 400px;
 	}
+
 }
+
+
+	.carousel-wrapper {
+		position: relative;
+		width: 70%;
+		height: 80%;
+		top: 45%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: #FFFFFF;
+		/* background-image: linear-gradient(#FFFFFF 50%, #FFFFFF 50%, #F0F3FC 50%); */
+		box-shadow: 0px 12px 39px -19px rgba(0, 0, 0, 0.75);
+		overflow: hidden;
+	}
+	@media screen and (max-width: 1400px) 
+	{
+		.carousel-wrapper 
+		{
+			width: 90%;
+			height: 85%;
+		}
+	}
 .carousel-wrapper .carousel {
 	position: absolute;
 	top: 55%;
@@ -98,26 +105,26 @@ html, body {
 	padding-bottom:50px;
 	padding-top:50px;
 }
-.carousel-wrapper .carousel .carousel-cell {
-	/*padding: 10px;*/
-	background-color: #FFFFFF;
-	width: 20%;
-	height: auto;
-	min-width: 200px;
-	margin: 0 20px;
-	transition: transform 500ms ease;
-}
+	.carousel-wrapper .carousel .carousel-cell {
+		/*padding: 10px;*/
+		background-color: #FFFFFF;
+		width: 20%;
+		height: auto;
+		min-width: 200px;
+		margin: 0 20px;
+		transition: transform 500ms ease;
+	}
 
-.carousel-wrapper .carousel .carousel-cell .more {
-	display: block;
-	opacity: 0;
-	margin: 5px 0 0px 0;
-	text-align: center;
-	font-size: 10px;
-	color: #CFCFCF;
-	text-decoration: none;
-	transition: opacity 300ms ease;
-}
+		.carousel-wrapper .carousel .carousel-cell .more {
+			display: block;
+			opacity: 0;
+			margin: 5px 0 0px 0;
+			text-align: center;
+			font-size: 10px;
+			color: #CFCFCF;
+			text-decoration: none;
+			transition: opacity 300ms ease;
+		}
 .carousel-wrapper .carousel .carousel-cell .more:hover, .carousel-wrapper .carousel .carousel-cell .more:active,
 .carousel-wrapper .carousel .carousel-cell .more:visited, .carousel-wrapper .carousel .carousel-cell .more:focus {
 	color: #CFCFCF;
@@ -282,14 +289,14 @@ html, body {
 					<div class="card-content">
 						<span class="card-title activator grey-text text-darken-4">
 							'.$name." ".$lastname.'
-							<i class="material-icons right">more_vert</i>
+							<i class="material-icons right hide-on-small-only">more_vert</i>
 						</span>
-						<p>'.($position).'</p>
+						<p class="hide-on-small-only">'.($position).'</p>
 					</div>
 
 					<div class="card-action tooltipped" data-position="bottom" data-delay="50" data-tooltip="Zaznacz, aby oddać głos na tego zawodnika">
 						<input type="checkbox" id="checkbox'.$id.'" onclick="Materialize.toast("'.$toastInfo.'", 4000)"/>
-						<label for="checkbox'.$id.'">Jedenastka 50-lecia</label>
+						<label class="playerCardCheckboxLabel" for="checkbox'.$id.'">Jedenastka 50-lecia</label>
 					</div>
 
 					<div class="card-reveal">
