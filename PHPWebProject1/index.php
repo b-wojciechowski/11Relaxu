@@ -27,6 +27,48 @@ html, body {
 	width: 100%;
 	height: 100%;
 }
+.instructionTitle 
+{
+	font-size:25px;
+	margin-bottom:-10px;
+}
+.instructionText 
+{
+	font-size:12px;
+	margin-bottom:0px;
+}
+
+.instructionContainer 
+{
+	margin-left:10px; 
+	float:left; 
+	
+}
+
+@media screen and (max-width: 800px)
+{
+	.instructionTitle 
+	{
+		font-size:18px;
+		margin-bottom:-10px;
+	}
+
+	.instructionText 
+	{
+		font-size:11px;
+		margin-bottom:0px;
+	}
+
+	.instructionContainer 
+{
+	margin-left:10px; 
+	float:left; 
+	width: 400px;
+}
+
+}
+
+
  .carousel-wrapper {
 	position: relative;
 	width: 70%;
@@ -44,7 +86,7 @@ html, body {
 	.carousel-wrapper
 	{
 		width: 90%;
-		height: 90%;
+		height: 85%;
 	}
 }
 .carousel-wrapper .carousel {
@@ -56,25 +98,26 @@ html, body {
 	padding-bottom:50px;
 	padding-top:50px;
 }
-.carousel-wrapper .carousel .carousel-cell {
-	/*padding: 10px;*/
-	background-color: #FFFFFF;
-	width: 20%;
-	height: auto;
-	min-width: 200px;
-	margin: 0 20px;
-	transition: transform 500ms ease;
-}
-	.carousel-wrapper .carousel .carousel-cell .more {
-		display: block;
-		opacity: 0;
-		margin: 5px 0 0px 0;
-		text-align: center;
-		font-size: 10px;
-		color: #CFCFCF;
-		text-decoration: none;
-		transition: opacity 300ms ease;
+	.carousel-wrapper .carousel .carousel-cell {
+		/*padding: 10px;*/
+		background-color: #FFFFFF;
+		width: 20%;
+		height: auto;
+		min-width: 200px;
+		margin: 0 20px;
+		transition: transform 500ms ease;
 	}
+
+		.carousel-wrapper .carousel .carousel-cell .more {
+			display: block;
+			opacity: 0;
+			margin: 5px 0 0px 0;
+			text-align: center;
+			font-size: 10px;
+			color: #CFCFCF;
+			text-decoration: none;
+			transition: opacity 300ms ease;
+		}
 .carousel-wrapper .carousel .carousel-cell .more:hover, .carousel-wrapper .carousel .carousel-cell .more:active,
 .carousel-wrapper .carousel .carousel-cell .more:visited, .carousel-wrapper .carousel .carousel-cell .more:focus {
 	color: #CFCFCF;
@@ -125,7 +168,7 @@ html, body {
 
 
 <nav>
-	<div class="nav-wrapper">
+	<div class="nav-wrapper" style="background-color:#232323">
       <a href="#!" class="brand-logo" style="padding-left:25px">Relax Radziwiłłów</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 		  
@@ -183,12 +226,12 @@ html, body {
 	<div class="carousel-wrapper">
 		<div class="row" style="padding:7px; background-color:white;margin-bottom:0px!important">
 					<div>
-						<div class"col s6" style="margin-left:10px; float:left">
-						<h4><b>Wybierz 4 obrońców</b> (krok 1 z 4)</h4>
-						<p>Zaznacz "Jedenastka 50-lecia" na kartach 4 wybranych zawodników a następnie kliknij <b>"Przejdź dalej"</b>.</p>
+						<div class="col s8 instructionContainer">
+						<div class="instructionTitle"><b>Wybierz 4 obrońców</b> (krok 1 z 4)</div>
+						<p class="instructionText">Zaznacz "Jedenastka 50-lecia" na kartach 4 wybranych zawodników a następnie kliknij <b>"Przejdź dalej"</b>.</p>
 						</div>
-						<div class="col s2" style="float:right; padding-top:10px">
-								 <button class="btn-large waves-effect waves-light" type="submit" name="action">Przejdź dalej
+						<div class="col s4" style="float:right; padding-top:10px">
+								 <button class="btn-large waves-effect waves-light" type="submit" name="action" style="float:right">Przejdź dalej
 									<i class="material-icons right">navigate_next</i>
 								 </button>
 
