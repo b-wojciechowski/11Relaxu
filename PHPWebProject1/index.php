@@ -40,7 +40,7 @@ html, body {
 
 .instructionContainer 
 {
-	margin-left:10px; 
+	
 	float:left; 
 	
 }
@@ -98,26 +98,26 @@ html, body {
 	padding-bottom:50px;
 	padding-top:50px;
 }
-	.carousel-wrapper .carousel .carousel-cell {
-		/*padding: 10px;*/
-		background-color: #FFFFFF;
-		width: 20%;
-		height: auto;
-		min-width: 200px;
-		margin: 0 20px;
-		transition: transform 500ms ease;
-	}
+.carousel-wrapper .carousel .carousel-cell {
+	/*padding: 10px;*/
+	background-color: #FFFFFF;
+	width: 20%;
+	height: auto;
+	min-width: 200px;
+	margin: 0 20px;
+	transition: transform 500ms ease;
+}
 
-		.carousel-wrapper .carousel .carousel-cell .more {
-			display: block;
-			opacity: 0;
-			margin: 5px 0 0px 0;
-			text-align: center;
-			font-size: 10px;
-			color: #CFCFCF;
-			text-decoration: none;
-			transition: opacity 300ms ease;
-		}
+.carousel-wrapper .carousel .carousel-cell .more {
+	display: block;
+	opacity: 0;
+	margin: 5px 0 0px 0;
+	text-align: center;
+	font-size: 10px;
+	color: #CFCFCF;
+	text-decoration: none;
+	transition: opacity 300ms ease;
+}
 .carousel-wrapper .carousel .carousel-cell .more:hover, .carousel-wrapper .carousel .carousel-cell .more:active,
 .carousel-wrapper .carousel .carousel-cell .more:visited, .carousel-wrapper .carousel .carousel-cell .more:focus {
 	color: #CFCFCF;
@@ -194,7 +194,6 @@ html, body {
 
 				<li><a href="mobile.html">
 					<div><i class="material-icons left">person</i>
-
 					Zalogowany: 
 					<?php echo ' '.$_SESSION['Name']; ?>
 					</div>
@@ -224,7 +223,7 @@ html, body {
 	
 
 	<div class="carousel-wrapper">
-		<div class="row" style="padding:7px; background-color:white;margin-bottom:0px!important">
+		<div class="row" style="padding:10px; background-color:white;margin-bottom:0px!important">
 					<div>
 						<div class="col s8 instructionContainer">
 						<div class="instructionTitle"><b>Wybierz 4 obrońców</b> (krok 1 z 4)</div>
@@ -235,7 +234,6 @@ html, body {
 									<i class="material-icons right">navigate_next</i>
 								 </button>
 
-
 						</div>
 					
 					</div>
@@ -244,19 +242,19 @@ html, body {
 		<hr>
 		<div class="carousel" data-flickity='{ "initialIndex": 3, "autoPlay": 7500, "wrapAround": true }' style="margin:10px;">
 
-			<?php
-			require_once "sql/connection.php";
-			include 'tools/tools.php';
-			$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-			if ($polaczenie->connect_errno!=0)
-			{
-				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
-			}
-			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players order by rand();";
-			$result = $polaczenie->query($sql);
+	<?php
+	require_once "sql/connection.php";
+	include 'tools/tools.php';
+	$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+	if ($polaczenie->connect_errno!=0)
+	{
+		echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
+	}
+	$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players order by rand();";
+	$result = $polaczenie->query($sql);
 
-			if ($result->num_rows > 0)
-			{
+	if ($result->num_rows > 0)
+	{
 
 				// output data of each row
 				while($row = $result->fetch_assoc())
