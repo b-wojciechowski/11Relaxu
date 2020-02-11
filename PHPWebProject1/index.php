@@ -199,7 +199,7 @@ html, body {
 					
 		</div>  
 		<hr>
-		<div class="carousel" data-flickity='{ "initialIndex": 3, "autoPlay": 4500 }' style="margin:10px;">
+		<div class="carousel" data-flickity='{ "initialIndex": 3, "autoPlay": 7500, "wrapAround": true }' style="margin:10px;">
 
 			<?php
 			require_once "sql/connection.php";
@@ -209,7 +209,7 @@ html, body {
 			{
 				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 			}
-			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players order by Id desc";
+			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players order by rand();";
 			$result = $polaczenie->query($sql);
 
 			if ($result->num_rows > 0)
