@@ -183,7 +183,7 @@ html, body {
 	<div class="carousel-wrapper">
 		<div class="row" style="padding:7px; background-color:white;margin-bottom:0px!important">
 					<div>
-						<div class"col s6" style="margin-left:5%; float:left">
+						<div class"col s6" style="margin-left:10px; float:left">
 						<h4><b>Wybierz 4 obrońców</b> (krok 1 z 4)</h4>
 						<p>Zaznacz "Jedenastka 50-lecia" na kartach 4 wybranych zawodników a następnie kliknij <b>"Przejdź dalej"</b>.</p>
 						</div>

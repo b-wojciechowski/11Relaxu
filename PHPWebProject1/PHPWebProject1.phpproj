@@ -40,6 +40,8 @@
     <Content Include="js\materialize.min.js" />
     <Content Include="LICENSE" />
     <Content Include="README.md" />
+    <Content Include="sql\players.sql" />
+    <Content Include="sql\users.sql" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="_addPlayer.php" />
