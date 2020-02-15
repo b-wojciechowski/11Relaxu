@@ -9,16 +9,37 @@ session_start();
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>-->
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.min.css">
-<script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js"></script>
+
+
+
+	  <script>
+         function showToast(message, duration) {
+            Materialize.toast(message, duration);
+         }
+         
+         function showToast1(message, duration) {
+            Materialize.toast('<i>'+ message + '</i>', duration);
+         }
+         
+         function showToast2(message, duration) {
+            Materialize.toast(message, duration, 'rounded');
+         }
+         
+         function showToast3(message, duration) {
+            Materialize.toast('Hello World!', duration, '', function toastCompleted() {
+               alert('Toast dismissed!');
+            });
+         }
+      </script>
+	
+
 </head>
 
 
@@ -28,7 +49,7 @@ session_start();
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 
-
+	
     
   <div class="row">
      
@@ -101,13 +122,17 @@ session_start();
 			
 			<div style="padding:10px;">
 					<div><h5><b>Wybierz 4 obrońców</b> (krok 1 z 4)</h5></div>		
-					Zaznacz "Jedenastka 50-lecia" na kartach 4 wybranych zawodników a następnie kliknij <b>"Przejdź dalej"</b>.
-					
+					Zaznacz "Jedenastka 50-lecia" przy 4 zawodnikach.	
 			</div>				 
+		
+			<div style="padding:10px;">
+		 Wybranych obrońców: <div id="Summary" style="font-size:medium;"> 	</div> 
+	
+			</div>
+		
 
-		
-		
-		<ul class="collection">
+
+<ul class="collection">
 
 			<?php
 		require_once "sql/connection.php";
@@ -134,6 +159,8 @@ session_start();
 				$DateFrom = $row["DateFrom"];
 				$DateTo = $row["DateTo"];
 				$toastInfo = $name." dodany";
+				//onclick="Materialize.toast('I am a toast', 4000)"
+				$toast = "'Dodano zawodnika'";
 				$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
 				
 				echo
@@ -142,10 +169,12 @@ session_start();
       <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'"  />
       <span class="title">'.$name." ".$lastname.'</span>
       <p>'.$position.'<br>
-        <input type="checkbox" id="checkbox-'.$id.'" onclick="Materialize.toast("'.$toastInfo.'", 4000)"/>
-						<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
+  
+	  <input class="single-checkbox" onclick="Materialize.toast('.$toast.', 2000)" type="checkbox" id="checkbox-'.$id.'"/>
+	<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
+     
       </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
     </li>';
 			}
 		}
@@ -244,23 +273,36 @@ session_start();
     
 <script>
 
-(function($){
-  $(function(){
+	(function($){
+	$(function(){
 
-    $('.button-collapse').sideNav({
-      edge: 'left', // Choose the horizontal origin
-      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      draggable: true // Choose whether you can drag to open on touch screens
-    }
-    );
+	$('.button-collapse').sideNav({
+		edge: 'left', // Choose the horizontal origin
+		closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+		draggable: true // Choose whether you can drag to open on touch screens
+	}
+	);
 
-  }); // end of document ready
-})(jQuery); // end of jQuery name space
-
+	}); // end of document ready
+	})(jQuery); // end of jQuery name space
 
 </script>
 
+	<script>
+		$("#Summary").html($('.single-checkbox:checked').length).show();
+		$('.single-checkbox').on('change', function() {
+   if($('.single-checkbox:checked').length > 4) {
+       this.checked = false;
+   }$("#Summary").html($('.single-checkbox:checked').length).show();
+});
 
+$('.single-checkbox2').on('change', function() {
+   if($('.single-checkbox2:checked').length > 1) {
+       this.checked = false;
+   }
+});
+
+	</script>
 
 
 
