@@ -135,10 +135,10 @@ session_start();
 		 Wybranych obrońców: <div id="Summary-goalkeeper" style="font-size:medium;"> 	</div> 
 	
 			</div>-->
-
-<ul class="collection">
+		<form action="sendVotes.php" method="post">
+  <ul class="collection collapsible">
 	
-<form action="sendVotes.php" method="post">
+
 			<?php
 			require_once "sql/connection.php";
 			include 'tools/tools.php';
@@ -147,7 +147,7 @@ session_start();
 			{
 				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 			}
-			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where position = 'bramkarz' order by Lastname;";
+			$sql = "SELECT * FROM Players where position = 'bramkarz' order by Lastname;";
 			$result = $polaczenie->query($sql);
 
 			if ($result->num_rows > 0)
@@ -158,26 +158,35 @@ session_start();
 				{
 					$id = $row["Id"];
 					$name = $row["Name"];
-					$lastname = $row["Lastname"];
+					$lastname = $row["LastName"];
 					$position = $row["Position"];
 					$votes = $row["Votes"];
 					$DateFrom = $row["DateFrom"];
 					$DateTo = $row["DateTo"];
 					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+					$additionalPositions = $row["AdditionalPositions"];
+					$birthYear = $row["BirthYear"];
 					
 					echo
 
-					'<li class="collection-item avatar">
-    <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+					'<li>
+	  <div class="collapsible-header"style="padding:0px;">
+	  <div class="collection-item avatar" style="width:100%";>
+		
+      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
       <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
       <p style="padding-left:10px;">'.$position.'<br>
   
-	  <input class="goalkeeper-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
+	  <input class="defender-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
 	<label  style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
+     
       </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
-    </li>';
+      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+		</div>
+		</div>
+      <div class="collapsible-body"><h6>INFORMACJE O ZAWODNIKU:</h6><br>'.$name.' '.$lastname.'<br><b>Pozycja:</b> '.$position.'<br>Rok urodzenia: '.$birthYear.'<br>Lata gry: '.$DateFrom.'-'.$DateTo.'<br>Dodatkowe pozycje na boisku: '.$additionalPositions.'<br></div>
+	</li>';
 				}
 			}
 			else
@@ -187,16 +196,7 @@ session_start();
 
             ?>
 
-	</ul>
-
-		</ul>
-
-
-
-
-
-
-
+</ul>
 
 
 
@@ -242,10 +242,6 @@ session_start();
 				$votes = $row["Votes"];
 				$DateFrom = $row["DateFrom"];
 				$DateTo = $row["DateTo"];
-				$toastInfo = $name." dodany";
-				//onclick="Materialize.toast('I am a toast', 4000)"
-				$toastHandler = "$('#Summary').html($('.single-checkbox:checked').length).show();";
-				$toast = "'Dodano zawodnika'";
 				$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
 				
 				echo
@@ -308,7 +304,6 @@ session_start();
 					$votes = $row["Votes"];
 					$DateFrom = $row["DateFrom"];
 					$DateTo = $row["DateTo"];
-					$toastInfo = $name." dodany";
 					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
 					
 					echo
@@ -378,10 +373,6 @@ session_start();
 					$votes = $row["Votes"];
 					$DateFrom = $row["DateFrom"];
 					$DateTo = $row["DateTo"];
-					$toastInfo = $name." dodany";
-					//onclick="Materialize.toast('I am a toast', 4000)"
-					$toastHandler = "$('#Summary').html($('.single-checkbox:checked').length).show();";
-					$toast = "'Dodano zawodnika'";
 					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
 					
 					echo
@@ -432,7 +423,30 @@ session_start();
 
 
 
-
+		
+  <ul class="collapsible collection">
+	<li>
+	  <div class="collapsible-header">
+	  <div class="collection-item avatar">
+		
+      <img src="images/kacper-wojciechowski.jpg" alt="" class="circle">
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+		</div>
+		</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+	</li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+  </ul>
 
 
 
@@ -448,7 +462,7 @@ session_start();
 
 </div>
 
-    <div class="col s12 m4 l3 hide-on-med-and-down"><p>prawe nic</p></div>
+    <div class="col s12 m4 l3 hide-on-med-and-down"></div>
   </div>
 
 
@@ -502,7 +516,7 @@ session_start();
 	});
 </script>
 
-	<script>
+<script>
 	$("#Summary-goalkeeper").html($('.goalkeeper-checkbox:checked').length).show();
 	$('.goalkeeper-checkbox').on('change', function() {
 		if($('.goalkeeper-checkbox:checked').length > 1) {
@@ -511,7 +525,7 @@ session_start();
 	});
 </script>
 
-		<script>
+<script>
 	$("#Summary-defender").html($('.defender-checkbox:checked').length).show();
 	$('.defender-checkbox').on('change', function() {
 		if($('.defender-checkbox:checked').length > 4) {
@@ -519,9 +533,8 @@ session_start();
 	}$("#Summary-defender").html($('.defender-checkbox:checked').length).show();
 	});
 </script>
-
 	
-		<script>
+<script>
 	$("#Summary-midfielder").html($('.midfielder-checkbox:checked').length).show();
 	$('.midfielder-checkbox').on('change', function() {
 		if($('.midfielder-checkbox:checked').length > 4) {
@@ -529,7 +542,6 @@ session_start();
 	}$("#Summary-midfielder").html($('.midfielder-checkbox:checked').length).show();
 	});
 </script>
-
 
 <script>
 	$("#Summary-forward").html($('.forward-checkbox:checked').length).show();
@@ -540,11 +552,12 @@ session_start();
 	});
 </script>
 
-	<script>
-		$(document).ready(function(){
+<script>
+
+
+  $(document).ready(function(){
     $('.collapsible').collapsible();
-  });
-        
+  }); 
 	</script>
 
 </body>
