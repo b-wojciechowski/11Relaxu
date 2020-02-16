@@ -43,6 +43,7 @@
     <Content Include="sql\CreateTriggerGUID.sql" />
     <Content Include="sql\players.sql" />
     <Content Include="sql\users.sql" />
+    <Content Include="sql\votes.sql" />
     <Content Include="sql\VotesView.sql" />
   </ItemGroup>
   <ItemGroup>

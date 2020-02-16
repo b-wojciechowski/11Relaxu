@@ -135,10 +135,9 @@ session_start();
 		 Wybranych obrońców: <div id="Summary-goalkeeper" style="font-size:medium;"> 	</div> 
 	
 			</div>-->
-		
-
 
 <ul class="collection">
+	
 <form action="sendVotes.php" method="post">
 			<?php
 			require_once "sql/connection.php";
@@ -169,14 +168,13 @@ session_start();
 					echo
 
 					'<li class="collection-item avatar">
-     <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+    <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
       <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
       <p style="padding-left:10px;">'.$position.'<br>
   
 	  <input class="goalkeeper-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label  style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Dodaj do swojeje Jedenastki 50-lecia</label>
-     
+	<label  style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
       </p>
       <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
     </li>';
@@ -188,6 +186,8 @@ session_start();
 			};
 
             ?>
+
+	</ul>
 
 		</ul>
 
@@ -257,7 +257,7 @@ session_start();
       <p style="padding-left:10px;">'.$position.'<br>
   
 	  <input class="defender-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label  style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Dodaj do swojeje Jedenastki 50-lecia</label>
+	<label  style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
      
       </p>
       <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
@@ -319,7 +319,7 @@ session_start();
 
       <p style="padding-left:10px;">'.$position.'<br>
         <input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-		<label style="padding-left:25px;"  class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Dodaj do swojeje Jedenastki 50-lecia</label>
+		<label style="padding-left:25px;"  class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
       </p>
     <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
     </li>';
@@ -393,7 +393,7 @@ session_start();
       <p style="padding-left:10px;">'.$position.'<br>
   
 	  <input class="forward-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Dodaj do swojeje Jedenastki 50-lecia</label>
+	<label style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
      
       </p>
       <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
@@ -539,6 +539,13 @@ session_start();
 	}$("#Summary-forward").html($('.forward-checkbox:checked').length).show();
 	});
 </script>
+
+	<script>
+		$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+        
+	</script>
 
 </body>
 </html>
