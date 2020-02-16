@@ -119,7 +119,7 @@ session_start();
 
 </div>
 
-    <div class="col s12 m4 l3 hide-on-med-and-down"><p>lewe nic</p></div>
+    <div class="col s12 m4 l3 hide-on-med-and-down"></div>
     
 <div class="col s12 m4 l6" style="padding:0px;">
 	<div class="" style="background-color:white; margin-top:10px;">
@@ -448,7 +448,7 @@ session_start();
 
 </div>
 
-    <div class="col s12 m4 l3 hide-on-med-and-down"><p>prawe nic</p></div>
+    <div class="col s12 m4 l3 hide-on-med-and-down"></div>
   </div>
 
 

@@ -7,6 +7,8 @@ require_once "sql/connection.php";
 $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 $voter = $_SESSION['email'];
 $voterId = $_SESSION['id'];
+$browserAgent = $_SERVER['HTTP_USER_AGENT'];
+echo $browserAgent;
 
 if ($polaczenie->connect_errno!=0)
 {
@@ -16,7 +18,7 @@ else
 {
 	if(!empty($_POST['goalkeeper'])) {
 		foreach($_POST['goalkeeper'] as $check) {
-			$sql = 'INSERT INTO `votes` (`Id`, `VoteOnPlayerId`, `VoteDate`, `Voter`) VALUES (null, "'.$check.'", current_timestamp(), "'.$voterId.'")';
+			$sql = 'INSERT INTO `votes` (`Id`, `VoteOnPlayerId`, `VoteDate`, `Voter`, `browserAgent`) VALUES (null, "'.$check.'", current_timestamp(), "'.$voterId.'", "'.$browserAgent.'")';
 		//	$result = $polaczenie->query($sql);
 			if ($polaczenie->query($sql) === TRUE)
 			{
@@ -25,10 +27,10 @@ else
 			else
 			{
 				echo "Error: " . $sql . "<br>" . $polaczenie->error;
-				
+
 			}
 
-			
+
 
 
 			}

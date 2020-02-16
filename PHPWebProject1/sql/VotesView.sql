@@ -20,3 +20,10 @@ SELECT count(1) FROM votes as v
 left join players as p on p.id = v.VoteOnPlayerId
 where p.Id = 'A72A9E5B-50BC-11EA-A60F-E4115B471390'
 ---
+
+-- zliczanie dla wszystkich, ranking
+SELECT p.name, p.LastName, count(p.Id) FROM votes as v
+left join players as p on p.id = v.VoteOnPlayerId
+group by p.id
+order by count(p.id) desc
+--
