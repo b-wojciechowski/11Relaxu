@@ -139,7 +139,7 @@ session_start();
 
 
 <ul class="collection">
-
+<form action="sendVotes.php" method="post">
 			<?php
 			require_once "sql/connection.php";
 			include 'tools/tools.php';
@@ -148,7 +148,7 @@ session_start();
 			{
 				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 			}
-			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Bramkarz' order by rand();";
+			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where position = 'bramkarz' order by Lastname;";
 			$result = $polaczenie->query($sql);
 
 			if ($result->num_rows > 0)
@@ -174,8 +174,8 @@ session_start();
 
       <p style="padding-left:10px;">'.$position.'<br>
   
-	  <input class="goalkeeper-checkbox" type="checkbox" id="goalkeeper-checkbox-'.$id.'" name="goalkeeper-checkbox-'.$id.'" value="gaolkeeper-checked"/>
-	<label class="playerCardCheckboxLabel" for="goalkeeper-checkbox-'.$id.'">Jedenastka 50-lecia</label>
+	  <input class="goalkeeper-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
+	<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
      
       </p>
       <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
@@ -226,7 +226,7 @@ session_start();
 		{
 			echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 		}
-		$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Obrońca' order by rand();";
+		$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Obrońca' order by Lastname;";
 		$result = $polaczenie->query($sql);
 
 		if ($result->num_rows > 0)
@@ -256,7 +256,7 @@ session_start();
 
       <p style="padding-left:10px;">'.$position.'<br>
   
-	  <input class="defender-checkbox" type="checkbox" id="checkbox-'.$id.'"/>
+	  <input class="defender-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
 	<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
      
       </p>
@@ -318,7 +318,7 @@ session_start();
       <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
       <p style="padding-left:10px;">'.$position.'<br>
-        <input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'"/>
+        <input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
 		<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
       </p>
     <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
@@ -392,7 +392,7 @@ session_start();
 
       <p style="padding-left:10px;">'.$position.'<br>
   
-	  <input class="forward-checkbox" type="checkbox" id="checkbox-'.$id.'"/>
+	  <input class="forward-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
 	<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
      
       </p>
@@ -414,7 +414,7 @@ session_start();
 		<div style="padding:10px 10px 10px 10px; ">
 			<div style="">
 			
-				<button class="btn waves-effect waves-light" type="submit" name="sendVote.php">Prześlij swoją Jedenastkę
+				<button class="btn waves-effect waves-light" type="submit" name="sendVotes.php">Prześlij swoją Jedenastkę
 				<i class="material-icons right">send</i>
 				</button>
 
@@ -423,7 +423,7 @@ session_start();
 			
 		</div>
 
-
+</form>
 
 
 
