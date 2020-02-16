@@ -169,24 +169,36 @@ session_start();
 					
 					echo
 
-					'<li>
-	  <div class="collapsible-header"style="padding:0px;">
+'<li>
+	  <div class="collapsible-header"style="padding:0px">
 	  <div class="collection-item avatar" style="width:100%";>
 		
       <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
       <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
       <p style="padding-left:10px;">'.$position.'<br>
-  
+
 	  <input class="defender-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
 	<label  style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
      
       </p>
       <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+
 		</div>
 		</div>
-      <div class="collapsible-body"><h6>INFORMACJE O ZAWODNIKU:</h6><br>'.$name.' '.$lastname.'<br><b>Pozycja:</b> '.$position.'<br>Rok urodzenia: '.$birthYear.'<br>Lata gry: '.$DateFrom.'-'.$DateTo.'<br>Dodatkowe pozycje na boisku: '.$additionalPositions.'<br></div>
-	</li>';
+      <div class="collapsible-body">
+<h6>INFORMACJE O ZAWODNIKU:</h6>
+<br>'.$name.' '.$lastname.'<br><b>Pozycja:</b> '.$position.'<br>
+Rok urodzenia: '.$birthYear.'<br>Lata gry: '.$DateFrom.'-'.$DateTo.'<br>
+Dodatkowe pozycje na boisku: '.$additionalPositions.'<br>
+
+
+<br>
+[DODAJ INFORMACJE]   [ZGŁOŚ BŁĄD DANYCH]
+
+</div>
+
+</li>';
 				}
 			}
 			else
@@ -421,32 +433,6 @@ session_start();
 
 
 
-
-
-		
-  <ul class="collapsible collection">
-	<li>
-	  <div class="collapsible-header">
-	  <div class="collection-item avatar">
-		
-      <img src="images/kacper-wojciechowski.jpg" alt="" class="circle">
-      <span class="title">Title</span>
-      <p>First Line <br>
-         Second Line
-      </p>
-		</div>
-		</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-	</li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-  </ul>
 
 
 
