@@ -175,7 +175,7 @@ session_start();
       <p style="padding-left:10px;">'.$position.'<br>
   
 	  <input class="goalkeeper-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
+	<label  style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Dodaj do swojeje Jedenastki 50-lecia</label>
      
       </p>
       <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
@@ -257,7 +257,7 @@ session_start();
       <p style="padding-left:10px;">'.$position.'<br>
   
 	  <input class="defender-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
+	<label  style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Dodaj do swojeje Jedenastki 50-lecia</label>
      
       </p>
       <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
@@ -319,7 +319,7 @@ session_start();
 
       <p style="padding-left:10px;">'.$position.'<br>
         <input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-		<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
+		<label style="padding-left:25px;"  class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Dodaj do swojeje Jedenastki 50-lecia</label>
       </p>
     <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
     </li>';
@@ -393,7 +393,7 @@ session_start();
       <p style="padding-left:10px;">'.$position.'<br>
   
 	  <input class="forward-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
+	<label style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Dodaj do swojeje Jedenastki 50-lecia</label>
      
       </p>
       <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
@@ -448,7 +448,7 @@ session_start();
 
 </div>
 
-    <div class="col s12 m4 l3 hide-on-med-and-down"></div>
+    <div class="col s12 m4 l3 hide-on-med-and-down"><p>prawe nic</p></div>
   </div>
 
 
