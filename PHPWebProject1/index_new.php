@@ -128,7 +128,7 @@ session_start();
 
 <div style="padding:10px 10px 0px 10px;">
 					<div><h5><b>Wybierz bramkarza</b> (krok 1 z 4)</h5></div>		
-					Zaznacz "Jedenastka 50-lecia" przy wybranym bramkarzu.
+					Zaznacz "Jedenastka 50-lecia" przy 1 zawodniku.
 			</div>				 
 		
 			<!--<div style="padding:10px;">
@@ -164,21 +164,18 @@ session_start();
 					$votes = $row["Votes"];
 					$DateFrom = $row["DateFrom"];
 					$DateTo = $row["DateTo"];
-					$toastInfo = $name." dodany";
-					//onclick="Materialize.toast('I am a toast', 4000)"
-					$toastHandler = "$('#Summary').html($('.single-checkbox:checked').length).show();";
-					$toast = "'Dodano zawodnika'";
 					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
 					
 					echo
 
 					'<li class="collection-item avatar">
-      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'"  />
-      <span class="title">'.$name." ".$lastname.'</span>
-      <p>'.$position.'<br>
+     <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+      <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
+
+      <p style="padding-left:10px;">'.$position.'<br>
   
-	  <input class="goalkeeper-checkbox" type="checkbox" id="checkbox-'.$id.'"/>
-	<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
+	  <input class="goalkeeper-checkbox" type="checkbox" id="goalkeeper-checkbox-'.$id.'" name="goalkeeper-checkbox-'.$id.'" value="gaolkeeper-checked"/>
+	<label class="playerCardCheckboxLabel" for="goalkeeper-checkbox-'.$id.'">Jedenastka 50-lecia</label>
      
       </p>
       <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
@@ -209,7 +206,7 @@ session_start();
 			
 			<div style="padding:10px;">
 					<div><h5><b>Wybierz 4 obrońców</b> (krok 2 z 4)</h5></div>		
-					Zaznacz "Jedenastka 50-lecia" przy 4 zawodnikach.	
+					Zaznacz "Jedenastka 50-lecia" przy 4 zawodnikach. 
 			</div>				 
 		
 			<!--<div style="padding:10px;">
@@ -254,11 +251,12 @@ session_start();
 				echo
 
 				'<li class="collection-item avatar">
-      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'"  />
-      <span class="title">'.$name." ".$lastname.'</span>
-      <p>'.$position.'<br>
+    <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+      <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
+
+      <p style="padding-left:10px;">'.$position.'<br>
   
-	  <input class="single-checkbox" onclick="Materialize.toast('.$toast.', 2000)" type="checkbox" id="checkbox-'.$id.'"/>
+	  <input class="defender-checkbox" type="checkbox" id="checkbox-'.$id.'"/>
 	<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
      
       </p>
@@ -281,8 +279,8 @@ session_start();
 
 
 			<div style="padding:10px;">
-					<div><h5><b>Wybierz 4 pomocników</b> (krok 2 z 4)</h5></div>		
-					Zaznacz "Jedenastka 50-lecia" na kartach 4 wybranych zawodników a następnie kliknij <b>"Przejdź dalej"</b>.
+					<div><h5><b>Wybierz 4 pomocników</b> (krok 3 z 4)</h5></div>		
+					Zaznacz "Jedenastka 50-lecia" przy 4 zawodnikach. 
 					
 			</div>	
 
@@ -294,7 +292,7 @@ session_start();
 
 			<?php
 			
-			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Pomocnik' order by rand();";
+			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Pomocnik' order by LastName;";
 			$result = $polaczenie->query($sql);
 
 			if ($result->num_rows > 0)
@@ -316,13 +314,14 @@ session_start();
 					echo
 
 					'<li class="collection-item avatar">
-      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'"  />
-      <span class="title">'.$name." ".$lastname.'</span>
-      <p>'.$position.'<br>
-        <input type="checkbox" id="checkbox-'.$id.'" onclick="Materialize.toast("'.$toastInfo.'", 4000)"/>
-						<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
+     <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+      <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
+
+      <p style="padding-left:10px;">'.$position.'<br>
+        <input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'"/>
+		<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
       </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
     </li>';
 				}
 			}
@@ -334,6 +333,114 @@ session_start();
             ?>
 
 </ul>
+
+
+
+
+
+
+		
+<div style="padding:10px 10px 0px 10px;">
+					<div><h5><b>Wybierz 2 napastników</b> (krok 4 z 4)</h5></div>		
+					Zaznacz "Jedenastka 50-lecia" przy 2 zawodnikach. 
+			</div>				 
+		
+			<!--<div style="padding:10px;">
+		 Wybranych obrońców: <div id="Summary-goalkeeper" style="font-size:medium;"> 	</div> 
+	
+			</div>-->
+		
+
+
+<ul class="collection">
+
+			<?php
+			require_once "sql/connection.php";
+	
+			$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+			if ($polaczenie->connect_errno!=0)
+			{
+				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
+			}
+			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Napastnik' order by LastName;";
+			$result = $polaczenie->query($sql);
+
+			if ($result->num_rows > 0)
+			{
+
+				// output data of each row
+				while($row = $result->fetch_assoc())
+				{
+					$id = $row["Id"];
+					$name = $row["Name"];
+					$lastname = $row["Lastname"];
+					$position = $row["Position"];
+					$votes = $row["Votes"];
+					$DateFrom = $row["DateFrom"];
+					$DateTo = $row["DateTo"];
+					$toastInfo = $name." dodany";
+					//onclick="Materialize.toast('I am a toast', 4000)"
+					$toastHandler = "$('#Summary').html($('.single-checkbox:checked').length).show();";
+					$toast = "'Dodano zawodnika'";
+					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+					
+					echo
+
+					'<li class="collection-item avatar">
+     <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+      <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
+
+      <p style="padding-left:10px;">'.$position.'<br>
+  
+	  <input class="forward-checkbox" type="checkbox" id="checkbox-'.$id.'"/>
+	<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
+     
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
+    </li>';
+				}
+			}
+			else
+			{
+				echo "Brak wyników";
+			};
+
+            ?>
+
+		</ul>
+
+
+
+		<div style="padding:10px 10px 10px 10px; ">
+			<div style="">
+			
+				<button class="btn waves-effect waves-light" type="submit" name="sendVote.php">Prześlij swoją Jedenastkę
+				<i class="material-icons right">send</i>
+				</button>
+
+
+			</div>
+			
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -401,6 +508,35 @@ session_start();
 		if($('.goalkeeper-checkbox:checked').length > 1) {
 			this.checked = false;
 	}$("#Summary-goalkeeper").html($('.goalkeeper-checkbox:checked').length).show();
+	});
+</script>
+
+		<script>
+	$("#Summary-defender").html($('.defender-checkbox:checked').length).show();
+	$('.defender-checkbox').on('change', function() {
+		if($('.defender-checkbox:checked').length > 4) {
+			this.checked = false;
+	}$("#Summary-defender").html($('.defender-checkbox:checked').length).show();
+	});
+</script>
+
+	
+		<script>
+	$("#Summary-midfielder").html($('.midfielder-checkbox:checked').length).show();
+	$('.midfielder-checkbox').on('change', function() {
+		if($('.midfielder-checkbox:checked').length > 4) {
+			this.checked = false;
+	}$("#Summary-midfielder").html($('.midfielder-checkbox:checked').length).show();
+	});
+</script>
+
+
+<script>
+	$("#Summary-forward").html($('.forward-checkbox:checked').length).show();
+	$('.forward-checkbox').on('change', function() {
+		if($('.forward-checkbox:checked').length > 2) {
+			this.checked = false;
+	}$("#Summary-forward").html($('.forward-checkbox:checked').length).show();
 	});
 </script>
 
