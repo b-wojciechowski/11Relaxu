@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include 'configuration.php';
 session_start();
 ?>
@@ -19,25 +19,25 @@ session_start();
 
 
 
-	  <script>
-         function showToast(message, duration) {
-            Materialize.toast(message, duration);
-         }
+<script>
+    function showToast(message, duration) {
+    Materialize.toast(message, duration);
+    }
          
-         function showToast1(message, duration) {
-            Materialize.toast('<i>'+ message + '</i>', duration);
-         }
+    function showToast1(message, duration) {
+    Materialize.toast('<i>'+ message + '</i>', duration);
+    }
          
-         function showToast2(message, duration) {
-            Materialize.toast(message, duration, 'rounded');
-         }
+    function showToast2(message, duration) {
+    Materialize.toast(message, duration, 'rounded');
+    }
          
-         function showToast3(message, duration) {
-            Materialize.toast('Hello World!', duration, '', function toastCompleted() {
-               alert('Toast dismissed!');
-            });
-         }
-      </script>
+    function showToast3(message, duration) {
+    Materialize.toast('Hello World!', duration, '', function toastCompleted() {
+        alert('Toast dismissed!');
+    });
+    }
+</script>
 	
 
 </head>
@@ -51,12 +51,13 @@ session_start();
 
 	
     
-  <div class="row">
+<div class="row">
      
-    <div class="col s12" style="padding:0px;">
-	
+ <div class="col s12" style="padding:0px;">
+	   
+<!--START MENU--> 
 
-   <nav>
+<nav>
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo">Logo</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -86,6 +87,7 @@ session_start();
 				</li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
+		  test
          <li><a href="mobile.html">
 						<i class="material-icons left">insert_chart</i>Rankingi
 					</a>
@@ -95,12 +97,14 @@ session_start();
 						<i class="material-icons left">people</i>Moja 11-stka 
 					</a>
 				</li>
-
+		  <hr />
 	
 				<li><a class="modal-trigger" href="#modal2_help">
 						<i class="material-icons left">help_outline</i>Pomoc 
 					</a>
 				</li>
+
+		   <hr />
 
 				<li><a href="mobile.html">
 					<i class="material-icons left">person</i><?php echo $_SESSION['Name']; ?>
@@ -111,24 +115,107 @@ session_start();
     </div>
   </nav>
           
-          
+ <!--KONIEC MENU-->      
 
-    </div>
+</div>
 
     <div class="col s12 m4 l3 hide-on-med-and-down"><p>lewe nic</p></div>
-    <div class="col s12 m4 l6" style="padding:0px;">
-		<div class="" style="background-color:white; margin-top:10px;">
+    
+<div class="col s12 m4 l6" style="padding:0px;">
+	<div class="" style="background-color:white; margin-top:10px;">
 			
+
+
+<div style="padding:10px 10px 0px 10px;">
+					<div><h5><b>Wybierz bramkarza</b> (krok 1 z 4)</h5></div>		
+					Zaznacz "Jedenastka 50-lecia" przy wybranym bramkarzu.
+			</div>				 
+		
+			<!--<div style="padding:10px;">
+		 Wybranych obrońców: <div id="Summary-goalkeeper" style="font-size:medium;"> 	</div> 
+	
+			</div>-->
+		
+
+
+<ul class="collection">
+
+			<?php
+			require_once "sql/connection.php";
+			include 'tools/tools.php';
+			$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+			if ($polaczenie->connect_errno!=0)
+			{
+				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
+			}
+			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Bramkarz' order by rand();";
+			$result = $polaczenie->query($sql);
+
+			if ($result->num_rows > 0)
+			{
+
+				// output data of each row
+				while($row = $result->fetch_assoc())
+				{
+					$id = $row["Id"];
+					$name = $row["Name"];
+					$lastname = $row["Lastname"];
+					$position = $row["Position"];
+					$votes = $row["Votes"];
+					$DateFrom = $row["DateFrom"];
+					$DateTo = $row["DateTo"];
+					$toastInfo = $name." dodany";
+					//onclick="Materialize.toast('I am a toast', 4000)"
+					$toastHandler = "$('#Summary').html($('.single-checkbox:checked').length).show();";
+					$toast = "'Dodano zawodnika'";
+					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+					
+					echo
+
+					'<li class="collection-item avatar">
+      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'"  />
+      <span class="title">'.$name." ".$lastname.'</span>
+      <p>'.$position.'<br>
+  
+	  <input class="goalkeeper-checkbox" type="checkbox" id="checkbox-'.$id.'"/>
+	<label class="playerCardCheckboxLabel" for="checkbox-'.$id.'">Jedenastka 50-lecia</label>
+     
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
+    </li>';
+				}
+			}
+			else
+			{
+				echo "Brak wyników";
+			};
+
+            ?>
+
+		</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
 			
 			<div style="padding:10px;">
-					<div><h5><b>Wybierz 4 obrońców</b> (krok 1 z 4)</h5></div>		
+					<div><h5><b>Wybierz 4 obrońców</b> (krok 2 z 4)</h5></div>		
 					Zaznacz "Jedenastka 50-lecia" przy 4 zawodnikach.	
 			</div>				 
 		
-			<div style="padding:10px;">
+			<!--<div style="padding:10px;">
 		 Wybranych obrońców: <div id="Summary" style="font-size:medium;"> 	</div> 
 	
-			</div>
+			</div>-->
 		
 
 
@@ -136,7 +223,7 @@ session_start();
 
 			<?php
 		require_once "sql/connection.php";
-		include 'tools/tools.php';
+		
 		$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 		if ($polaczenie->connect_errno!=0)
 		{
@@ -160,6 +247,7 @@ session_start();
 				$DateTo = $row["DateTo"];
 				$toastInfo = $name." dodany";
 				//onclick="Materialize.toast('I am a toast', 4000)"
+				$toastHandler = "$('#Summary').html($('.single-checkbox:checked').length).show();";
 				$toast = "'Dodano zawodnika'";
 				$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
 				
@@ -202,7 +290,7 @@ session_start();
 
 
 				
-		<ul class="collection">
+<ul class="collection">
 
 			<?php
 			
@@ -223,7 +311,7 @@ session_start();
 					$DateFrom = $row["DateFrom"];
 					$DateTo = $row["DateTo"];
 					$toastInfo = $name." dodany";
-					//$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
 					
 					echo
 
@@ -245,34 +333,39 @@ session_start();
 
             ?>
 
-		</ul>
+</ul>
 
 
 
-
-
-
+	</div>
 
 </div>
-    </div>
+
     <div class="col s12 m4 l3 hide-on-med-and-down"><p>prawe nic</p></div>
   </div>
 
 
   <div class="row">
     <div class="col s12 m4 l2 hide-on-med-and-down"><p>s12 m6 l3</p></div>
-    <div class="col s12 m4 l8"><p>stopka</p></div>
+    <div class="col s12 m4 l8">
+
+<div style="align-content:center">
+		<div class="footer-copyright">
+            <div class="container">
+           <center>© 2020 Relax Radziwiłłów </center> 
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+</div>
+
+
+	</div>
     <div class="col s12 m4 l2 hide-on-med-and-down"><p>s12 m6 l3</p></div>
  
   </div>
           
-
-
-
-
-    
+ 
 <script>
-
 	(function($){
 	$(function(){
 
@@ -285,31 +378,31 @@ session_start();
 
 	}); // end of document ready
 	})(jQuery); // end of jQuery name space
+</script>
 
+<script>
+	$("#Summary").html($('.single-checkbox:checked').length).show();
+	$('.single-checkbox').on('change', function() {
+		if($('.single-checkbox:checked').length > 4) {
+			this.checked = false;
+	}$("#Summary").html($('.single-checkbox:checked').length).show();
+	});
+
+	$('.single-checkbox2').on('change', function() {
+		if($('.single-checkbox2:checked').length > 1) {
+			this.checked = false;
+		}
+	});
 </script>
 
 	<script>
-		$("#Summary").html($('.single-checkbox:checked').length).show();
-		$('.single-checkbox').on('change', function() {
-   if($('.single-checkbox:checked').length > 4) {
-       this.checked = false;
-   }$("#Summary").html($('.single-checkbox:checked').length).show();
-});
-
-$('.single-checkbox2').on('change', function() {
-   if($('.single-checkbox2:checked').length > 1) {
-       this.checked = false;
-   }
-});
-
-	</script>
-
-
-
-    
-
+	$("#Summary-goalkeeper").html($('.goalkeeper-checkbox:checked').length).show();
+	$('.goalkeeper-checkbox').on('change', function() {
+		if($('.goalkeeper-checkbox:checked').length > 1) {
+			this.checked = false;
+	}$("#Summary-goalkeeper").html($('.goalkeeper-checkbox:checked').length).show();
+	});
+</script>
 
 </body>
-
-
 </html>
