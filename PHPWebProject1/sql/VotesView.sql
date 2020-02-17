@@ -26,7 +26,11 @@ where p.Id = 'A72A9E5B-50BC-11EA-A60F-E4115B471390'
 --    . "where p.Id = \'A72A9E5B-50BC-11EA-A60F-E4115B471390\'";
 ---
 
-
+select p.id, p.name, p.LastName, count(1) from votes as v
+join players as p on p.id = v.VoteOnPlayerId
+where p.Position = 'bramkarz'
+group by p.Id
+order by count(1) desc
 
 
 

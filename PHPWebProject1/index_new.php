@@ -62,7 +62,7 @@ session_start();
       <a href="#!" class="brand-logo">Logo</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-                 <li><a href="mobile.html">
+                 <li><a href="rankings.php">
 						<i class="material-icons left">insert_chart</i>Rankingi
 					</a>
 				</li>
@@ -88,7 +88,7 @@ session_start();
       </ul>
       <ul class="side-nav" id="mobile-demo">
 		  test
-         <li><a href="mobile.html">
+         <li><a href="rankings.php">
 						<i class="material-icons left">insert_chart</i>Rankingi
 					</a>
 				</li>
