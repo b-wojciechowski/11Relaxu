@@ -59,7 +59,7 @@ session_start();
 
 <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Logo</a>
+      <a href="#!" class="brand-logo">11 Relaxu</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
                  <li><a href="mobile.html">
@@ -126,16 +126,17 @@ session_start();
 			
 
 
-<div style="padding:10px 10px 0px 10px;">
-					<div><h5><b>Rankingi</b></h5></div>		
-					<!--Zaznacz "Jedenastka 50-lecia" przy 1 zawodniku.-->
-			</div>				 
-		
-			<!--<div style="padding:10px;">
-		 Wybranych obrońców: <div id="Summary-goalkeeper" style="font-size:medium;"> 	</div> 
+<div style="padding:10px 10px 0px 15px;">
+					<div><h4><b>Rankingi</b></h4></div>		
+					</div>
 	
-			</div>-->
-		<form action="sendVotes.php" method="post">
+						
+<div style="padding:10px 10px 5px 10px;">
+					<div><i class="material-icons left">people</i><h5><b>Bramkarze</b></h5></div>		
+			
+			</div>		
+			
+
   <ul class="collection collapsible">
 	
 
@@ -147,7 +148,7 @@ session_start();
 			{
 				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 			}
-			$sql = "SELECT * FROM Players where position = 'bramkarz' order by Lastname;";
+			$sql = "select p.Id as Id, p.Name as Name, p.LastName as LastName, count(1) as Votes, p.Position as Position  from votes as v join players as p on p.id = v.VoteOnPlayerId where Position = 'bramkarz'  group by p.Id order by count(1) desc";
 			$result = $polaczenie->query($sql);
 
 			if ($result->num_rows > 0)
@@ -161,11 +162,10 @@ session_start();
 					$lastname = $row["LastName"];
 					$position = $row["Position"];
 					$votes = $row["Votes"];
-					$DateFrom = $row["DateFrom"];
-					$DateTo = $row["DateTo"];
 					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
-					$additionalPositions = $row["AdditionalPositions"];
-					$birthYear = $row["BirthYear"];
+			
+					
+
 					
 					echo
 
@@ -176,7 +176,7 @@ session_start();
       <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
       <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
-      <p style="padding-left:10px;">   <i class="material-icons left">star_border</i> Liczba głosów: 12
+      <p style="padding-left:10px; color:grey; margin-top:10px;">   <i class="material-icons left"  style="margin-top:-2px; margin-right:0px!important;">star_border</i> Liczba głosów: '.$votes.'
 
       </p>
       <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
@@ -184,15 +184,80 @@ session_start();
 		</div>
 		</div>
       <div class="collapsible-body">
-<h6>INFORMACJE O ZAWODNIKU:</h6>
-<br>'.$name.' '.$lastname.'<br><b>28 głosów</b><br>
-Rok urodzenia: '.$birthYear.'<br>Lata gry: '.$DateFrom.'-'.$DateTo.'<br>
-Dodatkowe pozycje na boisku: '.$additionalPositions.'<br>
 
+<a class="waves-effect waves-light">Dodaj informacje o zawodniku</a>
 
 <br>
-[DODAJ INFORMACJE]   [ZGŁOŚ BŁĄD DANYCH]
+</div>
 
+</li>';
+				}
+			}
+			else
+			{
+				echo "Brak wyników";
+			};
+
+            ?>
+
+</ul>
+		
+<div style="padding:10px 10px 5px 10px;">
+					<div> <i class="material-icons left">people</i><h5><b>Obrońcy</b></h5></div>		
+					<!--Zaznacz "Jedenastka 50-lecia" przy 1 zawodniku.-->
+			</div>		
+			
+
+  <ul class="collection collapsible">
+	
+
+			<?php
+			require_once "sql/connection.php";
+		
+			$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+			if ($polaczenie->connect_errno!=0)
+			{
+				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
+			}
+			$sql = "select  p.Id as Id, p.Name as Name, p.LastName as LastName, count(1) as Votes, p.Position as Position  from votes as v join players as p on p.id = v.VoteOnPlayerId where Position = 'obrońca'  group by p.Id order by count(1) desc LIMIT 6";
+			$result = $polaczenie->query($sql);
+
+			if ($result->num_rows > 0)
+			{
+
+				// output data of each row
+				while($row = $result->fetch_assoc())
+				{
+					$id = $row["Id"];
+					$name = $row["Name"];
+					$lastname = $row["LastName"];
+					$position = $row["Position"];
+					$votes = $row["Votes"];
+					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+					
+	
+					echo
+
+'<li>
+	  <div class="collapsible-header"style="padding:0px">
+	  <div class="collection-item avatar" style="width:100%";>
+		
+      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+      <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
+
+    
+      <p style="padding-left:10px; color:grey; margin-top:10px;">   <i class="material-icons left"  style="margin-top:-2px; margin-right:0px!important;">star_border</i> Liczba głosów: '.$votes.'
+
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+
+		</div>
+		</div>
+     <div class="collapsible-body">
+
+<a class="waves-effect waves-light">Dodaj informacje o zawodniku</a>
+
+<br>
 </div>
 
 </li>';
@@ -211,6 +276,152 @@ Dodatkowe pozycje na boisku: '.$additionalPositions.'<br>
 
 
 
+	
+<div style="padding:10px 10px 5px 10px;">
+					<div> <i class="material-icons left">people</i><h5><b>Pomocnicy</b></h5></div>		
+					<!--Zaznacz "Jedenastka 50-lecia" przy 1 zawodniku.-->
+			</div>	
+
+  <ul class="collection collapsible">
+	
+
+			<?php
+			require_once "sql/connection.php";
+			
+			$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+			if ($polaczenie->connect_errno!=0)
+			{
+				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
+			}
+			$sql = "select  p.Id as Id, p.Name as Name, p.LastName as LastName, count(1) as Votes, p.Position as Position  from votes as v join players as p on p.id = v.VoteOnPlayerId where Position = 'pomocnik'  group by p.Id order by count(1) desc LIMIT 6";
+			$result = $polaczenie->query($sql);
+
+			if ($result->num_rows > 0)
+			{
+
+				// output data of each row
+				while($row = $result->fetch_assoc())
+				{
+					$id = $row["Id"];
+					$name = $row["Name"];
+					$lastname = $row["LastName"];
+					$position = $row["Position"];
+					$votes = $row["Votes"];
+					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+					
+					
+					echo
+
+'<li>
+	  <div class="collapsible-header"style="padding:0px">
+	  <div class="collection-item avatar" style="width:100%";>
+		
+      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+      <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
+
+   
+      <p style="padding-left:10px; color:grey; margin-top:10px;">   <i class="material-icons left"  style="margin-top:-2px; margin-right:0px!important;">star_border</i> Liczba głosów: '.$votes.'
+
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+
+		</div>
+		</div>
+      <div class="collapsible-body">
+
+<a class="waves-effect waves-light">Dodaj informacje o zawodniku</a>
+
+<br>
+</div>
+
+</li>';
+				}
+			}
+			else
+			{
+				echo "Brak wyników";
+			};
+
+            ?>
+
+</ul>
+
+
+
+
+
+			
+		
+<div style="padding:10px 10px 5px 10px;">
+					<div> <i class="material-icons left">people</i><h5><b>Napastnicy</b></h5></div>		
+					<!--Zaznacz "Jedenastka 50-lecia" przy 1 zawodniku.-->
+			</div>	
+
+  <ul class="collection collapsible">
+	
+
+			<?php
+			require_once "sql/connection.php";
+			
+			$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+			if ($polaczenie->connect_errno!=0)
+			{
+				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
+			}
+			$sql = "select  p.Id as Id, p.Name as Name, p.LastName as LastName, count(1) as Votes, p.Position as Position  from votes as v join players as p on p.id = v.VoteOnPlayerId where Position = 'napastnik'  group by p.Id order by count(1) desc LIMIT 4";
+			$result = $polaczenie->query($sql);
+
+			if ($result->num_rows > 0)
+			{
+
+				// output data of each row
+				while($row = $result->fetch_assoc())
+				{
+					$id = $row["Id"];
+					$name = $row["Name"];
+					$lastname = $row["LastName"];
+					$position = $row["Position"];
+					$votes = $row["Votes"];
+					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+					
+					
+					echo
+
+'<li>
+	  <div class="collapsible-header"style="padding:0px">
+	  <div class="collection-item avatar" style="width:100%";>
+		
+      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+      <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
+
+   
+      <p style="padding-left:10px; color:grey; margin-top:10px;">   <i class="material-icons left"  style="margin-top:-2px; margin-right:0px!important;">star_border</i> Liczba głosów: '.$votes.'
+
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+
+		</div>
+		</div>
+    <div class="collapsible-body">
+
+<a class="waves-effect waves-light">Dodaj informacje o zawodniku</a>
+
+<br>
+</div>
+
+</li>';
+				}
+			}
+			else
+			{
+				echo "Brak wyników";
+			};
+
+            ?>
+
+</ul>
+
+
 
 		
 
@@ -227,23 +438,7 @@ Dodatkowe pozycje na boisku: '.$additionalPositions.'<br>
 
 
 
-		<div style="padding:10px 10px 10px 10px; ">
-			<div style="">
-			
-				<button class="btn waves-effect waves-light" type="submit" name="sendVotes.php">Prześlij swoją Jedenastkę
-				<i class="material-icons right">send</i>
-				</button>
-
-
-			</div>
-			
-		</div>
-
-</form>
-
-
-
-
+	
 
 
 

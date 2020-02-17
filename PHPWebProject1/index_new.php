@@ -59,7 +59,7 @@ session_start();
 
 <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Logo</a>
+      <a href="#!" class="brand-logo">11 Relaxu</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
                  <li><a href="rankings.php">
@@ -174,28 +174,31 @@ session_start();
 	  <div class="collection-item avatar" style="width:100%";>
 		
       <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
-      <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
+      <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
-      <p style="padding-left:10px;">'.$position.'<br>
+      <p style="padding-left:10px;">
 
-	  <input class="defender-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label  style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
+	  <input class="goalkeeper-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
+	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
      
       </p>
       <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
 
 		</div>
 		</div>
-      <div class="collapsible-body">
-<h6>INFORMACJE O ZAWODNIKU:</h6>
-<br>'.$name.' '.$lastname.'<br><b>Pozycja:</b> '.$position.'<br>
-Rok urodzenia: '.$birthYear.'<br>Lata gry: '.$DateFrom.'-'.$DateTo.'<br>
-Dodatkowe pozycje na boisku: '.$additionalPositions.'<br>
+<div class="collapsible-body">
+<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+<br>
+<b>Imię i nazwisko:</b> '.$name.' '.$lastname.'<br>
+<b>Pozycja:</b> '.$position.'<br>
+<b>Rok urodzenia:</b> '.$birthYear.'<br>
+<b>Lata gry:</b> '.$DateFrom.'-'.$DateTo.'<br>
+<b>Dodatkowe pozycje na boisku:</b> '.$additionalPositions.'<br>
 
 
 <br>
-[DODAJ INFORMACJE]   [ZGŁOŚ BŁĄD DANYCH]
-
+<a class="waves-effect waves-light">Dodaj informacje o zawodniku</a>
+<br>
 </div>
 
 </li>';
@@ -228,7 +231,7 @@ Dodatkowe pozycje na boisku: '.$additionalPositions.'<br>
 		
 
 
-<ul class="collection">
+<ul class="collection collapsible">
 
 			<?php
 		require_once "sql/connection.php";
@@ -258,18 +261,39 @@ Dodatkowe pozycje na boisku: '.$additionalPositions.'<br>
 				
 				echo
 
-				'<li class="collection-item avatar">
-    <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
-      <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
+				'<li>
+	  <div class="collapsible-header"style="padding:0px">
+	  <div class="collection-item avatar" style="width:100%";>
+		
+      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+         <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
-      <p style="padding-left:10px;">'.$position.'<br>
-  
+      <p style="padding-left:10px;">
+
 	  <input class="defender-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label  style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
+	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
      
       </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
-    </li>';
+      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+
+		</div>
+		</div>
+<div class="collapsible-body">
+<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+<br>
+<b>Imię i nazwisko:</b> '.$name.' '.$lastname.'<br>
+<b>Pozycja:</b> '.$position.'<br>
+<b>Rok urodzenia:</b> '.$birthYear.'<br>
+<b>Lata gry:</b> '.$DateFrom.'-'.$DateTo.'<br>
+<b>Dodatkowe pozycje na boisku:</b> '.$additionalPositions.'<br>
+
+
+<br>
+<a class="waves-effect waves-light">Dodaj informacje o zawodniku</a>
+<br>
+</div>
+
+</li>';
 			}
 		}
 		else
@@ -296,7 +320,7 @@ Dodatkowe pozycje na boisku: '.$additionalPositions.'<br>
 
 
 				
-<ul class="collection">
+<ul class="collection collapsible">
 
 			<?php
 			
@@ -320,16 +344,39 @@ Dodatkowe pozycje na boisku: '.$additionalPositions.'<br>
 					
 					echo
 
-					'<li class="collection-item avatar">
-     <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
-      <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
+					'<li>
+	  <div class="collapsible-header"style="padding:0px">
+	  <div class="collection-item avatar" style="width:100%";>
+		
+      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+       <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
-      <p style="padding-left:10px;">'.$position.'<br>
-        <input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-		<label style="padding-left:25px;"  class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
+      <p style="padding-left:10px;">
+
+	  <input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
+	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
+     
       </p>
-    <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
-    </li>';
+      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+
+		</div>
+		</div>
+<div class="collapsible-body">
+<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+<br>
+<b>Imię i nazwisko:</b> '.$name.' '.$lastname.'<br>
+<b>Pozycja:</b> '.$position.'<br>
+<b>Rok urodzenia:</b> '.$birthYear.'<br>
+<b>Lata gry:</b> '.$DateFrom.'-'.$DateTo.'<br>
+<b>Dodatkowe pozycje na boisku:</b> '.$additionalPositions.'<br>
+
+
+<br>
+<a class="waves-effect waves-light">Dodaj informacje o zawodniku</a>
+<br>
+</div>
+
+</li>';
 				}
 			}
 			else
@@ -359,7 +406,7 @@ Dodatkowe pozycje na boisku: '.$additionalPositions.'<br>
 		
 
 
-<ul class="collection">
+<ul class="collection collapsible">
 
 			<?php
 			require_once "sql/connection.php";
@@ -389,18 +436,39 @@ Dodatkowe pozycje na boisku: '.$additionalPositions.'<br>
 					
 					echo
 
-					'<li class="collection-item avatar">
-     <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
-      <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
+					'<li>
+	  <div class="collapsible-header"style="padding:0px">
+	  <div class="collection-item avatar" style="width:100%";>
+		
+      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+         <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
-      <p style="padding-left:10px;">'.$position.'<br>
-  
+      <p style="padding-left:10px;">
+
 	  <input class="forward-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label style="padding-left:25px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
+	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
      
       </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">info2</i></a>
-    </li>';
+      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+
+		</div>
+		</div>
+<div class="collapsible-body">
+<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+<br>
+<b>Imię i nazwisko:</b> '.$name.' '.$lastname.'<br>
+<b>Pozycja:</b> '.$position.'<br>
+<b>Rok urodzenia:</b> '.$birthYear.'<br>
+<b>Lata gry:</b> '.$DateFrom.'-'.$DateTo.'<br>
+<b>Dodatkowe pozycje na boisku:</b> '.$additionalPositions.'<br>
+
+
+<br>
+<a class="waves-effect waves-light">Dodaj informacje o zawodniku</a>
+<br>
+</div>
+
+</li>';
 				}
 			}
 			else
