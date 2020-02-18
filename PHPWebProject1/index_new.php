@@ -416,7 +416,7 @@ session_start();
 			{
 				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 			}
-			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Napastnik' order by LastName;";
+			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo, BirthYear FROM Players where Position = 'Napastnik' order by LastName;";
 			$result = $polaczenie->query($sql);
 
 			if ($result->num_rows > 0)
@@ -433,6 +433,7 @@ session_start();
 					$DateFrom = $row["DateFrom"];
 					$DateTo = $row["DateTo"];
 					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+					$birthYear = $row["BirthYear"];
 					
 					echo
 
@@ -613,6 +614,9 @@ session_start();
     $('.collapsible').collapsible();
   }); 
 	</script>
+
+
+
 
 </body>
 </html>

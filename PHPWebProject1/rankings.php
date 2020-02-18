@@ -127,6 +127,9 @@ session_start();
 
 
 <div style="padding:10px 10px 0px 15px;">
+	<p style="margin-bottom: -10px;
+    font-size: 12px;
+    color: darkgrey;">Poniżej przedstawione są dotychczasowe liczby głosów</p>
 					<div><h4><b>Rankingi</b></h4></div>		
 					</div>
 	
