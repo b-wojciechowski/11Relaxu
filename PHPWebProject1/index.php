@@ -68,7 +68,7 @@ if (!isset($_SESSION['zalogowany']))
 
 <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">11 Relaxu</a>
+      <a href="index.php" class="brand-logo">11 Relaxu</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
                  <li><a href="rankings.php">

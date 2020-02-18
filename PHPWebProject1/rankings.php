@@ -1,14 +1,15 @@
 ﻿<?php
 include 'configuration.php';
 
-
-if ((!isset($_POST['login'])) || (!isset($_POST['password'])))
+session_start();
+if (!isset($_SESSION['zalogowany']))
 {
-	header('Location: index.php');
+	header('Location: login.php');
 	exit();
 }
 
-session_start();
+
+
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/js/materialize.min.js"></script>
@@ -67,7 +68,7 @@ session_start();
 
 <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">11 Relaxu</a>
+      <a href="index.php" class="brand-logo">11 Relaxu</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
                  <li><a href="mobile.html">
