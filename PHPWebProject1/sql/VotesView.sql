@@ -36,3 +36,28 @@ left join players as p on p.id = v.VoteOnPlayerId
 group by p.id
 order by count(p.id) desc
 --
+select * from players where id in (
+select distinct VoteOnPlayerId from votes where voter = '2908b435-4b46-11ea-83c4-e4115b471390')
+
+
+select * from players as p
+left join votes as v on p.id = v.VoteOnPlayerId where p.id in (
+					select distinct VoteOnPlayerId from votes as v
+					join players as p on p.id = v.VoteOnPlayerId
+					where v.voter = "'.$voterId.'
+					and p.position = 'bramkarz'
+					order by v.votedate") 
+and position = "bramkarz"
+
+
+
+
+
+$sql = 'select * from players as p
+left join votes as v on p.id = v.VoteOnPlayerId where p.id in (
+					select distinct VoteOnPlayerId from votes as v
+					join players as p on p.id = v.VoteOnPlayerId
+					where v.voter = "'.$voterId.'"
+					and p.position = "bramkarz"
+					) 
+and position = "bramkarz" order by v.votedate desc LIMIT 3'

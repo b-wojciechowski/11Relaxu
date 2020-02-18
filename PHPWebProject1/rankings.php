@@ -76,7 +76,7 @@ if (!isset($_SESSION['zalogowany']))
 					</a>
 				</li>
 				
-				<li><a href="mobile.html">
+				<li><a href="myPlayers.php">
 						<i class="material-icons left">people</i>Moja 11-stka 
 					</a>
 				</li>
@@ -102,7 +102,7 @@ if (!isset($_SESSION['zalogowany']))
 					</a>
 				</li>
 				
-				<li><a href="mobile.html">
+				<li><a href="myPlayers.php">
 						<i class="material-icons left">people</i>Moja 11-stka 
 					</a>
 				</li>
@@ -160,7 +160,7 @@ if (!isset($_SESSION['zalogowany']))
 			{
 				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 			}
-			$sql = "select p.Id as Id, p.Name as Name, p.LastName as LastName, count(1) as Votes, p.Position as Position  from votes as v join players as p on p.id = v.VoteOnPlayerId where Position = 'bramkarz'  group by p.Id order by count(1) desc";
+			$sql = "select p.Id as Id, p.Name as Name, p.LastName as LastName, count(1) as Votes, p.Position as Position  from votes as v join players as p on p.id = v.VoteOnPlayerId where Position = 'bramkarz' and v.IsDeleted = 0  group by p.Id order by count(1) desc";
 			$result = $polaczenie->query($sql);
 
 			if ($result->num_rows > 0)
@@ -207,7 +207,7 @@ if (!isset($_SESSION['zalogowany']))
 			}
 			else
 			{
-				echo "Brak wyników";
+				echo '<p style="padding-left:15px;margin-top:-10px;">Nie oddano głosu na bramkarzy.</p>';
 			};
 
             ?>
@@ -231,7 +231,7 @@ if (!isset($_SESSION['zalogowany']))
 			{
 				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 			}
-			$sql = "select  p.Id as Id, p.Name as Name, p.LastName as LastName, count(1) as Votes, p.Position as Position  from votes as v join players as p on p.id = v.VoteOnPlayerId where Position = 'obrońca'  group by p.Id order by count(1) desc LIMIT 6";
+			$sql = "select  p.Id as Id, p.Name as Name, p.LastName as LastName, count(1) as Votes, p.Position as Position  from votes as v join players as p on p.id = v.VoteOnPlayerId where Position = 'obrońca' and v.IsDeleted = 0 group by p.Id order by count(1) desc LIMIT 6";
 			$result = $polaczenie->query($sql);
 
 			if ($result->num_rows > 0)
@@ -277,7 +277,7 @@ if (!isset($_SESSION['zalogowany']))
 			}
 			else
 			{
-				echo "Brak wyników";
+				echo '<p style="padding-left:15px;margin-top:-10px;">Nie oddano głosu na obrońców.</p>';
 			};
 
             ?>
@@ -305,7 +305,7 @@ if (!isset($_SESSION['zalogowany']))
 			{
 				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 			}
-			$sql = "select  p.Id as Id, p.Name as Name, p.LastName as LastName, count(1) as Votes, p.Position as Position  from votes as v join players as p on p.id = v.VoteOnPlayerId where Position = 'pomocnik'  group by p.Id order by count(1) desc LIMIT 6";
+			$sql = "select  p.Id as Id, p.Name as Name, p.LastName as LastName, count(1) as Votes, p.Position as Position  from votes as v join players as p on p.id = v.VoteOnPlayerId where Position = 'pomocnik' and v.IsDeleted = 0  group by p.Id order by count(1) desc LIMIT 6";
 			$result = $polaczenie->query($sql);
 
 			if ($result->num_rows > 0)
@@ -351,7 +351,7 @@ if (!isset($_SESSION['zalogowany']))
 			}
 			else
 			{
-				echo "Brak wyników";
+				echo  '<p style="padding-left:15px;margin-top:-10px;">Nie oddano głosu na pomocników.</p>';
 			};
 
             ?>
@@ -380,7 +380,7 @@ if (!isset($_SESSION['zalogowany']))
 			{
 				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 			}
-			$sql = "select  p.Id as Id, p.Name as Name, p.LastName as LastName, count(1) as Votes, p.Position as Position  from votes as v join players as p on p.id = v.VoteOnPlayerId where Position = 'napastnik'  group by p.Id order by count(1) desc LIMIT 4";
+			$sql = "select  p.Id as Id, p.Name as Name, p.LastName as LastName, count(1) as Votes, p.Position as Position  from votes as v join players as p on p.id = v.VoteOnPlayerId where Position = 'napastnik' and v.IsDeleted = 0  group by p.Id order by count(1) desc LIMIT 4";
 			$result = $polaczenie->query($sql);
 
 			if ($result->num_rows > 0)
@@ -426,7 +426,7 @@ if (!isset($_SESSION['zalogowany']))
 			}
 			else
 			{
-				echo "Brak wyników";
+				echo  '<p style="padding-left:15px;margin-top:0px;">Nie oddano głosu na napastników.</p>';
 			};
 
             ?>

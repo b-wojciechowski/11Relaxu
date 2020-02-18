@@ -1,235 +1,321 @@
-  <!DOCTYPE html>
 <?php
 include 'configuration.php';
+
+session_start();
+if (!isset($_SESSION['zalogowany']))
+{
+	header('Location: login.php');
+	exit();
+}
+
+
+
 ?>
-<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/js/materialize.min.js"></script>
  <head>
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
+     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>-->
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-        <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
-<!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
-<!------ Include the above in your HEAD tag ---------->
-
-<link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.min.css">
-<script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js"></script>
-        <style>
-
-/*@import url("https://fonts.googleapis.com/css?family=Hind:400,700");*/
-html, body {
-  
-  margin: 0;
-  padding: 0;
-  background-color: #efefef;
-  width: 100%;
-  height: 100%;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-
-.carousel-wrapper {
-  position: relative;
-  width: 70%;
-  height: 80%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #FFFFFF;
- /* background-image: linear-gradient(#FFFFFF 50%, #FFFFFF 50%, #F0F3FC 50%); */
-  box-shadow: 0px 12px 39px -19px rgba(0, 0, 0, 0.75);
-  overflow: hidden;
-}
-.carousel-wrapper .carousel {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  height: auto;
-    padding-bottom:50px;
-    padding-top:50px;
-}
-.carousel-wrapper .carousel .carousel-cell {
-  /*padding: 10px;*/
-  background-color: #FFFFFF;
-  width: 20%;
-  height: auto;
-  min-width: 200px;
-  margin: 0 20px;
-  transition: transform 500ms ease;
-}
-            .carousel-wrapper .carousel .carousel-cell .more {
-                display: block;
-                opacity: 0;
-                margin: 5px 0 0px 0;
-                text-align: center;
-                font-size: 10px;
-                color: #CFCFCF;
-                text-decoration: none;
-                transition: opacity 300ms ease;
-            }
-.carousel-wrapper .carousel .carousel-cell .more:hover, .carousel-wrapper .carousel .carousel-cell .more:active, 
-.carousel-wrapper .carousel .carousel-cell .more:visited, .carousel-wrapper .carousel .carousel-cell .more:focus {
-  color: #CFCFCF;
-  text-decoration: none;
-}
-   .carousel-wrapper .carousel .carousel-cell .line {
-                position: absolute;
-                width: 2px;
-                height: 0;
-                background-color: black;
-                left: 50%;
-                margin: 5px 0 0 -1px;
-                transition: height 300ms ease;
-                display: block;
-            }         
-.carousel-wrapper .carousel .carousel-cell .price {
-  position: absolute;
-  font-weight: 700;
-  margin: 45px auto 0 auto;
-  left: 50%;
-  transform: translate(-50%);
-  opacity: 0;
-  transition: opacity 300ms ease 300ms;
-}
-
-.carousel-wrapper .carousel .carousel-cell.is-selected {
-  transform: scale(1.2);
-}
-.carousel-wrapper .carousel .carousel-cell.is-selected .line {
-  height: 35px;
-}
-.carousel-wrapper .carousel .carousel-cell.is-selected .price, .carousel-wrapper .carousel .carousel-cell.is-selected .more {
-  opacity: 1;
-}
-.carousel-wrapper .flickity-page-dots {
-  display: none;
-}
-.carousel-wrapper .flickity-viewport, .carousel-wrapper .flickity-slider {
-  overflow: visible;
-
-}
+     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
 
 
 
-            </style>
+<script>
+    function showToast(message, duration) {
+    Materialize.toast(message, duration);
+    }
+         
+    function showToast1(message, duration) {
+    Materialize.toast('<i>'+ message + '</i>', duration);
+    }
+         
+    function showToast2(message, duration) {
+    Materialize.toast(message, duration, 'rounded');
+    }
+         
+    function showToast3(message, duration) {
+    Materialize.toast('Hello World!', duration, '', function toastCompleted() {
+        alert('Toast dismissed!');
+    });
+    }
+</script>
+	
 
-    </head>
+</head>
+
 
 <body>
+
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
+
+	
+    
+<div class="row">
      
-     
-   <nav>
+ <div class="col s12" style="padding:0px;">
+	   
+<!--START MENU--> 
+
+<nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Logo</a>
+      <a href="index.php" class="brand-logo">11 Relaxu</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+                 <li><a href="rankings.php">
+						<i class="material-icons left">insert_chart</i>Rankingi
+					</a>
+				</li>
+				
+				<li><a href="mobile.html">
+						<i class="material-icons left">people</i>Moja 11-stka 
+					</a>
+				</li>
+
+	
+				<li><a class="modal-trigger" href="#modal2_help">
+						<i class="material-icons left">help_outline</i>Pomoc 
+					</a>
+				</li>
+
+				<li><a href="mobile.html">
+					<div><i class="material-icons left">person</i>
+					 
+					<?php echo ' '.$_SESSION['Name']; ?>
+					</div>
+					</a>
+				</li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+		  test
+         <li><a href="rankings.php">
+						<i class="material-icons left">insert_chart</i>Rankingi
+					</a>
+				</li>
+				
+				<li><a href="mobile.html">
+						<i class="material-icons left">people</i>Moja 11-stka 
+					</a>
+				</li>
+		  <hr />
+	
+				<li><a class="modal-trigger" href="#modal2_help">
+						<i class="material-icons left">help_outline</i>Pomoc 
+					</a>
+				</li>
+
+		   <hr />
+
+				<li><a href="mobile.html">
+					<i class="material-icons left">person</i><?php echo $_SESSION['Name']; ?>
+					
+					</a>
+				</li>
       </ul>
     </div>
   </nav>
- 
-	<div class="carousel-wrapper">
+          
+ <!--KONIEC MENU-->      
+
+</div>
+
+    <div class="col s12 m4 l3 hide-on-med-and-down"></div>
+    
+<div class="col s12 m4 l6" style="padding:0px;">
+	<div class="" style="background-color:white; margin-top:10px;">
+			
+
+
+<div style="padding:10px 10px 0px 15px;">
+	<p style="margin-bottom: -10px;
+    font-size: 12px;
+    color: darkgrey;">Wyświetlasz listę zawodników, na których oddałeś głos</p>
+					<div><h4><b>Moja Jedenastka</b></h4></div>		
+					</div>
+	
+						
+
+
+  <ul class="collection collapsible">
+	
+
+			<?php
+			require_once "sql/connection.php";
+			include 'tools/tools.php';
+			$voterId = $_SESSION['id'];
+			$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+			if ($polaczenie->connect_errno!=0)
+			{
+				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
+			}
+			$sql = 'select * from players as p
+					left join votes as v on p.id = v.VoteOnPlayerId where p.id in (
+						select distinct VoteOnPlayerId from votes as v
+						join players as p on p.id = v.VoteOnPlayerId
+						where v.voter = "'.$voterId.'"
+						and v.IsDeleted = 0
+						order by v.VoteDate desc)
+					and v.IsDeleted = 0
+					group by p.Id
+					order by p.LastName';
+
+
+
+
+			$result = $polaczenie->query($sql);
+
+			echo '<ul class="collection collapsible">';
+			
+
+			if ($result->num_rows > 0)
+			{
+				$row = $result->fetch_assoc();
+				$voteDate = $row["VoteDate"];
+				$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+				
+
+				// output data of each row
+				while($row = $result->fetch_assoc())
+				{
+					$id = $row["Id"];
+					$name = $row["Name"];
+					$lastname = $row["LastName"];
+					$position = $row["Position"];
+					$votes = $row["Votes"];
+					
+					
+					
+					
+
+					
+					echo
+
+'<li>
+	 
+	  <div class="collection-item avatar" style="width:100%";>
 		
-        Moja Jedenastka 50-lecia
-        <div style="margin-left:20px; margin-right:20px;">
+      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+      <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
-        <h4>Bramkarz</h4>
-             <ul class="collection">
-                    <li class="collection-item avatar">
-                      <img src="images/darek-zawadzki.jpg" alt="" class="circle">
-                      <span class="title">Darek Zawadzki</span>
-                     </li>
-              
-                  </ul>
+      <p style="padding-left:10px; color:grey; margin-top:0px; font-size:12px;">'.$position.'
 
-        
-        <h4>Obrońcy</h4>
-             <ul class="collection">
-                    <li class="collection-item avatar">
-                      <img src="images/kacper-wojciechowski.jpg" alt="" class="circle">
-                      <span class="title">Kacper Wojciechowski</span>
-                    </li>
-                     
-                  <li class="collection-item avatar">
-                      <img src="images/pawel-widulinski.jpg" alt="" class="circle">
-                      <span class="title">Paweł Widuliński</span>
-                    </li>
-
-                 <li class="collection-item avatar">
-                      <img src="images/mateusz-piatek.jpg" alt="" class="circle">
-                      <span class="title">Mateusz Piątek</span>
-                    </li>
-              
-             
-             </ul>
+      </p>
 
 
-             
-        <h4>Pomocnicy</h4>
-             <ul class="collection">
-                    <li class="collection-item avatar">
-                      <img src="images/rafal-wojciechowski.jpg" alt="" class="circle">
-                      <span class="title">Rafał Wojciechowski</span>
-                    </li>
 
-                  <li class="collection-item avatar">
-                      <img src="images/bartlomiej-wojciechowski.jpg" alt="" class="circle">
-                      <span class="title">Bartłomiej Wojciechowski</span>
-                    </li>
-              
-              
-             
-             </ul>
+		</div>
+		
+    
 
 
+</li>';
+				}
+			} 
+			else
+			{
+				echo "Brak wyników";
+			};
+			echo '<p style="padding-left:15px; padding-top:-10px;">Głosy oddano: '.$voteDate.'</p>';
+            ?>
+
+</ul>
+		
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+				
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+
+</div>
+
+    <div class="col s12 m4 l3 hide-on-med-and-down"></div>
+  </div>
+
+
+  <div class="row">
+    <div class="col s12 m4 l2 hide-on-med-and-down"><p>s12 m6 l3</p></div>
+    <div class="col s12 m4 l8">
+
+<div style="align-content:center">
+		<div class="footer-copyright">
+            <div class="container">
+           <center>© 2020 Relax Radziwiłłów </center> 
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+</div>
+
+
+	</div>
+    <div class="col s12 m4 l2 hide-on-med-and-down"><p>s12 m6 l3</p></div>
  
-        </div>
+  </div>
+          
+ 
+<script>
+	(function($){
+	$(function(){
 
+	$('.button-collapse').sideNav({
+		edge: 'left', // Choose the horizontal origin
+		closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+		draggable: true // Choose whether you can drag to open on touch screens
+	}
+	);
 
- </div>
-
-
-<?php     
-    include ($footerContent); 
-?>
-
-    <script>
-$( document ).ready(function() {
-  $('.modal').modal();
-  $('#modal1').on('click', function() {
-  });
-});
+	}); // end of document ready
+	})(jQuery); // end of jQuery name space
 </script>
 
-<script>
-		$(document).ready(function () {
-			$('select').material_select();
-		});
- </script>
 
-    
+
+<script>
+
+
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  }); 
+	</script>
+
 </body>
 </html>
-        

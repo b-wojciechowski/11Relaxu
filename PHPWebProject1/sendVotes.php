@@ -20,7 +20,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 }
 
 
-
+$voterId = $_SESSION['id'];
 if ($polaczenie->connect_errno!=0)
 {
 	echo "Error: ".$polaczenie->connect_errno;
@@ -28,12 +28,17 @@ if ($polaczenie->connect_errno!=0)
 else
 {
 	if(!empty($_POST['goalkeeper'])) {
+
+		$sql_0 = ('update votes set IsDeleted = 1 where voter = "'.$voterId.'"');
+		$result_insert = $polaczenie->query($sql_0);
+
 		foreach($_POST['goalkeeper'] as $check) {
+			
 			$sql = 'INSERT INTO `votes` (`Id`, `VoteOnPlayerId`, `VoteDate`, `Voter`, `browserAgent`, `voterIP`) VALUES (null, "'.$check.'", current_timestamp(), "'.$voterId.'", "'.$browserAgent.'", "'.$ip.'")';
 		//	$result = $polaczenie->query($sql);
 			if ($polaczenie->query($sql) === TRUE)
 			{
-				header('Location: index_new.php');
+				header('Location: index.php');
 			}
 			else
 			{
