@@ -1,5 +1,13 @@
 ﻿<?php
 include 'configuration.php';
+
+
+if ((!isset($_POST['login'])) || (!isset($_POST['password'])))
+{
+	header('Location: index.php');
+	exit();
+}
+
 session_start();
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

@@ -2,13 +2,11 @@
 include 'configuration.php';
 session_start();
 
-if ((isset($_SESSION['login'])) || (isset($_SESSION['password'])))
+if ((isset($_POST['login'])) || (isset($_POST['password'])))
 {
 	header('Location: index.php');
 	exit();
 }
-
-
 ?>
 <html>
 <head>

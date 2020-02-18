@@ -47,13 +47,13 @@
     <Content Include="sql\VotesView.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="index_new.php" />
+    <Compile Include="index.php" />
     <Compile Include="rankings.php" />
     <Compile Include="sendVotes.php" />
     <Compile Include="_addPlayer.php" />
     <Compile Include="_login.php" />
     <Compile Include="2.php" />
-    <Compile Include="index.php" />
+    <Compile Include="index_old.php" />
     <Compile Include="login.php" />
     <Compile Include="myPlayers.php" />
     <Compile Include="sql\connection.php" />
