@@ -1,6 +1,15 @@
 <?php
-include 'configuration.php';
 session_start();
+include 'configuration.php';
+
+
+if (!isset($_SESSION['zalogowany']))
+{
+	header('Location: login.php');
+	exit();
+}
+
+
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/js/materialize.min.js"></script>
@@ -126,7 +135,7 @@ session_start();
 			
 
 
-<div style="padding:10px 10px 0px 10px;">
+<div style="padding:10px 10px 5px 10px;">
 					<div><h5><b>Wybierz bramkarza</b> (krok 1 z 4)</h5></div>		
 					Zaznacz "Jedenastka 50-lecia" przy 1 zawodniku.
 			</div>				 
@@ -166,6 +175,8 @@ session_start();
 					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
 					$additionalPositions = $row["AdditionalPositions"];
 					$birthYear = $row["BirthYear"];
+					$additionalPositions = $row["AdditionalPositions"];
+					$shirtNumber = $row['ShirtNumber'];
 					
 					echo
 
@@ -188,16 +199,41 @@ session_start();
 		</div>
 <div class="collapsible-body">
 <h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
-<br>
-<b>Imię i nazwisko:</b> '.$name.' '.$lastname.'<br>
-<b>Pozycja:</b> '.$position.'<br>
-<b>Rok urodzenia:</b> '.$birthYear.'<br>
-<b>Lata gry:</b> '.$DateFrom.'-'.$DateTo.'<br>
-<b>Dodatkowe pozycje na boisku:</b> '.$additionalPositions.'<br>
+
+<table class="striped" style="font-size:12px; margin-top:15px;">
+  <tr>
+    <td class="" style="width:40%";>Imię i nazwisko:</td>
+    <td class="">'.$name.' '.$lastname.'</td>
+  </tr>
+  <tr>
+    <td class="">Pozycja:</td>
+    <td class="">'.$position.'</td>
+  </tr>
+<tr>
+    <td class="">Numer na koszulce:</td>
+    <td class="">'.$shirtNumber.'</td>
+  </tr>
+  <tr>
+    <td class="">Rok urodzenia:</td>
+    <td class="">'.$birthYear.'</td>
+  </tr>
+<tr>
+    <td class="">Lata gry w Relaxie:</td>
+    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
+ </tr>
+<tr>
+    <td class="">Dodatkowe pozycje:</td>
+    <td class="">'.$additionalPositions.'</td>
+ </tr>
+
+</table>
 
 
+
+
+
 <br>
-<a class="waves-effect waves-light">Dodaj informacje o zawodniku</a>
+<a class="waves-effect waves-light">Dodaj informacje</a>
 <br>
 </div>
 
@@ -241,7 +277,7 @@ session_start();
 		{
 			echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 		}
-		$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Obrońca' order by Lastname;";
+		$sql = "SELECT * FROM Players where Position = 'Obrońca' order by LastName;";
 		$result = $polaczenie->query($sql);
 
 		if ($result->num_rows > 0)
@@ -252,12 +288,15 @@ session_start();
 			{
 				$id = $row["Id"];
 				$name = $row["Name"];
-				$lastname = $row["Lastname"];
+				$lastname = $row["LastName"];
 				$position = $row["Position"];
 				$votes = $row["Votes"];
 				$DateFrom = $row["DateFrom"];
 				$DateTo = $row["DateTo"];
 				$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+				$birthYear = $row["BirthYear"];
+				$additionalPositions = $row["AdditionalPositions"];
+				$shirtNumber = $row['ShirtNumber'];
 				
 				echo
 
@@ -280,16 +319,40 @@ session_start();
 		</div>
 <div class="collapsible-body">
 <h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
-<br>
-<b>Imię i nazwisko:</b> '.$name.' '.$lastname.'<br>
-<b>Pozycja:</b> '.$position.'<br>
-<b>Rok urodzenia:</b> '.$birthYear.'<br>
-<b>Lata gry:</b> '.$DateFrom.'-'.$DateTo.'<br>
-<b>Dodatkowe pozycje na boisku:</b> '.$additionalPositions.'<br>
+
+<table class="striped" style="font-size:12px; margin-top:15px;">
+  <tr>
+    <td class="" style="width:40%";>Imię i nazwisko:</td>
+    <td class="">'.$name.' '.$lastname.'</td>
+  </tr>
+  <tr>
+    <td class="">Pozycja:</td>
+    <td class="">'.$position.'</td>
+  </tr>
+<tr>
+    <td class="">Numer na koszulce:</td>
+    <td class="">'.$shirtNumber.'</td>
+  </tr>
+  <tr>
+    <td class="">Rok urodzenia:</td>
+    <td class="">'.$birthYear.'</td>
+  </tr>
+<tr>
+    <td class="">Lata gry w Relaxie:</td>
+    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
+ </tr>
+<tr>
+    <td class="">Dodatkowe pozycje:</td>
+    <td class="">'.$additionalPositions.'</td>
+ </tr>
+
+</table>
+
+
 
 
 <br>
-<a class="waves-effect waves-light">Dodaj informacje o zawodniku</a>
+<a class="waves-effect waves-light">Dodaj informacje</a>
 <br>
 </div>
 
@@ -324,7 +387,7 @@ session_start();
 
 			<?php
 			
-			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo FROM Players where Position = 'Pomocnik' order by LastName;";
+			$sql = "SELECT * FROM Players where Position = 'Pomocnik' order by LastName;";
 			$result = $polaczenie->query($sql);
 
 			if ($result->num_rows > 0)
@@ -335,12 +398,15 @@ session_start();
 				{
 					$id = $row["Id"];
 					$name = $row["Name"];
-					$lastname = $row["Lastname"];
+					$lastname = $row["LastName"];
 					$position = $row["Position"];
 					$votes = $row["Votes"];
 					$DateFrom = $row["DateFrom"];
 					$DateTo = $row["DateTo"];
 					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+					$birthYear = $row["BirthYear"];
+					$additionalPositions = $row["AdditionalPositions"];
+					$shirtNumber = $row['ShirtNumber'];
 					
 					echo
 
@@ -363,16 +429,41 @@ session_start();
 		</div>
 <div class="collapsible-body">
 <h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
-<br>
-<b>Imię i nazwisko:</b> '.$name.' '.$lastname.'<br>
-<b>Pozycja:</b> '.$position.'<br>
-<b>Rok urodzenia:</b> '.$birthYear.'<br>
-<b>Lata gry:</b> '.$DateFrom.'-'.$DateTo.'<br>
-<b>Dodatkowe pozycje na boisku:</b> '.$additionalPositions.'<br>
+
+<table class="striped" style="font-size:12px; margin-top:15px;">
+  <tr>
+    <td class="" style="width:40%";>Imię i nazwisko:</td>
+    <td class="">'.$name.' '.$lastname.'</td>
+  </tr>
+  <tr>
+    <td class="">Pozycja:</td>
+    <td class="">'.$position.'</td>
+  </tr>
+<tr>
+    <td class="">Numer na koszulce:</td>
+    <td class="">'.$shirtNumber.'</td>
+  </tr>
+  <tr>
+    <td class="">Rok urodzenia:</td>
+    <td class="">'.$birthYear.'</td>
+  </tr>
+<tr>
+    <td class="">Lata gry w Relaxie:</td>
+    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
+ </tr>
+<tr>
+    <td class="">Dodatkowe pozycje:</td>
+    <td class="">'.$additionalPositions.'</td>
+ </tr>
+
+</table>
 
 
+
+
+
 <br>
-<a class="waves-effect waves-light">Dodaj informacje o zawodniku</a>
+<a class="waves-effect waves-light">Dodaj informacje</a>
 <br>
 </div>
 
@@ -416,7 +507,7 @@ session_start();
 			{
 				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 			}
-			$sql = "SELECT Id, Name, Lastname, Position, Votes, DateFrom, DateTo, BirthYear FROM Players where Position = 'Napastnik' order by LastName;";
+			$sql = "SELECT * FROM Players where Position = 'Napastnik' order by LastName;";
 			$result = $polaczenie->query($sql);
 
 			if ($result->num_rows > 0)
@@ -427,13 +518,15 @@ session_start();
 				{
 					$id = $row["Id"];
 					$name = $row["Name"];
-					$lastname = $row["Lastname"];
+					$lastname = $row["LastName"];
 					$position = $row["Position"];
 					$votes = $row["Votes"];
 					$DateFrom = $row["DateFrom"];
 					$DateTo = $row["DateTo"];
 					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
 					$birthYear = $row["BirthYear"];
+					$additionalPositions = $row["AdditionalPositions"];
+					$shirtNumber = $row['ShirtNumber'];
 					
 					echo
 
@@ -456,16 +549,41 @@ session_start();
 		</div>
 <div class="collapsible-body">
 <h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
-<br>
-<b>Imię i nazwisko:</b> '.$name.' '.$lastname.'<br>
-<b>Pozycja:</b> '.$position.'<br>
-<b>Rok urodzenia:</b> '.$birthYear.'<br>
-<b>Lata gry:</b> '.$DateFrom.'-'.$DateTo.'<br>
-<b>Dodatkowe pozycje na boisku:</b> '.$additionalPositions.'<br>
+
+<table class="striped" style="font-size:12px; margin-top:15px;">
+  <tr>
+    <td class="" style="width:40%";>Imię i nazwisko:</td>
+    <td class="">'.$name.' '.$lastname.'</td>
+  </tr>
+  <tr>
+    <td class="">Pozycja:</td>
+    <td class="">'.$position.'</td>
+  </tr>
+<tr>
+    <td class="">Numer na koszulce:</td>
+    <td class="">'.$shirtNumber.'</td>
+  </tr>
+  <tr>
+    <td class="">Rok urodzenia:</td>
+    <td class="">'.$birthYear.'</td>
+  </tr>
+<tr>
+    <td class="">Lata gry w Relaxie:</td>
+    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
+ </tr>
+<tr>
+    <td class="">Dodatkowe pozycje:</td>
+    <td class="">'.$additionalPositions.'</td>
+ </tr>
+
+</table>
 
 
+
+
+
 <br>
-<a class="waves-effect waves-light">Dodaj informacje o zawodniku</a>
+<a class="waves-effect waves-light">Dodaj informacje</a>
 <br>
 </div>
 
