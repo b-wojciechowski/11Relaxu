@@ -39,6 +39,7 @@
     <Content Include="js\materialize.js" />
     <Content Include="js\materialize.min.js" />
     <Content Include="LICENSE" />
+    <Content Include="logowanie.html" />
     <Content Include="README.md" />
     <Content Include="sql\CreateTriggerGUID.sql" />
     <Content Include="sql\players.sql" />

@@ -48,18 +48,120 @@ if (!isset($_SESSION['zalogowany']))
     }
 </script>
 	
+<style>
+	.js .load, .js #loader-wrapper {
+  display: block;
+}
+	#loader-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #ECF0F1;
+  /* display: none; */
+}
+
+	.load {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    /* display: none; */
+}
+
+.load hr {
+    border: 0;
+    margin: 0;
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    border-radius: 50%;
+    animation: spin 2s ease infinite;
+}
+
+.load :first-child {
+    background: #19A68C;
+    animation-delay: -1.5s;
+}
+
+.load :nth-child(2) {
+    background: #F63D3A;
+    animation-delay: -1s;
+}
+
+.load :nth-child(3) {
+    background: #FDA543;
+    animation-delay: -0.5s;
+}
+
+.load :last-child {
+    background: #193B48;
+}
+
+@keyframes spin {
+    0%, 100% {
+        transform: translate(0)
+    }
+    25% {
+        transform: translate(160%)
+    }
+    50% {
+        transform: translate(160%, 160%)
+    }
+    75% {
+        transform: translate(0, 160%)
+    }
+}
+.preloader-background {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #eee;
+	
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;	
+}
+
+</style>
+
+
+
+
+
 
 </head>
 
 
 <body>
-
+	
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 
-	
-    
+
+<div class="preloader-background">
+	 <div class="preloader-wrapper big active">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
 <div class="row">
      
  <div class="col s12" style="padding:0px;">
@@ -172,10 +274,10 @@ if (!isset($_SESSION['zalogowany']))
 
 
 			$result = $polaczenie->query($sql);
-
+		
 			echo '<ul class="collection collapsible">';
 			
-
+	
 			if ($result->num_rows > 0)
 			{
 				$row = $result->fetch_assoc();
@@ -250,14 +352,6 @@ if (!isset($_SESSION['zalogowany']))
 
 
 
-	
-
-
-
-
-
-
-
 
 
 
@@ -307,6 +401,15 @@ if (!isset($_SESSION['zalogowany']))
 	})(jQuery); // end of jQuery name space
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+	$('.preloader-background').delay(0200).fadeOut('slow');
+	
+	$('.spinner-layer')
+		.delay(0)
+		.fadeOut();
+});
+	</script>
 
 
 <script>
@@ -316,6 +419,8 @@ if (!isset($_SESSION['zalogowany']))
     $('.collapsible').collapsible();
   }); 
 	</script>
+
+
 
 </body>
 </html>
