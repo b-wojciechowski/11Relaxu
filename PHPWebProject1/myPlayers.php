@@ -178,7 +178,7 @@ if (!isset($_SESSION['zalogowany']))
 					</a>
 				</li>
 				
-				<li><a href="mobile.html">
+				<li><a href="myPlayers.php">
 						<i class="material-icons left">people</i>Moja 11-stka 
 					</a>
 				</li>
@@ -204,7 +204,7 @@ if (!isset($_SESSION['zalogowany']))
 					</a>
 				</li>
 				
-				<li><a href="mobile.html">
+					<li><a href="myPlayers.php">
 						<i class="material-icons left">people</i>Moja 11-stka 
 					</a>
 				</li>
@@ -367,23 +367,24 @@ if (!isset($_SESSION['zalogowany']))
 
 
   <div class="row">
-    <div class="col s12 m4 l2 hide-on-med-and-down"><p>s12 m6 l3</p></div>
+    <div class="col s12 m4 l2 hide-on-med-and-down"></div>
     <div class="col s12 m4 l8">
 
 <div style="align-content:center">
 		<div class="footer-copyright">
             <div class="container">
            <center>© 2020 Relax Radziwiłłów </center> 
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            <a class="grey-text text-lighten-4 right" href="#!"></a>
             </div>
           </div>
 </div>
 
 
 	</div>
-    <div class="col s12 m4 l2 hide-on-med-and-down"><p>s12 m6 l3</p></div>
+    <div class="col s12 m4 l2 hide-on-med-and-down"></div>
  
   </div>
+          
           
  
 <script>
