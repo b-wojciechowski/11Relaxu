@@ -122,7 +122,10 @@ if ($polaczenie->connect_errno!=0)
 	echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 }
 $sql = 'select count(*) from votes where IsDeleted = 0';
+$sql2 = 'select count(DISTINCT voter) as UniqueVoters from Votes where IsDeleted = 0 group by "'.$voterId.'"';
+
 $result = $polaczenie->query($sql);
+$result2 = $polaczenie->query($sql2);
 if ($result->num_rows > 0)
 {
 	$row = $result->fetch_assoc();
@@ -134,6 +137,16 @@ else
 	echo "Brak wyników";
 };
 
+if ($result2->num_rows > 0)
+{
+	$row2 = $result2->fetch_assoc();
+	$votersCount = $row2["UniqueVoters"];
+
+} 
+else
+{
+	echo "Brak wyników";
+};
 ?>
 
 
@@ -146,7 +159,7 @@ else
 		<p style="margin-top:0px;"><b>oddanych głosów</b></p>
 	</td>
      <td style="background-color:aliceblue; width:50%; text-align:center">
-		<div style="font-size:60px;">3</div>
+		<div style="font-size:60px;"><?php echo $votersCount;?></div>
 		<p style="margin-top:0px;"><b>osób oddało głosy</b></p>
 	</td>
   </tr>
