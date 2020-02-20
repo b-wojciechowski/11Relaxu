@@ -8,7 +8,7 @@ $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 $voter = $_SESSION['email'];
 $voterId = $_SESSION['id'];
 $browserAgent = $_SERVER['HTTP_USER_AGENT'];
-echo $browserAgent.'<br>';
+
 
 
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -35,12 +35,11 @@ else
 		foreach($_POST['goalkeeper'] as $check) {
 
 			$sql = 'INSERT INTO `votes` (`Id`, `VoteOnPlayerId`, `VoteDate`, `Voter`, `browserAgent`, `voterIP`) VALUES (null, "'.$check.'", current_timestamp(), "'.$voterId.'", "'.$browserAgent.'", "'.$ip.'")';
-		//	$result = $polaczenie->query($sql);
+			//	$result = $polaczenie->query($sql);
 			if ($polaczenie->query($sql) === TRUE)
 			{
-				$_SESSION['sentVotes'] = 'Pomyślnie zapisano Twoje głosy.';
-				header('Location: main.php');
-				exit();
+
+
 			}
 			else
 			{
@@ -51,10 +50,15 @@ else
 
 
 
-			}
-	}
-
 		}
+		$_SESSION['sentVotes'] = 'Pomyślnie zapisano Twoje głosy.';
+		header('Location: main.php');
+		exit();
+
+
+	}
+		};
+
 
 
 

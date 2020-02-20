@@ -260,64 +260,44 @@ if (!isset($_SESSION['zalogowany']))
 				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 			}
 			$sql = 'select * from players as p
-					left join votes as v on p.id = v.VoteOnPlayerId where p.id in (
+					join votes as v on p.id = v.VoteOnPlayerId where p.id in (
 						select distinct VoteOnPlayerId from votes as v
 						join players as p on p.id = v.VoteOnPlayerId
-						where v.voter = "'.$voterId.'"
-						and v.IsDeleted = 0
+						where v.Voter = "'.$voterId.'"
 						order by v.VoteDate desc)
 					and v.IsDeleted = 0
 					group by p.Id
 					order by p.LastName';
 
-
-
-
 			$result = $polaczenie->query($sql);
-		
-			echo '<ul class="collection collapsible">';
-			
-	
+
 			if ($result->num_rows > 0)
 			{
-				$row = $result->fetch_assoc();
-				$voteDate = $row["VoteDate"];
-				$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+
+			
 				
 
 				// output data of each row
 				while($row = $result->fetch_assoc())
 				{
+					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+					
 					$id = $row["Id"];
 					$name = $row["Name"];
 					$lastname = $row["LastName"];
 					$position = $row["Position"];
-					$votes = $row["Votes"];
-					
-					
-					
-					
 
-					
 					echo
 
 '<li>
 	 
-	  <div class="collection-item avatar" style="width:100%";>
+<div class="collection-item avatar" style="width:100%";>
 		
       <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
       <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
-      <p style="padding-left:10px; color:grey; margin-top:0px; font-size:12px;">'.$position.'
-
-      </p>
-
-
-
-		</div>
-		
-    
-
+      <p style="padding-left:10px; color:grey; margin-top:0px; font-size:12px;">'.$position.'</p>
+</div>
 
 </li>';
 				}
@@ -326,7 +306,9 @@ if (!isset($_SESSION['zalogowany']))
 			{
 				echo "Brak wyników";
 			};
-			echo '<p style="padding-left:15px; padding-top:-10px;">Głosy oddano: '.$voteDate.'</p>';
+			
+			 
+			 echo '<p style="padding-left:15px; padding-top:-10px;">Głosy oddano: </p>';
             ?>
 
 </ul>

@@ -159,16 +159,7 @@ if (!isset($_SESSION['zalogowany']))
 	<div class="" style="background-color:white; margin-top:10px;">
 			
 
-
-<div style="padding:10px 10px 5px 10px;">
-				
-					 
-		
-			<!--<div style="padding:10px;">
-		 Wybranych obrońców: <div id="Summary-goalkeeper" style="font-size:medium;"> 	</div> 
-	
-			</div>-->
-	
+<div style="padding:10px 10px 10px 10px;">
 
 <?php if(isset($_SESSION['sentVotes'])) echo 
 	'<ul class="collection">
@@ -212,16 +203,23 @@ if (!isset($_SESSION['zalogowany']))
 
 
 
+	
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 	</div>		
-
-
-
-
-
-
 
 
 	</div>
