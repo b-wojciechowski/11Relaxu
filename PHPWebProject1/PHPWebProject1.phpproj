@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="index.php" />
+    <Compile Include="main.php" />
     <Compile Include="rankings.php" />
     <Compile Include="sendVotes.php" />
     <Compile Include="_addPlayer.php" />

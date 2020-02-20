@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include 'configuration.php';
 session_start();
 
@@ -33,12 +33,14 @@ else
 		$result_insert = $polaczenie->query($sql_0);
 
 		foreach($_POST['goalkeeper'] as $check) {
-			
+
 			$sql = 'INSERT INTO `votes` (`Id`, `VoteOnPlayerId`, `VoteDate`, `Voter`, `browserAgent`, `voterIP`) VALUES (null, "'.$check.'", current_timestamp(), "'.$voterId.'", "'.$browserAgent.'", "'.$ip.'")';
 		//	$result = $polaczenie->query($sql);
 			if ($polaczenie->query($sql) === TRUE)
 			{
-				header('Location: index.php');
+				$_SESSION['sentVotes'] = 'Pomyślnie zapisano Twoje głosy.';
+				header('Location: main.php');
+				exit();
 			}
 			else
 			{
