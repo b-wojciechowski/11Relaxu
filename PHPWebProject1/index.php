@@ -334,7 +334,7 @@ if (!isset($_SESSION['zalogowany']))
 
       <p style="padding-left:10px;">
 
-	  <input class="defender-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
+	  <input class="defender-checkbox Summary-defender" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
 	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
      
       </p>
@@ -624,10 +624,31 @@ if (!isset($_SESSION['zalogowany']))
 
 		</ul>
 
+<div style="padding:5px 10px 10px 10px; ">
 
+<h6><b>Wybrano:</b></h6>
+<table class="striped" style="font-size:13px;">
+  <tr>
+    <td class="" style="text-align: right;  width: 50%;">Bramkarzy</td>
+    <td class=""><div id="Summary-goalkeeper"></div></td>
+  </tr>
+  <tr>
+     <td class="" style="text-align: right;  width: 50%;">Obrońców</td>
+    <td class=""><div id="Summary-defender"></div></td>
+  </tr>
+	<tr>
+     <td class="" style="text-align: right;  width: 50%;">Pomocników</td>
+     <td class=""><div id="Summary-midfielder"></div></td>
+  </tr>
+  <tr>
+     <td class="" style="text-align: right;  width: 50%;">Napastników</td>
+     <td class=""><div id="Summary-forward"></div></td>
+  </tr>
+</table>
 
-		<div style="padding:10px 10px 10px 10px; ">
-			<div style="">
+	
+
+			<div class="center">
 			
 				<button class="btn waves-effect waves-light" type="submit" name="sendVotes.php">Prześlij swoją Jedenastkę
 				<i class="material-icons right">send</i>
@@ -719,8 +740,10 @@ if (!isset($_SESSION['zalogowany']))
 	$('.goalkeeper-checkbox').on('change', function() {
 		if($('.goalkeeper-checkbox:checked').length > 1) {
 			this.checked = false;
+			var defenderCheckbox = (('.defender-checkbox:checked').length);
 	}$("#Summary-goalkeeper").html($('.goalkeeper-checkbox:checked').length).show();
 	});
+	var defenderCheckbox = (('.defender-checkbox:checked').length);
 </script>
 
 <script>
