@@ -44,22 +44,6 @@ if (!isset($_SESSION['zalogowany']))
     });
     }
 </script>
-	<style>
-.preloader-background {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #eee;
-	
-	position: fixed;
-	z-index: 100;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;	
-}
-
-</style>
 
 
 </head>
@@ -70,19 +54,7 @@ if (!isset($_SESSION['zalogowany']))
 <script type="text/javascript" src="js/materialize.min.js"></script>
 
 
-<div class="preloader-background">
-	 <div class="preloader-wrapper big active">
-    <div class="spinner-layer spinner-blue-only">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div><div class="gap-patch">
-        <div class="circle"></div>
-      </div><div class="circle-clipper right">
-        <div class="circle"></div>
-      </div>
-    </div>
-  </div>
-</div>
+ <?php include 'preloader.php'; ?>
   
     
 <div class="row">
@@ -90,67 +62,8 @@ if (!isset($_SESSION['zalogowany']))
  <div class="col s12" style="padding:0px;">
 	   
 <!--START MENU--> 
-
-<nav>
-    <div class="nav-wrapper">
-      <a href="index.php" class="brand-logo">11 Relaxu</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-                 <li><a href="rankings.php">
-						<i class="material-icons left">insert_chart</i>Rankingi
-					</a>
-				</li>
-				
-				<li><a href="myPlayers.php">
-						<i class="material-icons left">people</i>Moja 11-stka 
-					</a>
-				</li>
-
-	
-				<li><a class="modal-trigger" href="#modal2_help">
-						<i class="material-icons left">help_outline</i>Pomoc 
-					</a>
-				</li>
-
-				<li><a href="mobile.html">
-					<div><i class="material-icons left">person</i>
-					 
-					<?php echo ' '.$_SESSION['Name']; ?>
-					</div>
-					</a>
-				</li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-		  test
-         <li><a href="rankings.php">
-						<i class="material-icons left">insert_chart</i>Rankingi
-					</a>
-				</li>
-				
-					<li><a href="myPlayers.php">
-						<i class="material-icons left">people</i>Moja 11-stka 
-					</a>
-				</li>
-		  <hr />
-	
-				<li><a class="modal-trigger" href="#modal2_help">
-						<i class="material-icons left">help_outline</i>Pomoc 
-					</a>
-				</li>
-
-		   <hr />
-
-				<li><a href="mobile.html">
-					<i class="material-icons left">person</i><?php echo $_SESSION['Name']; ?>
-					
-					</a>
-				</li>
-      </ul>
-    </div>
-  </nav>
-          
- <!--KONIEC MENU-->      
-
+ <?php include 'menu.php'; ?>        
+<!--KONIEC MENU-->      
 </div>
 
     <div class="col s12 m4 l3 hide-on-med-and-down"></div>
@@ -685,19 +598,7 @@ if (!isset($_SESSION['zalogowany']))
 
   <div class="row">
     <div class="col s12 m4 l2 hide-on-med-and-down"></div>
-    <div class="col s12 m4 l8">
-
-<div style="align-content:center">
-		<div class="footer-copyright">
-            <div class="container">
-           <center>© 2020 Relax Radziwiłłów </center> 
-            <a class="grey-text text-lighten-4 right" href="#!"></a>
-            </div>
-          </div>
-</div>
-
-
-	</div>
+    <div class="col s12 m4 l8"> <div class="col s12 m4 l8"> <?php include 'footer.php'; ?></div></div>
     <div class="col s12 m4 l2 hide-on-med-and-down"></div>
  
   </div>
@@ -777,13 +678,6 @@ if (!isset($_SESSION['zalogowany']))
   }); 
 </script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-	$('.preloader-background').delay(0200).fadeOut('slow');
-	$('.progress')
-		.delay(100)
-		.fadeOut();
-});
-</script>
+
 </body>
 </html>

@@ -58,72 +58,14 @@ if (!isset($_SESSION['zalogowany']))
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 
-	
+ <?php include 'preloader.php'; ?>	
     
 <div class="row">
      
  <div class="col s12" style="padding:0px;">
 	   
 <!--START MENU--> 
-
-<nav>
-    <div class="nav-wrapper">
-      <a href="index.php" class="brand-logo">11 Relaxu</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-                 <li><a href="mobile.html">
-						<i class="material-icons left">insert_chart</i>Rankingi
-					</a>
-				</li>
-				
-				<li><a href="myPlayers.php">
-						<i class="material-icons left">people</i>Moja 11-stka 
-					</a>
-				</li>
-
-	
-				<li><a class="modal-trigger" href="#modal2_help">
-						<i class="material-icons left">help_outline</i>Pomoc 
-					</a>
-				</li>
-
-				<li><a href="mobile.html">
-					<div><i class="material-icons left">person</i>
-					 
-					<?php echo ' '.$_SESSION['Name']; ?>
-					</div>
-					</a>
-				</li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-		  test
-         <li><a href="mobile.html">
-						<i class="material-icons left">insert_chart</i>Rankingi
-					</a>
-				</li>
-				
-				<li><a href="myPlayers.php">
-						<i class="material-icons left">people</i>Moja 11-stka 
-					</a>
-				</li>
-		  <hr />
-	
-				<li><a class="modal-trigger" href="#modal2_help">
-						<i class="material-icons left">help_outline</i>Pomoc 
-					</a>
-				</li>
-
-		   <hr />
-
-				<li><a href="mobile.html">
-					<i class="material-icons left">person</i><?php echo $_SESSION['Name']; ?>
-					
-					</a>
-				</li>
-      </ul>
-    </div>
-  </nav>
-          
+	 <?php include 'menu.php'; ?>
  <!--KONIEC MENU-->      
 
 </div>
@@ -207,7 +149,7 @@ if (!isset($_SESSION['zalogowany']))
 			}
 			else
 			{
-				echo '<p style="padding-left:15px;margin-top:-10px;">Nie oddano głosu na bramkarzy.</p>';
+				echo '<p style="padding-left:15px;margin-top:0px;">Nie oddano głosu na bramkarzy.</p>';
 			};
 
             ?>
@@ -277,7 +219,7 @@ if (!isset($_SESSION['zalogowany']))
 			}
 			else
 			{
-				echo '<p style="padding-left:15px;margin-top:-10px;">Nie oddano głosu na obrońców.</p>';
+				echo '<p style="padding-left:15px;margin-top:0px;">Nie oddano głosu na obrońców.</p>';
 			};
 
             ?>
@@ -351,7 +293,7 @@ if (!isset($_SESSION['zalogowany']))
 			}
 			else
 			{
-				echo  '<p style="padding-left:15px;margin-top:-10px;">Nie oddano głosu na pomocników.</p>';
+				echo  '<p style="padding-left:15px;margin-top:0px;">Nie oddano głosu na pomocników.</p>';
 			};
 
             ?>
@@ -474,19 +416,7 @@ if (!isset($_SESSION['zalogowany']))
 
   <div class="row">
     <div class="col s12 m4 l2 hide-on-med-and-down"></div>
-    <div class="col s12 m4 l8">
-
-<div style="align-content:center">
-		<div class="footer-copyright">
-            <div class="container">
-           <center>© 2020 Relax Radziwiłłów </center> 
-            <a class="grey-text text-lighten-4 right" href="#!"></a>
-            </div>
-          </div>
-</div>
-
-
-	</div>
+    <div class="col s12 m4 l8"> <div class="col s12 m4 l8"> <?php include 'footer.php'; ?></div></div>
     <div class="col s12 m4 l2 hide-on-med-and-down"></div>
  
   </div>

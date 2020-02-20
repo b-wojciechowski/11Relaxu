@@ -27,7 +27,7 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
-     
+<?php include 'preloader.php'; ?>    
 <div class="login-popup" style="box-shadow: 0px 12px 39px -19px rgba(0, 0, 0, 0.75);">
 		
 	<div class="row" style="margin-left:10px;">

@@ -90,64 +90,7 @@ if (!isset($_SESSION['zalogowany']))
  <div class="col s12" style="padding:0px;">
 	   
 <!--START MENU--> 
-
-<nav>
-    <div class="nav-wrapper">
-      <a href="index.php" class="brand-logo">11 Relaxu</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-                 <li><a href="rankings.php">
-						<i class="material-icons left">insert_chart</i>Rankingi
-					</a>
-				</li>
-				
-				<li><a href="myPlayers.php">
-						<i class="material-icons left">people</i>Moja 11-stka 
-					</a>
-				</li>
-
-	
-				<li><a class="modal-trigger" href="#modal2_help">
-						<i class="material-icons left">help_outline</i>Pomoc 
-					</a>
-				</li>
-
-				<li><a href="mobile.html">
-					<div><i class="material-icons left">person</i>
-					 
-					<?php echo ' '.$_SESSION['Name']; ?>
-					</div>
-					</a>
-				</li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-		  test
-         <li><a href="rankings.php">
-						<i class="material-icons left">insert_chart</i>Rankingi
-					</a>
-				</li>
-				
-					<li><a href="myPlayers.php">
-						<i class="material-icons left">people</i>Moja 11-stka 
-					</a>
-				</li>
-		  <hr />
-	
-				<li><a class="modal-trigger" href="#modal2_help">
-						<i class="material-icons left">help_outline</i>Pomoc 
-					</a>
-				</li>
-
-		   <hr />
-
-				<li><a href="mobile.html">
-					<i class="material-icons left">person</i><?php echo $_SESSION['Name']; ?>
-					
-					</a>
-				</li>
-      </ul>
-    </div>
-  </nav>
+ 	 <?php include 'menu.php'; ?>
           
  <!--KONIEC MENU-->      
 
@@ -169,10 +112,37 @@ if (!isset($_SESSION['zalogowany']))
 ?>
    
 
-	<table style="padding:20px;">
+<?php
+require_once "sql/connection.php";
+include 'tools/tools.php';
+$voterId = $_SESSION['id'];
+$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+if ($polaczenie->connect_errno!=0)
+{
+	echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
+}
+$sql = 'select count(*) from votes where IsDeleted = 0';
+$result = $polaczenie->query($sql);
+if ($result->num_rows > 0)
+{
+	$row = $result->fetch_assoc();
+	$votesCount = $row["count(*)"];
+
+} 
+else
+{
+	echo "Brak wyników";
+};
+
+?>
+
+
+	
+
+	<table style="padding:10px;">
   <tr>
     <td style="background-color:#eee; width:50%; text-align:center">
-		<div style="font-size:60px;">23</div>
+		<div style="font-size:60px;"><?php echo $votesCount;?></div>
 		<p style="margin-top:0px;"><b>oddanych głosów</b></p>
 	</td>
      <td style="background-color:aliceblue; width:50%; text-align:center">
@@ -202,17 +172,7 @@ if (!isset($_SESSION['zalogowany']))
 
 
 
-
 	
-
-
-
-
-
-
-
-
-
 
 
 
@@ -232,19 +192,7 @@ if (!isset($_SESSION['zalogowany']))
 
   <div class="row">
     <div class="col s12 m4 l2 hide-on-med-and-down"></div>
-    <div class="col s12 m4 l8">
-
-<div style="align-content:center">
-		<div class="footer-copyright">
-            <div class="container">
-           <center>© 2020 Relax Radziwiłłów </center> 
-            <a class="grey-text text-lighten-4 right" href="#!"></a>
-            </div>
-          </div>
-</div>
-
-
-	</div>
+    <div class="col s12 m4 l8"> <?php include 'footer.php'; ?></div>
     <div class="col s12 m4 l2 hide-on-med-and-down"></div>
  
   </div>

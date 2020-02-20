@@ -48,89 +48,7 @@ if (!isset($_SESSION['zalogowany']))
     }
 </script>
 	
-<style>
-	.js .load, .js #loader-wrapper {
-  display: block;
-}
-	#loader-wrapper {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: #ECF0F1;
-  /* display: none; */
-}
 
-	.load {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-    /* display: none; */
-}
-
-.load hr {
-    border: 0;
-    margin: 0;
-    width: 40%;
-    height: 40%;
-    position: absolute;
-    border-radius: 50%;
-    animation: spin 2s ease infinite;
-}
-
-.load :first-child {
-    background: #19A68C;
-    animation-delay: -1.5s;
-}
-
-.load :nth-child(2) {
-    background: #F63D3A;
-    animation-delay: -1s;
-}
-
-.load :nth-child(3) {
-    background: #FDA543;
-    animation-delay: -0.5s;
-}
-
-.load :last-child {
-    background: #193B48;
-}
-
-@keyframes spin {
-    0%, 100% {
-        transform: translate(0)
-    }
-    25% {
-        transform: translate(160%)
-    }
-    50% {
-        transform: translate(160%, 160%)
-    }
-    75% {
-        transform: translate(0, 160%)
-    }
-}
-.preloader-background {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #eee;
-	
-	position: fixed;
-	z-index: 100;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;	
-}
-
-</style>
 
 
 
@@ -146,20 +64,7 @@ if (!isset($_SESSION['zalogowany']))
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 
-
-<div class="preloader-background">
-	 <div class="preloader-wrapper big active">
-    <div class="spinner-layer spinner-blue-only">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div><div class="gap-patch">
-        <div class="circle"></div>
-      </div><div class="circle-clipper right">
-        <div class="circle"></div>
-      </div>
-    </div>
-  </div>
-</div>
+ <?php include 'preloader.php'; ?>
   
 
 <div class="row">
@@ -167,64 +72,7 @@ if (!isset($_SESSION['zalogowany']))
  <div class="col s12" style="padding:0px;">
 	   
 <!--START MENU--> 
-
-<nav>
-    <div class="nav-wrapper">
-      <a href="index.php" class="brand-logo">11 Relaxu</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-                 <li><a href="rankings.php">
-						<i class="material-icons left">insert_chart</i>Rankingi
-					</a>
-				</li>
-				
-				<li><a href="myPlayers.php">
-						<i class="material-icons left">people</i>Moja 11-stka 
-					</a>
-				</li>
-
-	
-				<li><a class="modal-trigger" href="#modal2_help">
-						<i class="material-icons left">help_outline</i>Pomoc 
-					</a>
-				</li>
-
-				<li><a href="mobile.html">
-					<div><i class="material-icons left">person</i>
-					 
-					<?php echo ' '.$_SESSION['Name']; ?>
-					</div>
-					</a>
-				</li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-		  test
-         <li><a href="rankings.php">
-						<i class="material-icons left">insert_chart</i>Rankingi
-					</a>
-				</li>
-				
-					<li><a href="myPlayers.php">
-						<i class="material-icons left">people</i>Moja 11-stka 
-					</a>
-				</li>
-		  <hr />
-	
-				<li><a class="modal-trigger" href="#modal2_help">
-						<i class="material-icons left">help_outline</i>Pomoc 
-					</a>
-				</li>
-
-		   <hr />
-
-				<li><a href="mobile.html">
-					<i class="material-icons left">person</i><?php echo $_SESSION['Name']; ?>
-					
-					</a>
-				</li>
-      </ul>
-    </div>
-  </nav>
+	 <?php include 'menu.php'; ?>
           
  <!--KONIEC MENU-->      
 
@@ -350,19 +198,7 @@ if (!isset($_SESSION['zalogowany']))
 
   <div class="row">
     <div class="col s12 m4 l2 hide-on-med-and-down"></div>
-    <div class="col s12 m4 l8">
-
-<div style="align-content:center">
-		<div class="footer-copyright">
-            <div class="container">
-           <center>© 2020 Relax Radziwiłłów </center> 
-            <a class="grey-text text-lighten-4 right" href="#!"></a>
-            </div>
-          </div>
-</div>
-
-
-	</div>
+    <div class="col s12 m4 l8"> <div class="col s12 m4 l8"> <?php include 'footer.php'; ?></div></div>
     <div class="col s12 m4 l2 hide-on-med-and-down"></div>
  
   </div>
