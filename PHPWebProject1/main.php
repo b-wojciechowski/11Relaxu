@@ -123,9 +123,11 @@ if ($polaczenie->connect_errno!=0)
 }
 $sql = 'select count(*) from votes where IsDeleted = 0';
 $sql2 = 'select count(DISTINCT voter) as UniqueVoters from Votes where IsDeleted = 0 group by "'.$voterId.'"';
+$sql3 = 'select count(id) from users';
 
 $result = $polaczenie->query($sql);
 $result2 = $polaczenie->query($sql2);
+$result3 = $polaczenie->query($sql3);
 if ($result->num_rows > 0)
 {
 	$row = $result->fetch_assoc();
@@ -147,6 +149,10 @@ else
 {
 	echo "Brak wyników";
 };
+
+$row3 = $result3->fetch_assoc();
+$numberOfUsers = $row3["count(id)"];
+
 ?>
 
 
@@ -154,10 +160,10 @@ else
 
 	<table style="padding:10px;">
   <tr>
-    <td style="background-color:#eee; width:50%; text-align:center">
+    <th style="background-color:#eee; width:50%; text-align:center">
 		<div style="font-size:60px;"><?php echo $votesCount;?></div>
 		<p style="margin-top:0px;"><b>oddanych głosów</b></p>
-	</td>
+	</th>
      <td style="background-color:aliceblue; width:50%; text-align:center">
 		<div style="font-size:60px;"><?php echo $votersCount;?></div>
 		<p style="margin-top:0px;"><b>osób oddało głosy</b></p>
@@ -165,8 +171,8 @@ else
   </tr>
   <tr>
       <td style="background-color:aliceblue; width:50%; text-align:center">
-		<div style="font-size:60px;">123</div>
-		<p style="margin-top:0px;"><b>oddanych głosów</b></p>
+		<div style="font-size:50px;"><?php echo $numberOfUsers;?></div>
+		<p style="margin-top:0px;"><b>zarejstrowanych użytkowników</b></p>
 	</td>
       <td style="background-color:#eee; width:50%; text-align:center">
 		<div style="font-size:60px;">123</div>
