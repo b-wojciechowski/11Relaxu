@@ -41,6 +41,7 @@
     <Content Include="LICENSE" />
     <Content Include="logowanie.html" />
     <Content Include="README.md" />
+    <Content Include="sql\activities_type.sql" />
     <Content Include="sql\CreateTriggerGUID.sql" />
     <Content Include="sql\players.sql" />
     <Content Include="sql\users.sql" />

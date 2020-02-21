@@ -7,3 +7,15 @@ BEGIN
 END;
 #
 DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE TRIGGER activities_type_insert_guid 
+BEFORE INSERT ON activities_type
+FOR EACH  ROW 
+BEGIN 
+    SET NEW.Id = UUID(); 
+END;
+$$
+DELIMITER ;
