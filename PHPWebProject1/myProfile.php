@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 include 'configuration.php';
 
@@ -9,8 +9,6 @@ if (!isset($_SESSION['zalogowany']))
 }
 
 ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/js/materialize.min.js"></script>
 <head>
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -23,43 +21,17 @@ if (!isset($_SESSION['zalogowany']))
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
+    <style>
+
+		.mp-dv {
+		font-weight: 900!important;
+        color: #505050!important;
+        font-size: 16px!important;
+        }
 
 
-<script>
-    function showToast(message, duration) {
-    Materialize.toast(message, duration);
-    }
-         
-    function showToast1(message, duration) {
-    Materialize.toast('<i>'+ message + '</i>', duration);
-    }
-         
-    function showToast2(message, duration) {
-    Materialize.toast(message, duration, 'rounded');
-    }
-         
-    function showToast3(message, duration) {
-    Materialize.toast('Hello World!', duration, '', function toastCompleted() {
-        alert('Toast dismissed!');
-    });
-    }
-</script>
-	<style>
-.preloader-background {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #eee;
-	
-	position: fixed;
-	z-index: 100;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;	
-}
+    </style>
 
-</style>
 
 
 </head>
@@ -69,16 +41,14 @@ if (!isset($_SESSION['zalogowany']))
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 
-
- <?php include 'preloader.php'; ?>
+<?php include 'preloader.php'; ?>
     
 <div class="row">
      
  <div class="col s12" style="padding:0px;">
 	   
 <!--START MENU--> 
- 	 <?php include 'menu.php'; ?>
-          
+ 	 <?php include 'menu.php'; ?>        
  <!--KONIEC MENU-->      
 
 </div>
@@ -86,39 +56,43 @@ if (!isset($_SESSION['zalogowany']))
     <div class="col s12 m4 l3 hide-on-med-and-down"></div>
     
 <div class="col s12 m4 l6" style="padding:0px;">
-	<div class="" style="background-color:white; margin-top:10px;">
+<div class="" style="background-color:white; margin-top:10px;">
 			
 
 <div style="padding:10px 10px 10px 10px;">
 
+    <div style="padding:0px 10px 0px 15px;">
+	
+					<div><h4><b>Mój profil</b></h4></div>		
+		</div>			
+
 <?php if(isset($_SESSION['sentVotes'])) echo 
-	'<ul class="collection">
+		  '<ul class="collection">
 		<li class="collection-item" style="background-color:#2e7d32; color:white;">'.$_SESSION['sentVotes'].'</li>			
 	</ul>';
-	 unset($_SESSION['sentVotes']);
+	  unset($_SESSION['sentVotes']);
 ?>
    
 
 <?php
 require_once "sql/connection.php";
 include 'tools/tools.php';
-$voterId = $_SESSION['id'];
+$userId = $_SESSION['id'];
 $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 if ($polaczenie->connect_errno!=0)
 {
 	echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 }
-$sql = 'select count(*) from votes where IsDeleted = 0';
-$sql2 = 'select count(DISTINCT voter) as UniqueVoters from Votes where IsDeleted = 0 group by "'.$voterId.'"';
-$sql3 = 'select count(id) from users';
-
+$sql = 'select * from users where Id = "'.$userId.'"';
 $result = $polaczenie->query($sql);
-$result2 = $polaczenie->query($sql2);
-$result3 = $polaczenie->query($sql3);
+
 if ($result->num_rows > 0)
 {
 	$row = $result->fetch_assoc();
-	$votesCount = $row["count(*)"];
+    $userName = $row['Name'];
+    $userLastName = $row['LastName'];
+    $userEmail = $row['email'];
+    $userCreatedDate = $row['CreatedDate'];
 
 } 
 else
@@ -126,58 +100,43 @@ else
 	echo "Brak wyników";
 };
 
-if ($result2->num_rows > 0)
-{
-	$row2 = $result2->fetch_assoc();
-	$votersCount = $row2["UniqueVoters"];
+    echo '
 
-} 
-else
-{
-	echo "Brak wyników";
-};
-
-$row3 = $result3->fetch_assoc();
-$numberOfUsers = $row3["count(id)"];
+	  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s5">
+             <i class="material-icons prefix">account_circle</i>
+          <input disabled value="'.$userName.'" placeholder="Placeholder" id="first_name" type="text" class="mp-dv">
+          <label for="first_name">Imię</label>
+        </div>
+        <div class="input-field col s7">
+       
+          <input disabled value="'.$userLastName.'" id="last_name" type="text" class="mp-dv">
+          <label for="last_name">Nazwisko</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+          <input disabled value="'.$userEmail.'" id="disabled" type="text" class="mp-dv">
+          <label for="disabled">Adres email</label>
+        </div>
+      </div>
+     
+     
+      <div class="row">
+        <div class="input-field col s12">
+            <i class="material-icons prefix">event_available</i>
+          <input disabled value="'.$userCreatedDate.'" id="disabled" type="text" class="mp-dv">
+          <label for="disabled">Konto utworzone:</label>
+        </div>
+      </div>
+    </form>
+  </div>
+';
 
 ?>
-
-
-	
-
-	<table style="padding:10px;">
-  <tr>
-    <th style="background-color:#eee; width:50%; text-align:center">
-		<div style="font-size:60px;"><?php echo $votesCount;?></div>
-		<p style="margin-top:0px;"><b>oddanych głosów</b></p>
-	</th>
-     <td style="background-color:aliceblue; width:50%; text-align:center">
-		<div style="font-size:60px;"><?php echo $votersCount;?></div>
-		<p style="margin-top:0px;"><b>osób oddało głosy</b></p>
-	</td>
-  </tr>
-  <tr>
-      <td style="background-color:aliceblue; width:50%; text-align:center">
-		<div style="font-size:50px;"><?php echo $numberOfUsers;?></div>
-		<p style="margin-top:0px;"><b>zarejstrowanych użytkowników</b></p>
-	</td>
-      <td style="background-color:#eee; width:50%; text-align:center">
-		<div style="font-size:60px;">123</div>
-		<p style="margin-top:0px;"><b>oddanych głosów</b></p>
-	</td>
-  </tr>
-  <tr>
-    </td>
-      <td style="background-color:#eee; width:50%; text-align:center">
-		<div style="font-size:60px;">123</div>
-		<p style="margin-top:0px;"><b>oddanych głosów</b></p>
-	</td>
-    <td></td>
-  </tr>
-</table>
-
-
-
 	
 
 

@@ -196,11 +196,10 @@ if (!isset($_SESSION['zalogowany']))
   </div>
 
 
-  <div class="row">
+ <div class="row">
     <div class="col s12 m4 l2 hide-on-med-and-down"></div>
-    <div class="col s12 m4 l8"> <div class="col s12 m4 l8"> <?php include 'footer.php'; ?></div></div>
+    <div class="col s12 m4 l8"> <?php include 'footer.php'; ?></div>
     <div class="col s12 m4 l2 hide-on-med-and-down"></div>
- 
   </div>
           
           

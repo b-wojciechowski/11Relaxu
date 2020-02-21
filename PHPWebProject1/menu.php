@@ -47,6 +47,12 @@ color: black;}
 		<ul class="right hide-on-med-and-down li-menu">
 			<li>
 				<a href="rankings.php">
+					<i class="material-icons left">person_add</i>Głosowanie
+				</a>
+			</li>
+
+<li>
+				<a href="rankings.php">
 					<i class="material-icons left">insert_chart</i>Rankingi
 				</a>
 			</li>
@@ -65,7 +71,7 @@ color: black;}
 			</li>
 
 			<li>
-				<a href="mobile.html">
+				<a href="myProfile.php">
 					<div>
 						<i class="material-icons left">person</i>'.$_SESSION["Name"].'
 					</div>
@@ -82,7 +88,13 @@ color: black;}
 
 </div>
 <hr class="hr-menu"/>
-<li>
+			<li>
+				<a href="rankings.php">
+					<i class="material-icons left">person_add</i>Głosowanie
+				</a>
+			</li>
+<hr class="hr-menu"/>
+			<li>
 				<a href="rankings.php">
 					<i class="material-icons left">insert_chart</i>Rankingi
 				</a>
@@ -101,7 +113,7 @@ color: black;}
 			</li>
 			<hr class="hr-menu"/>
 			<li>
-				<a href="mobile.html">
+				<a href="myProfile.php">
 					<i class="material-icons left">person</i>'.$_SESSION["Name"].'
 				</a>
 			</li>
