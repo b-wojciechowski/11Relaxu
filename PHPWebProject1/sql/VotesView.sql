@@ -51,13 +51,8 @@ and position = "bramkarz"
 
 
 
-
-
-$sql = 'select * from players as p
-left join votes as v on p.id = v.VoteOnPlayerId where p.id in (
-					select distinct VoteOnPlayerId from votes as v
-					join players as p on p.id = v.VoteOnPlayerId
-					where v.voter = "'.$voterId.'"
-					and p.position = "bramkarz"
-					) 
-and position = "bramkarz" order by v.votedate desc LIMIT 3'
+--Wyœwietlanie wszystkich aktywnoœci
+select u.Name, u.LastName, a.OperationDate, aty.ActivityName from activities as a 
+left join activities_type aty on aty.Id = a.OperationType 
+left join users as u on u.Id = a.UserId 
+order by a.OperationDate desc
