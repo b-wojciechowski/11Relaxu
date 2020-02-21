@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include 'configuration.php';
 session_start();
 
@@ -30,15 +30,21 @@ else
 	if(!empty($_POST['goalkeeper'])) {
 
 		$sql_0 = ('update votes set IsDeleted = 1 where voter = "'.$voterId.'"');
+		$sql_1 = ('INSERT INTO `activities`
+(`Id`, `OperationDate`, `UserId`, `OperationType`)
+VALUES (null, null, "'.$voterId.'", "d2acd6fa-54a6-11ea-a60f-e4115b471390")');
 		$result_insert = $polaczenie->query($sql_0);
-
+		$result_insert2 = $polaczenie->query($sql_1);
 		foreach($_POST['goalkeeper'] as $check) {
 
 			$sql = 'INSERT INTO `votes` (`Id`, `VoteOnPlayerId`, `VoteDate`, `Voter`, `browserAgent`, `voterIP`) VALUES (null, "'.$check.'", current_timestamp(), "'.$voterId.'", "'.$browserAgent.'", "'.$ip.'")';
 			//	$result = $polaczenie->query($sql);
 			if ($polaczenie->query($sql) === TRUE)
 			{
-
+				$sql_3 = ('INSERT INTO `activities`
+(`Id`, `OperationDate`, `UserId`, `OperationType`)
+VALUES (null, null, "'.$voterId.'", "e0bf6284-54a6-11ea-a60f-e4115b471390")');
+				$result_insert3 = $polaczenie->query($sql_3);
 
 			}
 			else

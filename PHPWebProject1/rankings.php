@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include 'configuration.php';
 
 session_start();
@@ -8,7 +8,18 @@ if (!isset($_SESSION['zalogowany']))
 	exit();
 }
 
-
+require_once "sql/connection.php";
+include 'tools/tools.php';
+$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+if ($polaczenie->connect_errno!=0)
+{
+	echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
+}
+$userId = $_SESSION['id'];
+$sql_activity = ('INSERT INTO `activities`
+(`Id`, `OperationDate`, `UserId`, `OperationType`)
+VALUES (null, null, "'.$userId.'", "1eb4e3de-54a7-11ea-a60f-e4115b471390")');
+$result_insert_activity = $polaczenie->query($sql_activity);
 
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -95,13 +106,7 @@ if (!isset($_SESSION['zalogowany']))
 	
 
 			<?php
-			require_once "sql/connection.php";
-			include 'tools/tools.php';
-			$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-			if ($polaczenie->connect_errno!=0)
-			{
-				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
-			}
+			
 			$sql = "select p.Id as Id, p.Name as Name, p.LastName as LastName, count(1) as Votes, p.Position as Position  from votes as v join players as p on p.id = v.VoteOnPlayerId where Position = 'bramkarz' and v.IsDeleted = 0  group by p.Id order by count(1) desc";
 			$result = $polaczenie->query($sql);
 

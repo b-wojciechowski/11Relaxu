@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 
 if ((!isset($_POST['login'])) || (!isset($_POST['password'])))
@@ -37,11 +37,16 @@ else
 			$_SESSION['id'] = $wiersz['Id'];
 			$_SESSION['Name'] = $wiersz['Name'];
 			$_SESSION['email'] = $wiersz['email'];
-			$_SESSION['login'] = $login; 
+			$_SESSION['login'] = $login;
 			$_SESSION['password'] = $password;
+			$userId = $_SESSION['id'];
 
 			unset($_SESSION['blad']);
 			$rezultat->free_result();
+			$sql_activity = ('INSERT INTO `activities`
+				(`Id`, `OperationDate`, `UserId`, `OperationType`)
+				VALUES (null, null, "'.$userId.'", "e0bf868e-54a6-11ea-a60f-e4115b471390")');
+			$result_insert_activity = $polaczenie->query($sql_activity);
 			header('Location: index.php');
 
 		} else {
