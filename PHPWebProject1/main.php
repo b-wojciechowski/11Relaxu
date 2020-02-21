@@ -70,20 +70,7 @@ if (!isset($_SESSION['zalogowany']))
 <script type="text/javascript" src="js/materialize.min.js"></script>
 
 
-<div class="preloader-background">
-	 <div class="preloader-wrapper big active">
-    <div class="spinner-layer spinner-blue-only">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div><div class="gap-patch">
-        <div class="circle"></div>
-      </div><div class="circle-clipper right">
-        <div class="circle"></div>
-      </div>
-    </div>
-  </div>
-</div>
-  
+ <?php include 'preloader.php'; ?>
     
 <div class="row">
      
@@ -291,13 +278,5 @@ $numberOfUsers = $row3["count(id)"];
   }); 
 </script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-	$('.preloader-background').delay(0200).fadeOut('slow');
-	$('.progress')
-		.delay(100)
-		.fadeOut();
-});
-</script>
 </body>
 </html>
