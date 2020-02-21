@@ -19,3 +19,13 @@ BEGIN
 END;
 $$
 DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER activities_insert_guid 
+BEFORE INSERT ON activities
+FOR EACH  ROW 
+BEGIN 
+    SET NEW.Id = UUID(); 
+END;
+$$
+DELIMITER ;
