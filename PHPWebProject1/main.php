@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 include 'configuration.php';
 
@@ -162,15 +162,14 @@ $numberOfUsers = $row3["count(id)"];
 		<p style="margin-top:0px;"><b>zarejstrowanych użytkowników</b></p>
 	</td>
       <td style="background-color:#eee; width:50%; text-align:center">
-		<div style="font-size:60px;">123</div>
-		<p style="margin-top:0px;"><b>oddanych głosów</b></p>
+		
 	</td>
   </tr>
   <tr>
-    </td>
+    <td style="background-color:aliceblue; width:50%; text-align:center">
+	  </td>
       <td style="background-color:#eee; width:50%; text-align:center">
-		<div style="font-size:60px;">123</div>
-		<p style="margin-top:0px;"><b>oddanych głosów</b></p>
+		
 	</td>
     <td></td>
   </tr>

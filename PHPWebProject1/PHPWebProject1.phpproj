@@ -44,6 +44,7 @@
     <Content Include="sql\activities.sql" />
     <Content Include="sql\activities_type.sql" />
     <Content Include="sql\CreateTriggerGUID.sql" />
+    <Content Include="sql\infoupdates.sql" />
     <Content Include="sql\logins.sql" />
     <Content Include="sql\players.sql" />
     <Content Include="sql\users.sql" />

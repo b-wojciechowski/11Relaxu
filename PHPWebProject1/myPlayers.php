@@ -120,6 +120,7 @@ if (!isset($_SESSION['zalogowany']))
 			$result = $polaczenie->query($sql);
 			$userId = $_SESSION['id'];
 			
+			
 
 				$userId = $_SESSION['id'];
 				$sql_activity = ('INSERT INTO `activities`
@@ -133,7 +134,7 @@ if (!isset($_SESSION['zalogowany']))
 				while($row = $result->fetch_assoc())
 				{
 					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
-					
+					$voteDate = $row['VoteDate'];
 					$id = $row["Id"];
 					$name = $row["Name"];
 					$lastname = $row["LastName"];
@@ -160,7 +161,7 @@ if (!isset($_SESSION['zalogowany']))
 			};
 			
 			 
-			 echo '<p style="padding-left:15px; padding-top:-10px;">Głosy oddano: </p>';
+			echo '<p style="padding-left:15px; padding-top:-10px;">Głosy oddano:'.$voteDate.' </p>';
             ?>
 
 </ul>
