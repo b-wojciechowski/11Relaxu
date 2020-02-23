@@ -17,7 +17,6 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<style>
-/*@import url("https://fonts.googleapis.com/css?family=Hind:400,700");*/
 
 
 	</style>
@@ -27,18 +26,15 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 
+<?php include 'preloader.php'; ?>
 
-	<?php include 'preloader.php'; ?>
+<div class="row">
 
-
-	<div class="row">
-
-		<div class="col s12" style="padding:0px;">
-
-			<!--START MENU-->
-			<?php include 'menu_login.php'; ?>
-			<!--KONIEC MENU-->
-		</div>
+<div class="col s12" style="padding:0px;">
+<!--START MENU-->
+<?php include 'menu_login.php'; ?>
+<!--KONIEC MENU-->
+</div>
 
 		<div class="col s12 m4 l4 hide-on-med-and-down"></div>
 
@@ -56,7 +52,18 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 					</div>
 				</div>
 
-				
+				<div class="row" style="margin: 0px 10px 0 10px;">
+					
+
+					<?php if(isset($_SESSION['register-confirmation'])) echo
+							  '<ul class="collection">
+		<li class="collection-item" style="background-color:#2e7d32; color:white;">'.$_SESSION['register-confirmation'].'</li>
+	</ul>';
+						  unset($_SESSION['register-confirmation']);
+					?>
+
+					
+				</div>
 
 					<div class="row">
 						<form class="col s12" action="_login.php" method="post">
@@ -95,7 +102,8 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 
 							<div class="row" style="margin-left:12px;">
 
-								<a class="">Utwórz nowe konto (rejestracja)</a>
+								<a href="register.php" class="">Utwórz nowe konto (rejestracja)</a><br />
+								<a href="register.php" class="">Przypomnij moje hasło</a>
 
 							</div>
 
@@ -105,7 +113,10 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 								'<ul class="collection">
 									<li class="collection-item" style="background-color:#9c0d0d; color:white;">'
 										.$_SESSION['blad'].'
-									</li>'; ?>
+									</li>';
+									  unset($_SESSION['blad'])
+
+								?>
 							</div>
 
 
@@ -132,27 +143,27 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 		</div>
 
 
-		<script>
-			(function ($) {
-				$(function () {
+<script>
+	(function ($) {
+		$(function () {
 
-					$('.button-collapse').sideNav({
-						edge: 'left', // Choose the horizontal origin
-						closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-						draggable: true // Choose whether you can drag to open on touch screens
-					}
-					);
+			$('.button-collapse').sideNav({
+				edge: 'left', // Choose the horizontal origin
+				closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+				draggable: true // Choose whether you can drag to open on touch screens
+			}
+			);
 
-				}); // end of document ready
-			})(jQuery); // end of jQuery name space
-		</script>
+		}); // end of document ready
+	})(jQuery); // end of jQuery name space
+</script>
 
 
-		<script>
-			$(document).ready(function () {
-				$('.collapsible').collapsible();
-			});
-		</script>
+<script>
+	$(document).ready(function () {
+		$('.collapsible').collapsible();
+	});
+</script>
 
 </body>
 </html>

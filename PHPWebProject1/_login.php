@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include 'configuration.php';
 if ((!isset($_POST['login'])) || (!isset($_POST['password'])))
 {
 	header('Location: index.php');
@@ -47,6 +47,11 @@ else
 				(`Id`, `OperationDate`, `UserId`, `OperationType`)
 				VALUES (null, null, "'.$userId.'", "e0bf868e-54a6-11ea-a60f-e4115b471390")');
 			$result_insert_activity = $polaczenie->query($sql_activity);
+
+			$sql_updateLastLoginDate = ('update users set LastLoginDate = "'.$time.'" where id = "'.$userId.'"');
+			$sql_insertLoginInfo = ('INSERT INTO `logins` (`Id`, `UserID`, `Date`, `Ip`, `browserAgent`) VALUES (null, "'.$userId.'", "'.$time.'", "'.$ip.'", "'.$browserAgent.'")');
+			$result_sql_sql_insertLoginInfo = $polaczenie->query($sql_insertLoginInfo);
+			$result_sql_updateLastLoginDate = $polaczenie->query($sql_updateLastLoginDate);
 			header('Location: index.php');
 
 		} else {

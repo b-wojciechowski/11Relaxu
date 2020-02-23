@@ -46,7 +46,7 @@ color: black;}
 		</a>
 		<ul class="right hide-on-med-and-down li-menu">
 			<li>
-				<a href="rankings.php">
+				<a href="index.php">
 					<i class="material-icons left">person_add</i>Głosowanie
 				</a>
 			</li>
@@ -89,7 +89,7 @@ color: black;}
 </div>
 <hr class="hr-menu"/>
 			<li>
-				<a href="rankings.php">
+				<a href="index.php">
 					<i class="material-icons left">person_add</i>Głosowanie
 				</a>
 			</li>

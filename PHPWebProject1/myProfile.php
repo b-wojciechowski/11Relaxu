@@ -137,10 +137,13 @@ else
 ';
 
 ?>
-	
 
-
-
+    <div class="row" style="margin-left:25px; margin-top:-10px;">
+   <button class="btn waves-effect waves-light red" type="submit" name="action">
+	Wyloguj się<i class="material-icons right">send</i>
+	</button>
+			</div>					
+							
 
 
 
