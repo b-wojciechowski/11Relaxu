@@ -1,20 +1,8 @@
 <?php
 session_start();
 
-
-
 require_once "sql/connection.php";
 $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-
-$browserAgent = $_SERVER['HTTP_USER_AGENT'];
-
-if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-    $ip = $_SERVER['HTTP_CLIENT_IP'];
-} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-} else {
-    $ip = $_SERVER['REMOTE_ADDR'];
-}
 
 if ($polaczenie->connect_errno!=0)
 {

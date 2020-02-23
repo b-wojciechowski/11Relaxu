@@ -35,6 +35,7 @@ color: black;}
 
 	</style>
 </head>
+
 <div class="navbar-fixed">
 <nav>
 	<div class="nav-wrapper navbar2"">
@@ -73,10 +74,20 @@ color: black;}
 			<li>
 				<a href="myProfile.php">
 					<div>
-						<i class="material-icons left">person</i>'.$_SESSION["Name"].'
+						<i class="material-icons left">person</i>Mój profil
 					</div>
 				</a>
 			</li>
+
+			<li>
+				<a href="myProfile.php">
+					<div>
+						<i class="material-icons left">exit_to_app</i>Wyloguj
+					</div>
+				</a>
+			</li>
+
+
 		</ul>
 </div>
 		<ul class="side-nav" id="mobile-demo">
@@ -114,7 +125,13 @@ color: black;}
 			<hr class="hr-menu"/>
 			<li>
 				<a href="myProfile.php">
-					<i class="material-icons left">person</i>'.$_SESSION["Name"].'
+					<i class="material-icons left">person</i>Mój profil
+				</a>
+			</li>
+			<hr class="hr-menu"/>
+			<li>
+				<a href="logout.php">
+					<i class="material-icons left">exit_to_app</i>Wyloguj się
 				</a>
 			</li>
 			<hr class="hr-menu"/>

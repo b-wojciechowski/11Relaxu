@@ -60,22 +60,23 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 		<li class="collection-item" style="background-color:#2e7d32; color:white;">'.$_SESSION['register-confirmation'].'</li>
 	</ul>';
 						  unset($_SESSION['register-confirmation']);
-					?>
-
-					
+                    ?>
+	
 				</div>
 
 					<div class="row">
-						<form class="col s12" action="_login.php" method="post">
+						<form class="col s11" action="_login.php" method="post" style="padding:25px;">
 							<div class="row">
-								<div class="input-field col s10">
+								<div class="input-field col s12">
+									<i class="material-icons prefix">person</i>
 									<input id="login" type="email" class="validate" name="login" minlength=5/ />
 									<label for="first_name">Adres email</label>
 								</div>
 							</div>
 
 							<div class="row">
-								<div class="input-field col s10">
+								<div class="input-field col s12">
+									<i class="material-icons prefix">vpn_key</i>
 									<input id="password" type="password" class="validate" name="password" />
 									<label for="password">Hasło</label>
 								</div>
@@ -90,13 +91,13 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 									</button>
 									<br />
 								</div>
-								<div class="input-field col s14">
+								<!--<div class="input-field col s14">
 									<button class="btn waves-effect waves-light grey" type="submit" name="action">
 										Zaloguj przez Facebooka
 										<i class="material-icons right">send</i>
 									</button>
 									<br />
-								</div>
+								</div>-->
 
 							</div>
 
@@ -123,9 +124,7 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 						</form>
 
 						</div>
-				
-
-
+	
 			</div>
 
 		</div>
@@ -157,13 +156,10 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 		}); // end of document ready
 	})(jQuery); // end of jQuery name space
 </script>
-
-
 <script>
 	$(document).ready(function () {
 		$('.collapsible').collapsible();
 	});
 </script>
-
 </body>
 </html>

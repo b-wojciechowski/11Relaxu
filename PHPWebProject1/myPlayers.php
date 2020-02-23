@@ -118,14 +118,18 @@ if (!isset($_SESSION['zalogowany']))
 					order by p.LastName';
 
 			$result = $polaczenie->query($sql);
+			$userId = $_SESSION['id'];
+			
+
+				$userId = $_SESSION['id'];
+				$sql_activity = ('INSERT INTO `activities`
+				(`Id`, `OperationDate`, `UserId`, `OperationType`)
+				VALUES (null, null, "'.$userId.'", "63f7ba4b-54a7-11ea-a60f-e4115b471390")');
+				$result_insert_activity = $polaczenie->query($sql_activity);
 
 			if ($result->num_rows > 0)
 			{
 
-			
-				
-
-				// output data of each row
 				while($row = $result->fetch_assoc())
 				{
 					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
