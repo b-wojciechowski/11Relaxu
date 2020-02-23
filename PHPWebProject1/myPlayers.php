@@ -90,7 +90,7 @@ if (!isset($_SESSION['zalogowany']))
     font-size: 12px;
     color: darkgrey;">Wyświetlasz listę zawodników, na których oddałeś głos</p>
 					<div><h4><b>Moja Jedenastka</b></h4></div>		
-					</div>
+</div>
 	
 						
 

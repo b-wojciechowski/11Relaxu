@@ -51,8 +51,11 @@ and position = "bramkarz"
 
 
 
---Wyœwietlanie wszystkich aktywnoœci
+--Wyœwietlanie wszystkich aktywnoœci--
 select u.Name, u.LastName, a.OperationDate, aty.ActivityName from activities as a 
 left join activities_type aty on aty.Id = a.OperationType 
 left join users as u on u.Id = a.UserId 
 order by a.OperationDate desc
+
+
+
