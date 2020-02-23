@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include 'configuration.php';
 
 if (!isset($_SESSION['zalogowany']))

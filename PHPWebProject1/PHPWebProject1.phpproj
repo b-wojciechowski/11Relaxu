@@ -44,6 +44,7 @@
     <Content Include="sql\activities.sql" />
     <Content Include="sql\activities_type.sql" />
     <Content Include="sql\CreateTriggerGUID.sql" />
+    <Content Include="sql\logins.sql" />
     <Content Include="sql\players.sql" />
     <Content Include="sql\users.sql" />
     <Content Include="sql\votes.sql" />
@@ -52,6 +53,7 @@
   <ItemGroup>
     <Compile Include="index.php" />
     <Compile Include="login_new.php" />
+    <Compile Include="logout.php" />
     <Compile Include="main.php" />
     <Compile Include="menu.php" />
     <Compile Include="menu_login.php" />

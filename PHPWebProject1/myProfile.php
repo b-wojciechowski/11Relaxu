@@ -139,9 +139,9 @@ else
 ?>
 
     <div class="row" style="margin-left:25px; margin-top:-10px;">
-   <button class="btn waves-effect waves-light red" type="submit" name="action">
+   <a class="btn waves-effect waves-light red" type="submit" href="logout.php">
 	Wyloguj się<i class="material-icons right">send</i>
-	</button>
+	</a>
 			</div>					
 							
 
