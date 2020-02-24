@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * tools short summary.
@@ -10,17 +10,11 @@
  */
 function playerImgName($_name, $_lastName)
 {
-    
+
     $FileName = replacePolishCharacters($_name.'-'.$_lastName).'.jpg';
 
     return $FileName;
 }
-
-
-
-
-
-
 
 function replacePolishCharacters($string){
 	$a = array( 'Ę', 'Ó', 'Ą', 'Ś', 'Ł', 'Ż', 'Ź', 'Ć', 'Ń', 'ę', 'ó', 'ą',
@@ -36,3 +30,19 @@ function replacePolishCharacters($string){
 	$string = strtolower($string);
 	return $string;
 }
+$playerImage = "michal-kosmider.jpg";
+function checkPlayerImage($playerImage){
+	$img_dir = '/images';
+	$player_images = scandir($img_dir);
+	print_r($player_images);
+	if (in_array($playerImage, $player_images)) {
+		$playerImage = $playerImage;
+		echo $playerImage;
+	}
+	else {
+		$playerImage = 'default.jpg';
+		echo $playerImage;
+	}
+
+}
+?>

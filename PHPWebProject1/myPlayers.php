@@ -120,50 +120,47 @@ if (!isset($_SESSION['zalogowany']))
 			$result = $polaczenie->query($sql);
 			$userId = $_SESSION['id'];
 			
-			
-
-				$userId = $_SESSION['id'];
-				$sql_activity = ('INSERT INTO `activities`
+			$sql_activity = ('INSERT INTO `activities`
 				(`Id`, `OperationDate`, `UserId`, `OperationType`)
 				VALUES (null, null, "'.$userId.'", "63f7ba4b-54a7-11ea-a60f-e4115b471390")');
-				$result_insert_activity = $polaczenie->query($sql_activity);
+			
+			$result_insert_activity = $polaczenie->query($sql_activity);
 
-			if ($result->num_rows > 0)
+		if ($result->num_rows > 0)
+		{
+
+			while($row = $result->fetch_assoc())
 			{
-
-				while($row = $result->fetch_assoc())
-				{
-					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
-					$voteDate = $row['VoteDate'];
-					$id = $row["Id"];
-					$name = $row["Name"];
-					$lastname = $row["LastName"];
-					$position = $row["Position"];
+					
+				$voteDate = $row['VoteDate'];
+				$id = $row["Id"];
+				$name = $row["Name"];
+				$lastname = $row["LastName"];
+				$position = $row["Position"];
+				$playerImage = (playerImgName($name, $lastname));	
+					if (!in_array($playerImage, $player_images)) 
+					{
+						$playerImage = 'default.jpg';	
+					}
 
 					echo
 
-'<li>
-	 
-<div class="collection-item avatar" style="width:100%";>
-		
-      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
-      <div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
-
-      <p style="padding-left:10px; color:grey; margin-top:0px; font-size:12px;">'.$position.'</p>
-</div>
-
+'<li>	 
+	<div class="collection-item avatar" style="width:100%";>
+		<img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
+		<div style="padding-left:10px;"> <span class="title">'.$name." ".$lastname.'</span> </div>
+		<p style="padding-left:10px; color:grey; margin-top:0px; font-size:12px;">'.$position.'</p>
+	</div>
 </li>';
-				}
-			} 
-			else
-			{
-				echo "Brak wyników";
-			};
+			}
+		} 
+		else
+		{
+			echo "Brak wyników";
+		};
 			
-			 
-			echo '<p style="padding-left:15px; padding-top:-10px;">Głosy oddano:'.$voteDate.' </p>';
+		echo '<p style="padding-left:15px; padding-top:-10px;">Głosy oddano:'.$voteDate.' </p>';
             ?>
-
 </ul>
 		
 

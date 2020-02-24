@@ -1,17 +1,15 @@
 <?php
 session_start();
-
 include 'configuration.php';
+include 'tools/tools.php';
 
 if (!isset($_SESSION['zalogowany']))
 {
 	header('Location: login.php');
 	exit();
 }
-
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/js/materialize.min.js"></script>
 <head>
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -26,38 +24,14 @@ if (!isset($_SESSION['zalogowany']))
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
 
 
-<script>
-    function showToast(message, duration) {
-    Materialize.toast(message, duration);
-    }
-         
-    function showToast1(message, duration) {
-    Materialize.toast('<i>'+ message + '</i>', duration);
-    }
-         
-    function showToast2(message, duration) {
-    Materialize.toast(message, duration, 'rounded');
-    }
-         
-    function showToast3(message, duration) {
-    Materialize.toast('Hello World!', duration, '', function toastCompleted() {
-        alert('Toast dismissed!');
-    });
-    }
-</script>
-
-
 </head>
 
 
 <body>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 
-
  <?php include 'preloader.php'; ?>
-  
-    
+
 <div class="row">
      
  <div class="col s12" style="padding:0px;">
@@ -75,21 +49,15 @@ if (!isset($_SESSION['zalogowany']))
 
 
 <div style="padding:10px 10px 5px 10px;">
-					<div><h5><b>Wybierz bramkarza</b> (krok 1 z 4)</h5></div>		
-					Zaznacz "Jedenastka 50-lecia" przy 1 zawodniku.
-			</div>				 
+<div><h5><b>Wybierz bramkarza</b> (krok 1 z 4)</h5></div>		
+Zaznacz "Jedenastka 50-lecia" przy 1 zawodniku.
+</div>				 
 		
-			<!--<div style="padding:10px;">
-		 Wybranych obrońców: <div id="Summary-goalkeeper" style="font-size:medium;"> 	</div> 
-	
-			</div>-->
-		<form action="sendVotes.php" method="post">
-  <ul class="collection collapsible">
-	
+<form action="sendVotes.php" method="post">
+ <ul class="collection collapsible">
 
 			<?php
 			require_once "sql/connection.php";
-			include 'tools/tools.php';
 			$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 			if ($polaczenie->connect_errno!=0)
 			{
@@ -100,7 +68,6 @@ if (!isset($_SESSION['zalogowany']))
 
 			if ($result->num_rows > 0)
 			{
-
 				// output data of each row
 				while($row = $result->fetch_assoc())
 				{
@@ -111,19 +78,23 @@ if (!isset($_SESSION['zalogowany']))
 					$votes = $row["Votes"];
 					$DateFrom = $row["DateFrom"];
 					$DateTo = $row["DateTo"];
-					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
 					$additionalPositions = $row["AdditionalPositions"];
 					$birthYear = $row["BirthYear"];
 					$additionalPositions = $row["AdditionalPositions"];
 					$shirtNumber = $row['ShirtNumber'];
-					
-					echo
 
+					$playerImage = (playerImgName($name, $lastname));	
+					if (!in_array($playerImage, $player_images)) 
+					{
+						$playerImage = 'default.jpg';	
+					}
+
+					echo
 '<li>
 	  <div class="collapsible-header"style="padding:0px">
 	  <div class="collection-item avatar" style="width:100%";>
 		
-      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+      <img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
       <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
       <p style="padding-left:10px;">
@@ -167,15 +138,8 @@ if (!isset($_SESSION['zalogowany']))
 
 </table>
 
-
-
-
-
-<br>
-<a class="waves-effect waves-light">Dodaj informacje</a>
-<br>
-</div>
-
+	<br><a class="waves-effect waves-light">Dodaj informacje</a><br>
+	</div>
 </li>';
 				}
 			}
@@ -189,33 +153,16 @@ if (!isset($_SESSION['zalogowany']))
 </ul>
 
 
-
-
-
-
-			
 			<div style="padding:10px;">
 					<div><h5><b>Wybierz 4 obrońców</b> (krok 2 z 4)</h5></div>		
 					Zaznacz "Jedenastka 50-lecia" przy 4 zawodnikach. 
 			</div>				 
-		
-			<!--<div style="padding:10px;">
-		 Wybranych obrońców: <div id="Summary" style="font-size:medium;"> 	</div> 
-	
-			</div>-->
 		
 
 
 <ul class="collection collapsible">
 
 			<?php
-		require_once "sql/connection.php";
-		
-		$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-		if ($polaczenie->connect_errno!=0)
-		{
-			echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
-		}
 		$sql = "SELECT * FROM Players where Position = 'Obrońca' order by LastName;";
 		$result = $polaczenie->query($sql);
 
@@ -232,18 +179,25 @@ if (!isset($_SESSION['zalogowany']))
 				$votes = $row["Votes"];
 				$DateFrom = $row["DateFrom"];
 				$DateTo = $row["DateTo"];
-				$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+				
 				$birthYear = $row["BirthYear"];
 				$additionalPositions = $row["AdditionalPositions"];
 				$shirtNumber = $row['ShirtNumber'];
 				
+				
+				$playerImage = (playerImgName($name, $lastname));	
+				if (!in_array($playerImage, $player_images)) 
+				{
+					$playerImage = 'default.jpg';	
+				}
+
 				echo
 
 				'<li>
 	  <div class="collapsible-header"style="padding:0px">
 	  <div class="collection-item avatar" style="width:100%";>
 		
-      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+      <img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
          <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
       <p style="padding-left:10px;">
@@ -308,10 +262,6 @@ if (!isset($_SESSION['zalogowany']))
 		</ul>
 
 
-
-
-
-
 			<div style="padding:10px;">
 					<div><h5><b>Wybierz 4 pomocników</b> (krok 3 z 4)</h5></div>		
 					Zaznacz "Jedenastka 50-lecia" przy 4 zawodnikach. 
@@ -319,13 +269,11 @@ if (!isset($_SESSION['zalogowany']))
 			</div>	
 
 
-
-
 				
 <ul class="collection collapsible">
 
-			<?php
-			
+	<?php
+
 			$sql = "SELECT * FROM Players where Position = 'Pomocnik' order by LastName;";
 			$result = $polaczenie->query($sql);
 
@@ -342,18 +290,25 @@ if (!isset($_SESSION['zalogowany']))
 					$votes = $row["Votes"];
 					$DateFrom = $row["DateFrom"];
 					$DateTo = $row["DateTo"];
-					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+					
 					$birthYear = $row["BirthYear"];
 					$additionalPositions = $row["AdditionalPositions"];
 					$shirtNumber = $row['ShirtNumber'];
+
 					
+					$playerImage = (playerImgName($name, $lastname));	
+					if (!in_array($playerImage, $player_images)) 
+					{
+						$playerImage = 'default.jpg';	
+					}
+
 					echo
 
 					'<li>
 	  <div class="collapsible-header"style="padding:0px">
 	  <div class="collection-item avatar" style="width:100%";>
 		
-      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+      <img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
        <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
       <p style="padding-left:10px;">
@@ -420,32 +375,19 @@ if (!isset($_SESSION['zalogowany']))
 
 
 
-
-
-
-		
 <div style="padding:10px 10px 0px 10px;">
 					<div><h5><b>Wybierz 2 napastników</b> (krok 4 z 4)</h5></div>		
 					Zaznacz "Jedenastka 50-lecia" przy 2 zawodnikach. 
 			</div>				 
 		
-			<!--<div style="padding:10px;">
-		 Wybranych obrońców: <div id="Summary-goalkeeper" style="font-size:medium;"> 	</div> 
-	
-			</div>-->
+
 		
 
 
 <ul class="collection collapsible">
 
 			<?php
-			require_once "sql/connection.php";
-	
-			$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-			if ($polaczenie->connect_errno!=0)
-			{
-				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
-			}
+			
 			$sql = "SELECT * FROM Players where Position = 'Napastnik' order by LastName;";
 			$result = $polaczenie->query($sql);
 
@@ -462,18 +404,24 @@ if (!isset($_SESSION['zalogowany']))
 					$votes = $row["Votes"];
 					$DateFrom = $row["DateFrom"];
 					$DateTo = $row["DateTo"];
-					$deafultPhoto = "onerror= this.onerror=null;this.src='images/default.jpg';";
+					
 					$birthYear = $row["BirthYear"];
 					$additionalPositions = $row["AdditionalPositions"];
 					$shirtNumber = $row['ShirtNumber'];
 					
+					$playerImage = (playerImgName($name, $lastname));	
+					if (!in_array($playerImage, $player_images)) 
+					{
+						$playerImage = 'default.jpg';	
+					}
+
 					echo
 
 					'<li>
 	  <div class="collapsible-header"style="padding:0px">
 	  <div class="collection-item avatar" style="width:100%";>
 		
-      <img class="circle"'.$deafultPhoto.' src="images/'.playerImgName($name, $lastname).'" style="paddnig-right:10px;"/>
+      <img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
          <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
       <p style="padding-left:10px;">
@@ -577,17 +525,6 @@ if (!isset($_SESSION['zalogowany']))
 
 
    
-
-
-
-
-
-
-
-
-
-
-
 
 	</div>
 
