@@ -101,39 +101,37 @@ else
 };
 
     echo '
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s5">
+        <i class="material-icons prefix">account_circle</i>
+        <input disabled value="'.$userName.'" placeholder="Placeholder" id="first_name" type="text" class="mp-dv">
+        <label for="first_name">Imię</label>
+      </div>
+      <div class="input-field col s7">
 
-	  <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s5">
-             <i class="material-icons prefix">account_circle</i>
-          <input disabled value="'.$userName.'" placeholder="Placeholder" id="first_name" type="text" class="mp-dv">
-          <label for="first_name">Imię</label>
-        </div>
-        <div class="input-field col s7">
-       
-          <input disabled value="'.$userLastName.'" id="last_name" type="text" class="mp-dv">
-          <label for="last_name">Nazwisko</label>
-        </div>
+        <input disabled value="'.$userLastName.'" id="last_name" type="text" class="mp-dv">
+        <label for="last_name">Nazwisko</label>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-            <i class="material-icons prefix">email</i>
-          <input disabled value="'.$userEmail.'" id="disabled" type="text" class="mp-dv">
-          <label for="disabled">Adres email</label>
-        </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">email</i>
+        <input disabled value="'.$userEmail.'" id="disabled" type="text" class="mp-dv">
+        <label for="disabled">Adres email</label>
       </div>
-     
-     
-      <div class="row">
-        <div class="input-field col s12">
-            <i class="material-icons prefix">event_available</i>
-          <input disabled value="'.$userCreatedDate.'" id="disabled" type="text" class="mp-dv">
-          <label for="disabled">Konto utworzone:</label>
-        </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">event_available</i>
+        <input disabled value="'.$userCreatedDate.'" id="disabled" type="text" class="mp-dv">
+        <label for="disabled">Konto utworzone:</label>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>
 ';
 
 ?>
