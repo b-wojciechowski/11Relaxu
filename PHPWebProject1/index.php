@@ -483,70 +483,80 @@ if (!isset($_SESSION['zalogowany']))
 						</table>
 
 						<br>
-						<a class="waves-effect waves-light modal-trigger" href="#modal1"">Dodaj informacje</a>
+						<a class="waves-effect waves-light modal-trigger" href="#modal-'.$id.'"">Dodaj informacje</a>
 						<br>
 					</div>
 
 				</li>';
 				
-			echo '
-			<!-- Modal Structure -->
-			<div id="modal1" class="modal modal-fixed-footer">
-			   <div class="modal-content">
-				 <h4>Modal Header</h4>
+		
+			
+				echo'
+			   <!-- Modal Structure -->
+			   <div id="modal-'.$id.'" class="modal modal-fixed-footer">
+			   	<div class="modal-content" style="padding:10px">
+			   		<h5><b>Dodajesz informacje</b></h5>
+
+			   		<div class="row">
+			   			<form class="col s12">
+			   				<div class="row">
+
+			   					<div class="input-field col s12">
+			   						<i class="material-icons prefix">person</i>
+			   						<input disabled value="'.$name.' '.$lastname.'" id="disabled" type="text" class="mp-dv"
+			   							style="font-weight: 900!important;
+								   color: #505050!important;
+								   font-size: 16px!important;">
+			   						<label for="disabled">Imię i nazwisko</label>
+
+			   					</div>
+
+			   				</div>
+
+			   				<div class="row">
+			   					<div class="input-field col s6">
+			   						<i class="material-icons prefix">grade</i>
+			   						<input id="pseudo" type="text" class="validate">
+			   						<label for="pseudo">Pseudonim/ksywa</label>
+			   					</div>
+			   				</div>
+
+			   				<div class="row">
+			   					<div class="input-field col s6">
+			   						<i class="material-icons prefix">filter_9</i>
+			   						<input id="shirtNumber" type="text" class="validate">
+			   						<label for="shirtNumber">Numer</label>
+			   					</div>
+			   				</div>
+
+			   				<div class="row">
+			   					<div class="input-field col s12">
+			   						<i class="material-icons prefix">info_outline</i>
+			   						<textarea placeholder="Poprzednie kluby, sukcesy, dodatkowe pozycje na boisku..."
+			   							id="textarea1-'.$id.'" name="textarea1[]" class="materialize-textarea"
+			   							data-length="200"></textarea>
+			   						<label for="textarea1-'.$id.'">Dodatkowe informacje</label>
+			   					</div>
+			   				</div>
+
+			   			</form>
+			   		</div>
+			   		<div class="row" style="position: absolute;bottom: 0;">
+			   			<p style="font-size:11px; color:grey; padding:10px;">Przesłane informacje zostaną opublikowane po
+			   				weryfikacji administratora.</p>
+			   		</div>
+
+			   	</div>
+			   	<div class="modal-footer">
+			   		<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Prześlij</a>
+			   	</div>
+			   </div>
+   
+   
+   ';
 				
-				 <div class="row">
-				 <form class="col s12">
-				   <div class="row">
-					 <div class="input-field col s6">
-					   <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-					   <label for="first_name">First Name</label>
-					 </div>
-					 <div class="input-field col s6">
-					   <input id="last_name" type="text" class="validate">
-					   <label for="last_name">Last Name</label>
-					 </div>
-				   </div>
-				   <div class="row">
-					 <div class="input-field col s12">
-					   <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-					   <label for="disabled">Disabled</label>
-					 </div>
-				   </div>
-				   <div class="row">
-					 <div class="input-field col s12">
-					   <input id="password" type="password" class="validate">
-					   <label for="password">Password</label>
-					 </div>
-				   </div>
-				   <div class="row">
-					 <div class="input-field col s12">
-					   <input id="email" type="email" class="validate">
-					   <label for="email">Email</label>
-					 </div>
-				   </div>
-				   <div class="row">
-					 <div class="col s12">
-					   This is an inline input field:
-					   <div class="input-field inline">
-						 <input id="email" type="email" class="validate">
-						 <label for="email" data-error="wrong" data-success="right">Email</label>
-					   </div>
-					 </div>
-				   </div>
-				 </form>
-			   </div>
-
-
-
-			   </div>
-			   <div class="modal-footer">
-				 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
-			   </div>
-			 </div>
-				'
 				
-				;
+				
 				}
 			}
 			else
@@ -607,7 +617,11 @@ if (!isset($_SESSION['zalogowany']))
 
 
 
- 
+
+
+
+
+
 
 
 
@@ -625,13 +639,12 @@ if (!isset($_SESSION['zalogowany']))
         <div class="col s12 m4 l2 hide-on-med-and-down"></div>
     </div>
 
-<script>
-	  $(document).ready(function(){
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-  });
-       
-	</script>
+    <script>
+    $(document).ready(function() {
+        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+    });
+    </script>
 
 
 
