@@ -432,97 +432,121 @@ if (!isset($_SESSION['zalogowany']))
 					echo
 
 					'<li>
-	  <div class="collapsible-header"style="padding:0px">
-	  <div class="collection-item avatar" style="width:100%";>
-		
-      <img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
-         <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
+					<div class="collapsible-header" style="padding:0px">
+						<div class="collection-item avatar" style="width:100%" ;>
 
-      <p style="padding-left:10px;">
+							<img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;" />
+							<div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name."
+									".$lastname.'</span> </div>
 
-	  <input class="forward-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
-     
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+							<p style="padding-left:10px;">
 
-		</div>
-		<div class="collapsible-body">
-			<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+								<input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]"
+									value="'.$id.'" />
+								<label style="padding-left:25px; font-weight: 300;  font-size: 13px;"
+									class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
 
-			<table class="striped" style="font-size:12px; margin-top:15px;">
-				<tr>
-					<td class="" style="width:40%" ;>Imię i nazwisko:</td>
-					<td class="">'.$name.' '.$lastname.'</td>
-				</tr>
-				<tr>
-					<td class="">Pozycja:</td>
-					<td class="">'.$position.'</td>
-				</tr>
-				<tr>
-					<td class="">Numer na koszulce:</td>
-					<td class="">'.$shirtNumber.'</td>
-				</tr>
-				<tr>
-					<td class="">Rok urodzenia:</td>
-					<td class="">'.$birthYear.'</td>
-				</tr>
-				<tr>
-					<td class="">Lata gry w Relaxie:</td>
-					<td class="">'.$dateFrom.'-'.$dateTo.'</td>
-				</tr>
-				<tr>
-					<td class="">Dodatkowe pozycje:</td>
-					<td class="">'.$additionalPositions.'</td>
-				</tr>
+							</p>
+							<a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
 
-			</table>
+						</div>
+					</div>
+					<div class="collapsible-body">
+						<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
 
-			<br>
-			<a class="waves-effect waves-light">Dodaj informacje</a>
-			<br>
-		</div>
-<div class="collapsible-body">
-<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+						<table class="striped" style="font-size:12px; margin-top:15px;">
+							<tr>
+								<td class="" style="width:40%" ;>Imię i nazwisko:</td>
+								<td class="">'.$name.' '.$lastname.'</td>
+							</tr>
+							<tr>
+								<td class="">Pozycja:</td>
+								<td class="">'.$position.'</td>
+							</tr>
+							<tr>
+								<td class="">Numer na koszulce:</td>
+								<td class="">'.$shirtNumber.'</td>
+							</tr>
+							<tr>
+								<td class="">Rok urodzenia:</td>
+								<td class="">'.$birthYear.'</td>
+							</tr>
+							<tr>
+								<td class="">Lata gry w Relaxie:</td>
+								<td class="">'.$dateFrom.'-'.$dateTo.'</td>
+							</tr>
+							<tr>
+								<td class="">Dodatkowe pozycje:</td>
+								<td class="">'.$additionalPositions.'</td>
+							</tr>
 
-<table class="striped" style="font-size:12px; margin-top:15px;">
-  <tr>
-    <td class="" style="width:40%";>Imię i nazwisko:</td>
-    <td class="">'.$name.' '.$lastname.'</td>
-  </tr>
-  <tr>
-    <td class="">Pozycja:</td>
-    <td class="">'.$position.'</td>
-  </tr>
-<tr>
-    <td class="">Numer na koszulce:</td>
-    <td class="">'.$shirtNumber.'</td>
-  </tr>
-  <tr>
-    <td class="">Rok urodzenia:</td>
-    <td class="">'.$birthYear.'</td>
-  </tr>
-<tr>
-    <td class="">Lata gry w Relaxie:</td>
-    <td class="">'.$dateFrom.'-'.$dateTo.'</td>
- </tr>
-<tr>
-    <td class="">Dodatkowe pozycje:</td>
-    <td class="">'.$additionalPositions.'</td>
- </tr>
+						</table>
 
-</table>
+						<br>
+						<a class="waves-effect waves-light modal-trigger" href="#modal1"">Dodaj informacje</a>
+						<br>
+					</div>
+
+				</li>';
+				
+			echo '
+			<!-- Modal Structure -->
+			<div id="modal1" class="modal modal-fixed-footer">
+			   <div class="modal-content">
+				 <h4>Modal Header</h4>
+				
+				 <div class="row">
+				 <form class="col s12">
+				   <div class="row">
+					 <div class="input-field col s6">
+					   <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+					   <label for="first_name">First Name</label>
+					 </div>
+					 <div class="input-field col s6">
+					   <input id="last_name" type="text" class="validate">
+					   <label for="last_name">Last Name</label>
+					 </div>
+				   </div>
+				   <div class="row">
+					 <div class="input-field col s12">
+					   <input disabled value="I am not editable" id="disabled" type="text" class="validate">
+					   <label for="disabled">Disabled</label>
+					 </div>
+				   </div>
+				   <div class="row">
+					 <div class="input-field col s12">
+					   <input id="password" type="password" class="validate">
+					   <label for="password">Password</label>
+					 </div>
+				   </div>
+				   <div class="row">
+					 <div class="input-field col s12">
+					   <input id="email" type="email" class="validate">
+					   <label for="email">Email</label>
+					 </div>
+				   </div>
+				   <div class="row">
+					 <div class="col s12">
+					   This is an inline input field:
+					   <div class="input-field inline">
+						 <input id="email" type="email" class="validate">
+						 <label for="email" data-error="wrong" data-success="right">Email</label>
+					   </div>
+					 </div>
+				   </div>
+				 </form>
+			   </div>
 
 
 
-
-
-<br>
-<a class="waves-effect waves-light">Dodaj informacje</a>
-<br>
-</div>
-
-</li>';
+			   </div>
+			   <div class="modal-footer">
+				 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+			   </div>
+			 </div>
+				'
+				
+				;
 				}
 			}
 			else
@@ -583,6 +607,10 @@ if (!isset($_SESSION['zalogowany']))
 
 
 
+ 
+
+
+
             </div>
 
         </div>
@@ -596,6 +624,16 @@ if (!isset($_SESSION['zalogowany']))
         <div class="col s12 m4 l8"> <?php include 'footer.php'; ?></div>
         <div class="col s12 m4 l2 hide-on-med-and-down"></div>
     </div>
+
+<script>
+	  $(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+       
+	</script>
+
+
 
 
     <script>
