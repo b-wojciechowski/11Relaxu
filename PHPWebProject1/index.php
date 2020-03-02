@@ -182,14 +182,9 @@ if (!isset($_SESSION['zalogowany']))
 				$lastname = $row["LastName"];
 				$position = $row["Position"];
 				$votes = $row["Votes"];
-<<<<<<< HEAD
 				$dateFrom = $row["DateFrom"];
 				$dateTo = $row["DateTo"];
 				
-=======
-				$DateFrom = $row["DateFrom"];
-				$DateTo = $row["DateTo"];
->>>>>>> 4539ceac5bd2ff5aad76cdcacb181b80e3aad7d1
 				$birthYear = $row["BirthYear"];
 				$additionalPositions = $row["AdditionalPositions"];
 				$shirtNumber = $row['ShirtNumber'];
@@ -203,7 +198,6 @@ if (!isset($_SESSION['zalogowany']))
 				echo
 
 				'<li>
-<<<<<<< HEAD
 					<div class="collapsible-header" style="padding:0px">
 						<div class="collection-item avatar" style="width:100%" ;>
 
@@ -263,64 +257,6 @@ if (!isset($_SESSION['zalogowany']))
 					</div>
 
 				</li>';
-=======
-	  <div class="collapsible-header"style="padding:0px">
-	  <div class="collection-item avatar" style="width:100%";>
-		
-      <img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
-         <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
-
-      <p style="padding-left:10px;">
-
-	  <input class="defender-checkbox Summary-defender" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
-     
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
-
-		</div>
-		</div>
-<div class="collapsible-body">
-<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
-
-<table class="striped" style="font-size:12px; margin-top:15px;">
-  <tr>
-    <td class="" style="width:40%";>Imię i nazwisko:</td>
-    <td class="">'.$name.' '.$lastname.'</td>
-  </tr>
-  <tr>
-    <td class="">Pozycja:</td>
-    <td class="">'.$position.'</td>
-  </tr>
-<tr>
-    <td class="">Numer na koszulce:</td>
-    <td class="">'.$shirtNumber.'</td>
-  </tr>
-  <tr>
-    <td class="">Rok urodzenia:</td>
-    <td class="">'.$birthYear.'</td>
-  </tr>
-<tr>
-    <td class="">Lata gry w Relaxie:</td>
-    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
- </tr>
-<tr>
-    <td class="">Dodatkowe pozycje:</td>
-    <td class="">'.$additionalPositions.'</td>
- </tr>
-
-</table>
-
-
-
-
-<br>
-<a class="waves-effect waves-light">Dodaj informacje</a>
-<br>
-</div>
-
-</li>';
->>>>>>> 4539ceac5bd2ff5aad76cdcacb181b80e3aad7d1
 			}
 		}
 		else
@@ -378,7 +314,6 @@ if (!isset($_SESSION['zalogowany']))
 					echo
 
 					'<li>
-<<<<<<< HEAD
 						<div class="collapsible-header" style="padding:0px">
 							<div class="collection-item avatar" style="width:100%" ;>
 
@@ -439,65 +374,6 @@ if (!isset($_SESSION['zalogowany']))
 						</div>
 
 					</li>';
-=======
-	  <div class="collapsible-header"style="padding:0px">
-	  <div class="collection-item avatar" style="width:100%";>
-		
-      <img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
-       <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
-
-      <p style="padding-left:10px;">
-
-	  <input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
-     
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
-
-		</div>
-		</div>
-<div class="collapsible-body">
-<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
-
-<table class="striped" style="font-size:12px; margin-top:15px;">
-  <tr>
-    <td class="" style="width:40%";>Imię i nazwisko:</td>
-    <td class="">'.$name.' '.$lastname.'</td>
-  </tr>
-  <tr>
-    <td class="">Pozycja:</td>
-    <td class="">'.$position.'</td>
-  </tr>
-<tr>
-    <td class="">Numer na koszulce:</td>
-    <td class="">'.$shirtNumber.'</td>
-  </tr>
-  <tr>
-    <td class="">Rok urodzenia:</td>
-    <td class="">'.$birthYear.'</td>
-  </tr>
-<tr>
-    <td class="">Lata gry w Relaxie:</td>
-    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
- </tr>
-<tr>
-    <td class="">Dodatkowe pozycje:</td>
-    <td class="">'.$additionalPositions.'</td>
- </tr>
-
-</table>
-
-
-
-
-
-<br>
-<a class="waves-effect waves-light">Dodaj informacje</a>
-<br>
-</div>
-
-</li>';
->>>>>>> 4539ceac5bd2ff5aad76cdcacb181b80e3aad7d1
 				}
 			}
 			else
@@ -571,7 +447,6 @@ if (!isset($_SESSION['zalogowany']))
       <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
 
 		</div>
-<<<<<<< HEAD
 		<div class="collapsible-body">
 			<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
 
@@ -606,8 +481,6 @@ if (!isset($_SESSION['zalogowany']))
 			<br>
 			<a class="waves-effect waves-light">Dodaj informacje</a>
 			<br>
-=======
->>>>>>> 4539ceac5bd2ff5aad76cdcacb181b80e3aad7d1
 		</div>
 <div class="collapsible-body">
 <h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
@@ -631,7 +504,7 @@ if (!isset($_SESSION['zalogowany']))
   </tr>
 <tr>
     <td class="">Lata gry w Relaxie:</td>
-    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
+    <td class="">'.$dateFrom.'-'.$dateTo.'</td>
  </tr>
 <tr>
     <td class="">Dodatkowe pozycje:</td>
