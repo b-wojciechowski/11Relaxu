@@ -79,8 +79,8 @@ if (!isset($_SESSION['zalogowany']))
 					$lastname = $row["LastName"];
 					$position = $row["Position"];
 					$votes = $row["Votes"];
-					$DateFrom = $row["DateFrom"];
-					$DateTo = $row["DateTo"];
+					$dateFrom = $row["DateFrom"];
+					$dateTo = $row["DateTo"];
 					$additionalPositions = $row["AdditionalPositions"];
 					$birthYear = $row["BirthYear"];
 					$additionalPositions = $row["AdditionalPositions"];
@@ -132,7 +132,7 @@ if (!isset($_SESSION['zalogowany']))
   </tr>
 <tr>
     <td class="">Lata gry w Relaxie:</td>
-    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
+    <td class="">'.$dateFrom.'-'.$dateTo.'</td>
  </tr>
 <tr>
     <td class="">Dodatkowe pozycje:</td>
@@ -182,8 +182,8 @@ if (!isset($_SESSION['zalogowany']))
 				$lastname = $row["LastName"];
 				$position = $row["Position"];
 				$votes = $row["Votes"];
-				$DateFrom = $row["DateFrom"];
-				$DateTo = $row["DateTo"];
+				$dateFrom = $row["DateFrom"];
+				$dateTo = $row["DateTo"];
 				
 				$birthYear = $row["BirthYear"];
 				$additionalPositions = $row["AdditionalPositions"];
@@ -240,7 +240,7 @@ if (!isset($_SESSION['zalogowany']))
 							</tr>
 							<tr>
 								<td class="">Lata gry w Relaxie:</td>
-								<td class="">'.$DateFrom.'-'.$DateTo.'</td>
+								<td class="">'.$dateFrom.'-'.$dateTo.'</td>
 							</tr>
 							<tr>
 								<td class="">Dodatkowe pozycje:</td>
@@ -298,8 +298,8 @@ if (!isset($_SESSION['zalogowany']))
 					$lastname = $row["LastName"];
 					$position = $row["Position"];
 					$votes = $row["Votes"];
-					$DateFrom = $row["DateFrom"];
-					$DateTo = $row["DateTo"];
+					$dateFrom = $row["DateFrom"];
+					$dateTo = $row["DateTo"];
 					
 					$birthYear = $row["BirthYear"];
 					$additionalPositions = $row["AdditionalPositions"];
@@ -356,7 +356,7 @@ if (!isset($_SESSION['zalogowany']))
 								</tr>
 								<tr>
 									<td class="">Lata gry w Relaxie:</td>
-									<td class="">'.$DateFrom.'-'.$DateTo.'</td>
+									<td class="">'.$dateFrom.'-'.$dateTo.'</td>
 								</tr>
 								<tr>
 									<td class="">Dodatkowe pozycje:</td>
@@ -417,8 +417,8 @@ if (!isset($_SESSION['zalogowany']))
 					$lastname = $row["LastName"];
 					$position = $row["Position"];
 					$votes = $row["Votes"];
-					$DateFrom = $row["DateFrom"];
-					$DateTo = $row["DateTo"];
+					$dateFrom = $row["DateFrom"];
+					$dateTo = $row["DateTo"];
 					
 					$birthYear = $row["BirthYear"];
 					$additionalPositions = $row["AdditionalPositions"];
@@ -474,7 +474,7 @@ if (!isset($_SESSION['zalogowany']))
 				</tr>
 				<tr>
 					<td class="">Lata gry w Relaxie:</td>
-					<td class="">'.$DateFrom.'-'.$DateTo.'</td>
+					<td class="">'.$dateFrom.'-'.$dateTo.'</td>
 				</tr>
 				<tr>
 					<td class="">Dodatkowe pozycje:</td>
