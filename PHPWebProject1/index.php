@@ -56,7 +56,7 @@ if (!isset($_SESSION['zalogowany']))
                     Zaznacz "Jedenastka 50-lecia" przy 1 zawodniku.
                 </div>
 
-	<form action="sendVotes.php" method="post">
+                <form action="sendVotes.php" method="post">
                     <ul class="collection collapsible">
 
                         <?php
@@ -167,7 +167,7 @@ if (!isset($_SESSION['zalogowany']))
 
                     <ul class="collection collapsible">
 
-        <?php
+                        <?php
 		$sql = "SELECT * FROM Players where Position = 'Obrońca' order by LastName;";
 		$result = $polaczenie->query($sql);
 
@@ -182,13 +182,17 @@ if (!isset($_SESSION['zalogowany']))
 				$lastname = $row["LastName"];
 				$position = $row["Position"];
 				$votes = $row["Votes"];
+<<<<<<< HEAD
 				$dateFrom = $row["DateFrom"];
 				$dateTo = $row["DateTo"];
 				
+=======
+				$DateFrom = $row["DateFrom"];
+				$DateTo = $row["DateTo"];
+>>>>>>> 4539ceac5bd2ff5aad76cdcacb181b80e3aad7d1
 				$birthYear = $row["BirthYear"];
 				$additionalPositions = $row["AdditionalPositions"];
 				$shirtNumber = $row['ShirtNumber'];
-				
 				
 				$playerImage = (playerImgName($name, $lastname));	
 				if (!in_array($playerImage, $player_images)) 
@@ -199,6 +203,7 @@ if (!isset($_SESSION['zalogowany']))
 				echo
 
 				'<li>
+<<<<<<< HEAD
 					<div class="collapsible-header" style="padding:0px">
 						<div class="collection-item avatar" style="width:100%" ;>
 
@@ -258,6 +263,64 @@ if (!isset($_SESSION['zalogowany']))
 					</div>
 
 				</li>';
+=======
+	  <div class="collapsible-header"style="padding:0px">
+	  <div class="collection-item avatar" style="width:100%";>
+		
+      <img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
+         <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
+
+      <p style="padding-left:10px;">
+
+	  <input class="defender-checkbox Summary-defender" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
+	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
+     
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+
+		</div>
+		</div>
+<div class="collapsible-body">
+<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+
+<table class="striped" style="font-size:12px; margin-top:15px;">
+  <tr>
+    <td class="" style="width:40%";>Imię i nazwisko:</td>
+    <td class="">'.$name.' '.$lastname.'</td>
+  </tr>
+  <tr>
+    <td class="">Pozycja:</td>
+    <td class="">'.$position.'</td>
+  </tr>
+<tr>
+    <td class="">Numer na koszulce:</td>
+    <td class="">'.$shirtNumber.'</td>
+  </tr>
+  <tr>
+    <td class="">Rok urodzenia:</td>
+    <td class="">'.$birthYear.'</td>
+  </tr>
+<tr>
+    <td class="">Lata gry w Relaxie:</td>
+    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
+ </tr>
+<tr>
+    <td class="">Dodatkowe pozycje:</td>
+    <td class="">'.$additionalPositions.'</td>
+ </tr>
+
+</table>
+
+
+
+
+<br>
+<a class="waves-effect waves-light">Dodaj informacje</a>
+<br>
+</div>
+
+</li>';
+>>>>>>> 4539ceac5bd2ff5aad76cdcacb181b80e3aad7d1
 			}
 		}
 		else
@@ -315,6 +378,7 @@ if (!isset($_SESSION['zalogowany']))
 					echo
 
 					'<li>
+<<<<<<< HEAD
 						<div class="collapsible-header" style="padding:0px">
 							<div class="collection-item avatar" style="width:100%" ;>
 
@@ -375,6 +439,65 @@ if (!isset($_SESSION['zalogowany']))
 						</div>
 
 					</li>';
+=======
+	  <div class="collapsible-header"style="padding:0px">
+	  <div class="collection-item avatar" style="width:100%";>
+		
+      <img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
+       <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
+
+      <p style="padding-left:10px;">
+
+	  <input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
+	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
+     
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+
+		</div>
+		</div>
+<div class="collapsible-body">
+<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+
+<table class="striped" style="font-size:12px; margin-top:15px;">
+  <tr>
+    <td class="" style="width:40%";>Imię i nazwisko:</td>
+    <td class="">'.$name.' '.$lastname.'</td>
+  </tr>
+  <tr>
+    <td class="">Pozycja:</td>
+    <td class="">'.$position.'</td>
+  </tr>
+<tr>
+    <td class="">Numer na koszulce:</td>
+    <td class="">'.$shirtNumber.'</td>
+  </tr>
+  <tr>
+    <td class="">Rok urodzenia:</td>
+    <td class="">'.$birthYear.'</td>
+  </tr>
+<tr>
+    <td class="">Lata gry w Relaxie:</td>
+    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
+ </tr>
+<tr>
+    <td class="">Dodatkowe pozycje:</td>
+    <td class="">'.$additionalPositions.'</td>
+ </tr>
+
+</table>
+
+
+
+
+
+<br>
+<a class="waves-effect waves-light">Dodaj informacje</a>
+<br>
+</div>
+
+</li>';
+>>>>>>> 4539ceac5bd2ff5aad76cdcacb181b80e3aad7d1
 				}
 			}
 			else
@@ -432,26 +555,23 @@ if (!isset($_SESSION['zalogowany']))
 
 					echo
 
-	'<li>
-		<div class="collapsible-header" style="padding:0px">
-			<div class="collection-item avatar" style="width:100%" ;>
+					'<li>
+	  <div class="collapsible-header"style="padding:0px">
+	  <div class="collection-item avatar" style="width:100%";>
+		
+      <img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
+         <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
 
-				<img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;" />
-				<div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name."
-						".$lastname.'</span> </div>
+      <p style="padding-left:10px;">
 
-				<p style="padding-left:10px;">
+	  <input class="forward-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
+	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
+     
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
 
-					<input class="forward-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]"
-						value="'.$id.'" />
-					<label style="padding-left:25px; font-weight: 300;  font-size: 13px;"
-						class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
-
-				</p>
-				<a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
-
-			</div>
 		</div>
+<<<<<<< HEAD
 		<div class="collapsible-body">
 			<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
 
@@ -486,9 +606,50 @@ if (!isset($_SESSION['zalogowany']))
 			<br>
 			<a class="waves-effect waves-light">Dodaj informacje</a>
 			<br>
+=======
+>>>>>>> 4539ceac5bd2ff5aad76cdcacb181b80e3aad7d1
 		</div>
+<div class="collapsible-body">
+<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
 
-	</li>';
+<table class="striped" style="font-size:12px; margin-top:15px;">
+  <tr>
+    <td class="" style="width:40%";>Imię i nazwisko:</td>
+    <td class="">'.$name.' '.$lastname.'</td>
+  </tr>
+  <tr>
+    <td class="">Pozycja:</td>
+    <td class="">'.$position.'</td>
+  </tr>
+<tr>
+    <td class="">Numer na koszulce:</td>
+    <td class="">'.$shirtNumber.'</td>
+  </tr>
+  <tr>
+    <td class="">Rok urodzenia:</td>
+    <td class="">'.$birthYear.'</td>
+  </tr>
+<tr>
+    <td class="">Lata gry w Relaxie:</td>
+    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
+ </tr>
+<tr>
+    <td class="">Dodatkowe pozycje:</td>
+    <td class="">'.$additionalPositions.'</td>
+ </tr>
+
+</table>
+
+
+
+
+
+<br>
+<a class="waves-effect waves-light">Dodaj informacje</a>
+<br>
+</div>
+
+</li>';
 				}
 			}
 			else
@@ -500,51 +661,51 @@ if (!isset($_SESSION['zalogowany']))
 
                     </ul>
 
-	<div style="padding:5px 10px 10px 10px; ">
+                    <div style="padding:5px 10px 10px 10px; ">
 
-		<h6><b>Wybrano:</b></h6>
-		<table class="striped" style="font-size:13px;">
-			<tr>
-				<td class="" style="text-align: right;  width: 50%;">Bramkarzy</td>
-				<td class="">
-					<div id="Summary-goalkeeper"></div>
-				</td>
-			</tr>
-			<tr>
-				<td class="" style="text-align: right;  width: 50%;">Obrońców</td>
-				<td class="">
-					<div id="Summary-defender"></div>
-				</td>
-			</tr>
-			<tr>
-				<td class="" style="text-align: right;  width: 50%;">Pomocników</td>
-				<td class="">
-					<div id="Summary-midfielder"></div>
-				</td>
-			</tr>
-			<tr>
-				<td class="" style="text-align: right;  width: 50%;">Napastników</td>
-				<td class="">
-					<div id="Summary-forward"></div>
-				</td>
-			</tr>
-		</table>
-
-
-
-		<div class="center">
-
-			<button class="btn waves-effect waves-light" type="submit" name="sendVotes.php">Prześlij
-				swoją Jedenastkę
-				<i class="material-icons right">send</i>
-			</button>
+                        <h6><b>Wybrano:</b></h6>
+                        <table class="striped" style="font-size:13px;">
+                            <tr>
+                                <td class="" style="text-align: right;  width: 50%;">Bramkarzy</td>
+                                <td class="">
+                                    <div id="Summary-goalkeeper"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="" style="text-align: right;  width: 50%;">Obrońców</td>
+                                <td class="">
+                                    <div id="Summary-defender"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="" style="text-align: right;  width: 50%;">Pomocników</td>
+                                <td class="">
+                                    <div id="Summary-midfielder"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="" style="text-align: right;  width: 50%;">Napastników</td>
+                                <td class="">
+                                    <div id="Summary-forward"></div>
+                                </td>
+                            </tr>
+                        </table>
 
 
-		</div>
 
-	</div>
+                        <div class="center">
 
-</form>
+                            <button class="btn waves-effect waves-light" type="submit" name="sendVotes.php">Prześlij
+                                swoją Jedenastkę
+                                <i class="material-icons right">send</i>
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+                </form>
 
 
 
@@ -580,28 +741,28 @@ if (!isset($_SESSION['zalogowany']))
 
     <script>
     $("#Summary").html($('.single-checkbox:checked').length).show();
-    $('.single-checkbox').on('change', function () {
-    	if ($('.single-checkbox:checked').length > 4) {
-    		this.checked = false;
-    	}
-    	$("#Summary").html($('.single-checkbox:checked').length).show();
+    $('.single-checkbox').on('change', function() {
+        if ($('.single-checkbox:checked').length > 4) {
+            this.checked = false;
+        }
+        $("#Summary").html($('.single-checkbox:checked').length).show();
     });
 
-    $('.single-checkbox2').on('change', function () {
-    	if ($('.single-checkbox2:checked').length > 1) {
-    		this.checked = false;
-    	}
+    $('.single-checkbox2').on('change', function() {
+        if ($('.single-checkbox2:checked').length > 1) {
+            this.checked = false;
+        }
     });
     </script>
 
     <script>
     $("#Summary-goalkeeper").html($('.goalkeeper-checkbox:checked').length).show();
-    $('.goalkeeper-checkbox').on('change', function () {
-    	if ($('.goalkeeper-checkbox:checked').length > 1) {
-    		this.checked = false;
-    		var defenderCheckbox = (('.defender-checkbox:checked').length);
-    	}
-    	$("#Summary-goalkeeper").html($('.goalkeeper-checkbox:checked').length).show();
+    $('.goalkeeper-checkbox').on('change', function() {
+        if ($('.goalkeeper-checkbox:checked').length > 1) {
+            this.checked = false;
+            var defenderCheckbox = (('.defender-checkbox:checked').length);
+        }
+        $("#Summary-goalkeeper").html($('.goalkeeper-checkbox:checked').length).show();
     });
     var defenderCheckbox = (('.defender-checkbox:checked').length);
     </script>
@@ -637,8 +798,8 @@ if (!isset($_SESSION['zalogowany']))
     </script>
 
     <script>
-    $(document).ready(function () {
-    	$('.collapsible').collapsible();
+    $(document).ready(function() {
+        $('.collapsible').collapsible();
     });
     </script>
 

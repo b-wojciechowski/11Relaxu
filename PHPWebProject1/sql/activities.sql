@@ -39,7 +39,8 @@ CREATE TABLE `activities` (
 -- Wyzwalacze `activities`
 --
 DELIMITER $$
-CREATE TRIGGER `activities_insert_guid` BEFORE INSERT ON `activities` FOR EACH ROW BEGIN 
+CREATE TRIGGER `activities_insert_guid` BEFORE INSERT ON `activities` FOR EACH ROW 
+BEGIN 
     SET NEW.Id = UUID(); 
 END
 $$
