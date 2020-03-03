@@ -5,17 +5,17 @@ require_once "sql/connection.php";
 $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 
 if ($polaczenie->connect_errno!=0)
-{
+{ 
 	echo "Error: ".$polaczenie->connect_errno;
 }
 else
 {
-	if((!empty($_POST['email'])) && (!empty($_POST['password'])) && (!empty($_POST['passwordConfirm'])))
+	if ((!empty($_POST['email'])) && (!empty($_POST['password'])) && (!empty($_POST['passwordConfirm']))) 
 	{
-		$checkEmailListResult = $polaczenie->query('select email from users where email = "'.$_POST['email'].'"');
+		$checkEmailListResult = $polaczenie->query('select email from users where email = "' . $_POST['email'] . '"');
 		$UsersEmailList = $checkEmailListResult->num_rows;
 
-		if ($UsersEmailList>0)
+		if ($UsersEmailList > 0) 
 		{
 			$_SESSION['register-email-exists'] = 'Konto połączone z tym adresem email już istnieje!';
 			$sql_activity = ('INSERT INTO `activities`
