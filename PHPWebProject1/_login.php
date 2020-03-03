@@ -51,7 +51,7 @@ else
 
 			$sql_updateLastLoginDate = ('update users set LastLoginDate = "'.$time.'" where id = "'.$userId.'"');
 			$sql_insertLoginInfo = ('INSERT INTO `logins` (`Id`, `UserID`, `Date`, `Ip`, `browserAgent`) VALUES (null, "'.$userId.'", "'.$time.'", "'.$ip.'", "'.$browserAgent.'")');
-			$result_sql_sql_insertLoginInfo = $polaczenie->query($sql_insertLoginInfo);
+			$result_sql_insertLoginInfo = $polaczenie->query($sql_insertLoginInfo);
 			$result_sql_updateLastLoginDate = $polaczenie->query($sql_updateLastLoginDate);
 			header('Location: index.php');
 
