@@ -79,8 +79,8 @@ if (!isset($_SESSION['zalogowany']))
 					$lastname = $row["LastName"];
 					$position = $row["Position"];
 					$votes = $row["Votes"];
-					$DateFrom = $row["DateFrom"];
-					$DateTo = $row["DateTo"];
+					$dateFrom = $row["DateFrom"];
+					$dateTo = $row["DateTo"];
 					$additionalPositions = $row["AdditionalPositions"];
 					$birthYear = $row["BirthYear"];
 					$additionalPositions = $row["AdditionalPositions"];
@@ -132,7 +132,7 @@ if (!isset($_SESSION['zalogowany']))
   </tr>
 <tr>
     <td class="">Lata gry w Relaxie:</td>
-    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
+    <td class="">'.$dateFrom.'-'.$dateTo.'</td>
  </tr>
 <tr>
     <td class="">Dodatkowe pozycje:</td>
@@ -182,8 +182,9 @@ if (!isset($_SESSION['zalogowany']))
 				$lastname = $row["LastName"];
 				$position = $row["Position"];
 				$votes = $row["Votes"];
-				$DateFrom = $row["DateFrom"];
-				$DateTo = $row["DateTo"];
+				$dateFrom = $row["DateFrom"];
+				$dateTo = $row["DateTo"];
+				
 				$birthYear = $row["BirthYear"];
 				$additionalPositions = $row["AdditionalPositions"];
 				$shirtNumber = $row['ShirtNumber'];
@@ -197,62 +198,65 @@ if (!isset($_SESSION['zalogowany']))
 				echo
 
 				'<li>
-	  <div class="collapsible-header"style="padding:0px">
-	  <div class="collection-item avatar" style="width:100%";>
-		
-      <img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
-         <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
+					<div class="collapsible-header" style="padding:0px">
+						<div class="collection-item avatar" style="width:100%" ;>
 
-      <p style="padding-left:10px;">
+							<img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;" />
+							<div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name."
+									".$lastname.'</span> </div>
 
-	  <input class="defender-checkbox Summary-defender" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
-     
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+							<p style="padding-left:10px;">
 
-		</div>
-		</div>
-<div class="collapsible-body">
-<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+								<input class="defender-checkbox Summary-defender" type="checkbox" id="checkbox-'.$id.'"
+									name="goalkeeper[]" value="'.$id.'" />
+								<label style="padding-left:25px; font-weight: 300;  font-size: 13px;"
+									class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
 
-<table class="striped" style="font-size:12px; margin-top:15px;">
-  <tr>
-    <td class="" style="width:40%";>Imię i nazwisko:</td>
-    <td class="">'.$name.' '.$lastname.'</td>
-  </tr>
-  <tr>
-    <td class="">Pozycja:</td>
-    <td class="">'.$position.'</td>
-  </tr>
-<tr>
-    <td class="">Numer na koszulce:</td>
-    <td class="">'.$shirtNumber.'</td>
-  </tr>
-  <tr>
-    <td class="">Rok urodzenia:</td>
-    <td class="">'.$birthYear.'</td>
-  </tr>
-<tr>
-    <td class="">Lata gry w Relaxie:</td>
-    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
- </tr>
-<tr>
-    <td class="">Dodatkowe pozycje:</td>
-    <td class="">'.$additionalPositions.'</td>
- </tr>
+							</p>
+							<a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
 
-</table>
+						</div>
+					</div>
+					<div class="collapsible-body">
+						<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+
+						<table class="striped" style="font-size:12px; margin-top:15px;">
+							<tr>
+								<td class="" style="width:40%" ;>Imię i nazwisko:</td>
+								<td class="">'.$name.' '.$lastname.'</td>
+							</tr>
+							<tr>
+								<td class="">Pozycja:</td>
+								<td class="">'.$position.'</td>
+							</tr>
+							<tr>
+								<td class="">Numer na koszulce:</td>
+								<td class="">'.$shirtNumber.'</td>
+							</tr>
+							<tr>
+								<td class="">Rok urodzenia:</td>
+								<td class="">'.$birthYear.'</td>
+							</tr>
+							<tr>
+								<td class="">Lata gry w Relaxie:</td>
+								<td class="">'.$dateFrom.'-'.$dateTo.'</td>
+							</tr>
+							<tr>
+								<td class="">Dodatkowe pozycje:</td>
+								<td class="">'.$additionalPositions.'</td>
+							</tr>
+
+						</table>
 
 
 
 
-<br>
-<a class="waves-effect waves-light">Dodaj informacje</a>
-<br>
-</div>
+						<br>
+						<a class="waves-effect waves-light">Dodaj informacje</a>
+						<br>
+					</div>
 
-</li>';
+				</li>';
 			}
 		}
 		else
@@ -293,8 +297,8 @@ if (!isset($_SESSION['zalogowany']))
 					$lastname = $row["LastName"];
 					$position = $row["Position"];
 					$votes = $row["Votes"];
-					$DateFrom = $row["DateFrom"];
-					$DateTo = $row["DateTo"];
+					$dateFrom = $row["DateFrom"];
+					$dateTo = $row["DateTo"];
 					
 					$birthYear = $row["BirthYear"];
 					$additionalPositions = $row["AdditionalPositions"];
@@ -310,63 +314,66 @@ if (!isset($_SESSION['zalogowany']))
 					echo
 
 					'<li>
-	  <div class="collapsible-header"style="padding:0px">
-	  <div class="collection-item avatar" style="width:100%";>
-		
-      <img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
-       <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
+						<div class="collapsible-header" style="padding:0px">
+							<div class="collection-item avatar" style="width:100%" ;>
 
-      <p style="padding-left:10px;">
+								<img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;" />
+								<div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name."
+										".$lastname.'</span> </div>
 
-	  <input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
-     
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+								<p style="padding-left:10px;">
 
-		</div>
-		</div>
-<div class="collapsible-body">
-<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+									<input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]"
+										value="'.$id.'" />
+									<label style="padding-left:25px; font-weight: 300;  font-size: 13px;"
+										class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
 
-<table class="striped" style="font-size:12px; margin-top:15px;">
-  <tr>
-    <td class="" style="width:40%";>Imię i nazwisko:</td>
-    <td class="">'.$name.' '.$lastname.'</td>
-  </tr>
-  <tr>
-    <td class="">Pozycja:</td>
-    <td class="">'.$position.'</td>
-  </tr>
-<tr>
-    <td class="">Numer na koszulce:</td>
-    <td class="">'.$shirtNumber.'</td>
-  </tr>
-  <tr>
-    <td class="">Rok urodzenia:</td>
-    <td class="">'.$birthYear.'</td>
-  </tr>
-<tr>
-    <td class="">Lata gry w Relaxie:</td>
-    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
- </tr>
-<tr>
-    <td class="">Dodatkowe pozycje:</td>
-    <td class="">'.$additionalPositions.'</td>
- </tr>
+								</p>
+								<a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
 
-</table>
+							</div>
+						</div>
+						<div class="collapsible-body">
+							<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+
+							<table class="striped" style="font-size:12px; margin-top:15px;">
+								<tr>
+									<td class="" style="width:40%" ;>Imię i nazwisko:</td>
+									<td class="">'.$name.' '.$lastname.'</td>
+								</tr>
+								<tr>
+									<td class="">Pozycja:</td>
+									<td class="">'.$position.'</td>
+								</tr>
+								<tr>
+									<td class="">Numer na koszulce:</td>
+									<td class="">'.$shirtNumber.'</td>
+								</tr>
+								<tr>
+									<td class="">Rok urodzenia:</td>
+									<td class="">'.$birthYear.'</td>
+								</tr>
+								<tr>
+									<td class="">Lata gry w Relaxie:</td>
+									<td class="">'.$dateFrom.'-'.$dateTo.'</td>
+								</tr>
+								<tr>
+									<td class="">Dodatkowe pozycje:</td>
+									<td class="">'.$additionalPositions.'</td>
+								</tr>
+
+							</table>
 
 
 
 
 
-<br>
-<a class="waves-effect waves-light">Dodaj informacje</a>
-<br>
-</div>
+							<br>
+							<a class="waves-effect waves-light">Dodaj informacje</a>
+							<br>
+						</div>
 
-</li>';
+					</li>';
 				}
 			}
 			else
@@ -409,8 +416,8 @@ if (!isset($_SESSION['zalogowany']))
 					$lastname = $row["LastName"];
 					$position = $row["Position"];
 					$votes = $row["Votes"];
-					$DateFrom = $row["DateFrom"];
-					$DateTo = $row["DateTo"];
+					$dateFrom = $row["DateFrom"];
+					$dateTo = $row["DateTo"];
 					
 					$birthYear = $row["BirthYear"];
 					$additionalPositions = $row["AdditionalPositions"];
@@ -425,63 +432,131 @@ if (!isset($_SESSION['zalogowany']))
 					echo
 
 					'<li>
-	  <div class="collapsible-header"style="padding:0px">
-	  <div class="collection-item avatar" style="width:100%";>
+					<div class="collapsible-header" style="padding:0px">
+						<div class="collection-item avatar" style="width:100%" ;>
+
+							<img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;" />
+							<div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name."
+									".$lastname.'</span> </div>
+
+							<p style="padding-left:10px;">
+
+								<input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]"
+									value="'.$id.'" />
+								<label style="padding-left:25px; font-weight: 300;  font-size: 13px;"
+									class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
+
+							</p>
+							<a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+
+						</div>
+					</div>
+					<div class="collapsible-body">
+						<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+
+						<table class="striped" style="font-size:12px; margin-top:15px;">
+							<tr>
+								<td class="" style="width:40%" ;>Imię i nazwisko:</td>
+								<td class="">'.$name.' '.$lastname.'</td>
+							</tr>
+							<tr>
+								<td class="">Pozycja:</td>
+								<td class="">'.$position.'</td>
+							</tr>
+							<tr>
+								<td class="">Numer na koszulce:</td>
+								<td class="">'.$shirtNumber.'</td>
+							</tr>
+							<tr>
+								<td class="">Rok urodzenia:</td>
+								<td class="">'.$birthYear.'</td>
+							</tr>
+							<tr>
+								<td class="">Lata gry w Relaxie:</td>
+								<td class="">'.$dateFrom.'-'.$dateTo.'</td>
+							</tr>
+							<tr>
+								<td class="">Dodatkowe pozycje:</td>
+								<td class="">'.$additionalPositions.'</td>
+							</tr>
+
+						</table>
+
+						<br>
+						<a class="waves-effect waves-light modal-trigger" href="#modal-'.$id.'"">Dodaj informacje</a>
+						<br>
+					</div>
+
+				</li>';
+				
 		
-      <img class="circle" src="images/'.$playerImage.'" style="paddnig-right:10px;"/>
-         <div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name." ".$lastname.'</span> </div>
+			
+				echo'
+			   <!-- Modal Structure -->
+			   <div id="modal-'.$id.'" class="modal modal-fixed-footer">
+			   	<div class="modal-content" style="padding:10px">
+			   		<h5><b>Dodajesz informacje</b></h5>
 
-      <p style="padding-left:10px;">
+			   		<div class="row">
+			   			<form class="col s12">
+			   				<div class="row">
 
-	  <input class="forward-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]" value="'.$id.'"/>
-	<label  style="padding-left:25px; font-weight: 300;  font-size: 13px;" class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
-     
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
+			   					<div class="input-field col s12">
+			   						<i class="material-icons prefix">person</i>
+			   						<input disabled value="'.$name.' '.$lastname.'" id="disabled" type="text" class="mp-dv"
+			   							style="font-weight: 900!important;
+								   color: #505050!important;
+								   font-size: 16px!important;">
+			   						<label for="disabled">Imię i nazwisko</label>
 
-		</div>
-		</div>
-<div class="collapsible-body">
-<h6><b>INFORMACJE O ZAWODNIKU:</b></h6>
+			   					</div>
 
-<table class="striped" style="font-size:12px; margin-top:15px;">
-  <tr>
-    <td class="" style="width:40%";>Imię i nazwisko:</td>
-    <td class="">'.$name.' '.$lastname.'</td>
-  </tr>
-  <tr>
-    <td class="">Pozycja:</td>
-    <td class="">'.$position.'</td>
-  </tr>
-<tr>
-    <td class="">Numer na koszulce:</td>
-    <td class="">'.$shirtNumber.'</td>
-  </tr>
-  <tr>
-    <td class="">Rok urodzenia:</td>
-    <td class="">'.$birthYear.'</td>
-  </tr>
-<tr>
-    <td class="">Lata gry w Relaxie:</td>
-    <td class="">'.$DateFrom.'-'.$DateTo.'</td>
- </tr>
-<tr>
-    <td class="">Dodatkowe pozycje:</td>
-    <td class="">'.$additionalPositions.'</td>
- </tr>
+			   				</div>
 
-</table>
+			   				<div class="row">
+			   					<div class="input-field col s6">
+			   						<i class="material-icons prefix">grade</i>
+			   						<input id="pseudo" type="text" class="validate">
+			   						<label for="pseudo">Pseudonim/ksywa</label>
+			   					</div>
+			   				</div>
 
+			   				<div class="row">
+			   					<div class="input-field col s6">
+			   						<i class="material-icons prefix">filter_9</i>
+			   						<input id="shirtNumber" type="text" class="validate">
+			   						<label for="shirtNumber">Numer</label>
+			   					</div>
+			   				</div>
 
+			   				<div class="row">
+			   					<div class="input-field col s12">
+			   						<i class="material-icons prefix">info_outline</i>
+			   						<textarea placeholder="Poprzednie kluby, sukcesy, dodatkowe pozycje na boisku..."
+			   							id="textarea1-'.$id.'" name="textarea1[]" class="materialize-textarea"
+			   							data-length="200"></textarea>
+			   						<label for="textarea1-'.$id.'">Dodatkowe informacje</label>
+			   					</div>
+			   				</div>
 
+			   			</form>
+			   		</div>
+			   		<div class="row" style="position: absolute;bottom: 0;">
+			   			<p style="font-size:11px; color:grey; padding:10px;">Przesłane informacje zostaną opublikowane po
+			   				weryfikacji administratora.</p>
+			   		</div>
 
-
-<br>
-<a class="waves-effect waves-light">Dodaj informacje</a>
-<br>
-</div>
-
-</li>';
+			   	</div>
+			   	<div class="modal-footer">
+			   		<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Prześlij</a>
+			   	</div>
+			   </div>
+   
+   
+   ';
+				
+				
+				
 				}
 			}
 			else
@@ -542,6 +617,14 @@ if (!isset($_SESSION['zalogowany']))
 
 
 
+
+
+
+
+
+
+
+
             </div>
 
         </div>
@@ -555,6 +638,15 @@ if (!isset($_SESSION['zalogowany']))
         <div class="col s12 m4 l8"> <?php include 'footer.php'; ?></div>
         <div class="col s12 m4 l2 hide-on-med-and-down"></div>
     </div>
+
+    <script>
+    $(document).ready(function() {
+        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+    });
+    </script>
+
+
 
 
     <script>
