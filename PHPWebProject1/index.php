@@ -481,81 +481,11 @@ if (!isset($_SESSION['zalogowany']))
 							</tr>
 
 						</table>
-
-						<br>
-						<a class="waves-effect waves-light modal-trigger" href="#modal-'.$id.'"">Dodaj informacje</a>
-						<br>
+	
 					</div>
-
 				</li>';
 				
-		
-			
-				echo'
-			   <!-- Modal Structure -->
-			   <div id="modal-'.$id.'" class="modal modal-fixed-footer">
-			   	<div class="modal-content" style="padding:10px">
-			   		<h5><b>Dodajesz informacje</b></h5>
-
-			   		<div class="row">
-			   			<form class="col s12">
-			   				<div class="row">
-
-			   					<div class="input-field col s12">
-			   						<i class="material-icons prefix">person</i>
-			   						<input disabled value="'.$name.' '.$lastname.'" id="disabled" type="text" class="mp-dv"
-			   							style="font-weight: 900!important;
-								   color: #505050!important;
-								   font-size: 16px!important;">
-			   						<label for="disabled">Imię i nazwisko</label>
-
-			   					</div>
-
-			   				</div>
-
-			   				<div class="row">
-			   					<div class="input-field col s6">
-			   						<i class="material-icons prefix">grade</i>
-			   						<input id="pseudo" type="text" class="validate">
-			   						<label for="pseudo">Pseudonim/ksywa</label>
-			   					</div>
-			   				</div>
-
-			   				<div class="row">
-			   					<div class="input-field col s6">
-			   						<i class="material-icons prefix">filter_9</i>
-			   						<input id="shirtNumber" type="text" class="validate">
-			   						<label for="shirtNumber">Numer</label>
-			   					</div>
-			   				</div>
-
-			   				<div class="row">
-			   					<div class="input-field col s12">
-			   						<i class="material-icons prefix">info_outline</i>
-			   						<textarea placeholder="Poprzednie kluby, sukcesy, dodatkowe pozycje na boisku..."
-			   							id="textarea1-'.$id.'" name="textarea1[]" class="materialize-textarea"
-			   							data-length="200"></textarea>
-			   						<label for="textarea1-'.$id.'">Dodatkowe informacje</label>
-			   					</div>
-			   				</div>
-
-			   			</form>
-			   		</div>
-			   		<div class="row" style="position: absolute;bottom: 0;">
-			   			<p style="font-size:11px; color:grey; padding:10px;">Przesłane informacje zostaną opublikowane po
-			   				weryfikacji administratora.</p>
-			   		</div>
-
-			   	</div>
-			   	<div class="modal-footer">
-			   		<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Prześlij</a>
-			   	</div>
-			   </div>
-   
-   
-   ';
-				
-				
+			  
 				
 				}
 			}
@@ -565,7 +495,6 @@ if (!isset($_SESSION['zalogowany']))
 			};
 
             ?>
-
                     </ul>
 
                     <div style="padding:5px 10px 10px 10px; ">
@@ -598,8 +527,6 @@ if (!isset($_SESSION['zalogowany']))
                             </tr>
                         </table>
 
-
-
                         <div class="center">
 
                             <button class="btn waves-effect waves-light" type="submit" name="sendVotes.php">Prześlij
@@ -607,20 +534,9 @@ if (!isset($_SESSION['zalogowany']))
                                 <i class="material-icons right">send</i>
                             </button>
 
-
                         </div>
-
                     </div>
-
                 </form>
-
-
-
-
-
-
-
-
 
 
 
