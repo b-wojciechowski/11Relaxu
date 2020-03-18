@@ -63,7 +63,11 @@ color: black;}
 					<i class="material-icons left">people</i>Moja 11-stka
 				</a>
 			</li>
-
+			<li>
+			<a href="playersList.php">
+				<i class="material-icons left">people</i>Zawodnicy
+			</a>
+		</li>
 
 			<li>
 				<a class="modal-trigger" href="#modal2_help">
@@ -117,6 +121,12 @@ color: black;}
 				</a>
 			</li>
 			<hr class="hr-menu"/>
+			<li>
+			<a href="playersList.php">
+				<i class="material-icons left">explore</i>Zawodnicy
+			</a>
+		</li>
+		<hr class="hr-menu"/>
 			<li>
 				<a class="modal-trigger" href="#modal2_help">
 					<i class="material-icons left">help_outline</i>Pomoc

@@ -43,25 +43,17 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 
 				<div style="padding:10px 10px 0px 25px;">
 					<p style="margin-bottom: -10px;font-size: 12px;color: darkgrey;">
-						Aby przejść dalej wymagane jest zalogowanie.
+						Wprowadź swój adres mailowy.
 					</p>
 					<div>
 						<h4>
-							<b>Logowanie</b>
+							<b>Reset hasła</b> (krok 1 z 2)
 						</h4>
 					</div>
 				</div>
 
 				<div class="row" style="margin: 0px 10px 0 10px;">
 					
-
-					<?php if(isset($_SESSION['register-confirmation'])) echo
-							  '<ul class="collection">
-		<li class="collection-item" style="background-color:#2e7d32; color:white;">'.$_SESSION['register-confirmation'].'</li>
-	</ul>';
-						  unset($_SESSION['register-confirmation']);
-                    ?>
-	
 				</div>
 
 					<div class="row">
@@ -75,18 +67,9 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 							</div>
 
 							<div class="row">
-								<div class="input-field col s12">
-									<i class="material-icons prefix">vpn_key</i>
-									<input id="password" type="password" class="validate" name="password" />
-									<label for="password">Hasło</label>
-								</div>
-							</div>
-
-
-							<div class="row">
 								<div class="input-field col s14">
 									<button class="btn waves-effect waves-light" type="submit" name="action">
-										Zaloguj
+										Prześlij prośbę
 										<i class="material-icons right">send</i>
 									</button>
 									<br />
@@ -103,21 +86,13 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 
 							<div class="row" style="margin-left:12px;">
 
-								<a href="register.php" class="">Utwórz nowe konto (rejestracja)</a><br />
-								<a href="forgotPassword.php" class="">Zapomniałem hasła</a>
+								<a href="login.php" class="">Wróć do logowania</a>
 
 							</div>
 
 
 							<div class="row" style="margin: 0px 10px 0 10px;">
-								<?php if(isset($_SESSION['blad'])) echo
-								'<ul class="collection">
-									<li class="collection-item" style="background-color:#9c0d0d; color:white;">'
-										.$_SESSION['blad'].'
-									</li>';
-									  unset($_SESSION['blad'])
-
-								?>
+								<p>Na podany adres mailowy zostanie link do resetu hasła.</p>
 							</div>
 
 
