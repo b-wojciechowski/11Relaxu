@@ -418,7 +418,6 @@ if (!isset($_SESSION['zalogowany']))
 					$votes = $row["Votes"];
 					$dateFrom = $row["DateFrom"];
 					$dateTo = $row["DateTo"];
-					
 					$birthYear = $row["BirthYear"];
 					$additionalPositions = $row["AdditionalPositions"];
 					$shirtNumber = $row['ShirtNumber'];
@@ -441,7 +440,7 @@ if (!isset($_SESSION['zalogowany']))
 
 							<p style="padding-left:10px;">
 
-								<input class="midfielder-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]"
+								<input class="foward-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]"
 									value="'.$id.'" />
 								<label style="padding-left:25px; font-weight: 300;  font-size: 13px;"
 									class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
@@ -555,13 +554,7 @@ if (!isset($_SESSION['zalogowany']))
         <div class="col s12 m4 l2 hide-on-med-and-down"></div>
     </div>
 
-    <script>
-    $(document).ready(function() {
-        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-        $('.modal').modal();
-    });
-    </script>
-
+ 
 
 
 

@@ -104,7 +104,7 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 							<div class="row" style="margin-left:12px;">
 
 								<a href="register.php" class="">Utwórz nowe konto (rejestracja)</a><br />
-								<a href="forgotPassword.php" class="">Zapomniałem hasła</a>
+								<a href="forgottenPassword.php" class="">Zapomniałem hasła</a>
 
 							</div>
 
