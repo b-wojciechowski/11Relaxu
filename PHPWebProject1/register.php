@@ -16,6 +16,7 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<style></style>
 </head>
 
@@ -84,6 +85,13 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 								</label>
 							</div>
 						</div>
+						<div class="row">
+							<div class="g-recaptcha" style="padding:00px 0px 00px 10px; margin-top:00px" data-sitekey="6LfjTOIUAAAAACKnmbZmnKtohVV2taNtGT2BiNqz"></div>
+
+						</div>
+							
+							
+						
 
 
 						<div class="row" style="margin: 0px 10px 0 10px;">

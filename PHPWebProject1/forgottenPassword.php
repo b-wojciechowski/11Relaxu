@@ -47,7 +47,7 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 					</p>
 					<div>
 						<h4>
-							<b>Reset hasła</b> (krok 1 z 2)
+							<b>Reset hasła</b>
 						</h4>
 					</div>
 				</div>
@@ -69,7 +69,7 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 							<div class="row">
 								<div class="input-field col s14">
 									<button class="btn waves-effect waves-light" type="submit" name="action">
-										Prześlij prośbę
+										Poproś o kod
 										<i class="material-icons right">send</i>
 									</button>
 									<br />
@@ -84,15 +84,12 @@ if ((isset($_POST['login'])) || (isset($_POST['password'])))
 
 							</div>
 
-							<div class="row" style="margin-left:12px;">
-
-								<a href="login.php" class="">Wróć do logowania</a>
-
+							<div class="row" style="margin: 0px 10px 0 10px;">
+								<p style="font-size:12px">Na podany adres mailowy zostanie przesłany kod potrzebny do resetu hasła.</p>
 							</div>
 
-
-							<div class="row" style="margin: 0px 10px 0 10px;">
-								<p>Na podany adres mailowy zostanie link do resetu hasła.</p>
+							<div class="row" style="margin-left:12px;margin-top:20px;">
+								<a href="login.php" class="">Wróć do logowania</a>
 							</div>
 
 

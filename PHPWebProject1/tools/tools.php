@@ -30,7 +30,7 @@ function replacePolishCharacters($string){
 	$string = strtolower($string);
 	return $string;
 }
-$playerImage = "michal-kosmider.jpg";
+
 function checkPlayerImage($playerImage){
 	$img_dir = '/images';
 	$player_images = scandir($img_dir);

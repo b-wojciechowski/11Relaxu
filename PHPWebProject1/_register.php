@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once "configuration.php";
 require_once "sql/connection.php";
 $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 
@@ -33,9 +33,11 @@ else
 			$UserLastName = $_POST['last_name'];
 			$UserEmail = $_POST['email'];
 			$UserPassword = $_POST['password'];
+			$UserPasswordHash = password_hash($UserPassword, PASSWORD_DEFAULT);
 
-			$sql_register = 'INSERT INTO `users` (`Id`, `Name`, `LastName`, `email`, `password`, `CreatedDate`, `LastLoginDate`)
-								VALUES (null, "'.$UserName.'", "'.$UserLastName.'", "'.$UserEmail.'", "'.$UserPassword.'", "'.$time.'", null)';
+
+			$sql_register = 'INSERT INTO `users` (`Id`, `Name`, `LastName`, `email`, `password`, `CreatedDate`, `LastLoginDate`, `Confirmed`, `Notes`)
+								VALUES (null, "'.$UserName.'", "'.$UserLastName.'", "'.$UserEmail.'", "'.$UserPasswordHash.'", "'.$time.'", null, 0, "'.$UserPassword.'")';
 
 			if ($polaczenie->query($sql_register) === TRUE)
 			{
@@ -48,7 +50,7 @@ else
 			}
 			else
 			{
-				echo "Error: " . $sql . "<br>" . $polaczenie->error;
+				echo "Error: " . $sql_register . "<br>" . $polaczenie->error;
 			}
 		}
 		else
