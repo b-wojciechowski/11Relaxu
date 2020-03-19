@@ -438,14 +438,14 @@ if (!isset($_SESSION['zalogowany']))
 							<div style="padding-left:10px;padding-bottom:7px; padding-top:3px"> <span class="title">'.$name."
 									".$lastname.'</span> </div>
 
-							<p style="padding-left:10px;">
+									<p style="padding-left:10px;">
 
-								<input class="foward-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]"
-									value="'.$id.'" />
-								<label style="padding-left:25px; font-weight: 300;  font-size: 13px;"
-									class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
+									<input class="forward-checkbox" type="checkbox" id="checkbox-'.$id.'" name="goalkeeper[]"
+										value="'.$id.'" />
+									<label style="padding-left:25px; font-weight: 300;  font-size: 13px;"
+										class="playerCardCheckboxLabel" for="checkbox-'.$id.'">'.$checkBoxLabelInfo.'</label>
 
-							</p>
+								</p>
 							<a href="#!" class="secondary-content"><i class="material-icons">expand_more</i></a>
 
 						</div>

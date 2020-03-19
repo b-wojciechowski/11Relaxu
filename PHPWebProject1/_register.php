@@ -12,16 +12,19 @@ else
 {
 	if ((!empty($_POST['email'])) && (!empty($_POST['password'])) && (!empty($_POST['passwordConfirm']))) 
 	{
-		$checkEmailListResult = $polaczenie->query('select email from users where email = "' . $_POST['email'] . '"');
+		$checkEmailListResult = $polaczenie->query('SELECT email FROM users WHERE email = "' . $_POST['email'] . '"');
 		$UsersEmailList = $checkEmailListResult->num_rows;
 
 		if ($UsersEmailList > 0) 
 		{
 			$_SESSION['register-email-exists'] = 'Konto połączone z tym adresem email już istnieje!';
+			
+			//przekazanie logu o niepoprawnej rejestracji
 			$sql_activity = ('INSERT INTO `activities`
 				(`Id`, `OperationDate`, `UserId`, `OperationType`)
-				VALUES (null, null, null, "833cb8fd-5678-11ea-a60f-e4115b471390")');
+				VALUES (null, null, null, "833cb8fd-5678-11ea-a60f-e4115b471390")');	
 			$result_insert_activity = $polaczenie->query($sql_activity);
+			
 			header('Location: register.php');
 		}
 
@@ -42,6 +45,8 @@ else
 			if ($polaczenie->query($sql_register) === TRUE)
 			{
 				$_SESSION['register-confirmation'] = 'Konto zostało utworzone, zaloguj się teraz.';
+				
+				//przekazanie logu o poprawnej rejestracji
 				$sql_activity = ('INSERT INTO `activities`
 				(`Id`, `OperationDate`, `UserId`, `OperationType`)
 				VALUES (null, null, null, "98d6f708-5678-11ea-a60f-e4115b471390")');
@@ -74,10 +79,6 @@ else
 		header('Location: register.php');
 	}
 };
-
-
-
-
 
 
 ?>

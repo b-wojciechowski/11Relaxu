@@ -21,31 +21,7 @@ if (!isset($_SESSION['zalogowany'])) {
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-
-
-
-    <script>
-    function showToast(message, duration) {
-        Materialize.toast(message, duration);
-    }
-
-    function showToast1(message, duration) {
-        Materialize.toast('<i>' + message + '</i>', duration);
-    }
-
-    function showToast2(message, duration) {
-        Materialize.toast(message, duration, 'rounded');
-    }
-
-    function showToast3(message, duration) {
-        Materialize.toast('Hello World!', duration, '', function toastCompleted() {
-            alert('Toast dismissed!');
-        });
-    }
-    </script>
-
 
 </head>
 
@@ -91,62 +67,142 @@ if (!isset($_SESSION['zalogowany'])) {
                 <ul class="collection collapsible">
 
 
-                    <?php
-					require_once "sql/connection.php";
-					include 'tools/tools.php';
-					$voterId = $_SESSION['id'];
-					$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-					if ($polaczenie->connect_errno != 0) {
-						echo 'Error: ' . $polaczenie->connect_errno . ' Opis: ' . $polaczenie->connect_error;
-					}
-					$sql = 'select * from players as p
+<?php
+	require_once "sql/connection.php";
+    include 'tools/tools.php';
+    $zawodnicy = array();
+    $bramkarze = array();
+    $obroncy = array();
+    $pomocnicy = array();
+    $napastnicy = array();
+    $voterId = $_SESSION['id'];
+    
+	$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+    if ($polaczenie->connect_errno != 0) 
+    {
+		echo 'Error: ' . $polaczenie->connect_errno . ' Opis: ' . $polaczenie->connect_error;
+	}
+					
+	$userId = $_SESSION['id'];
+
+	$sql_activity = ('INSERT INTO `activities` (`Id`, `OperationDate`, `UserId`, `OperationType`)
+				        VALUES (null, null, "' . $userId . '", "63f7ba4b-54a7-11ea-a60f-e4115b471390")');
+
+    $result_insert_activity = $polaczenie->query($sql_activity);
+   
+
+	$result = $polaczenie->query('select p.Id, p.Name, p.LastName, p.Position, v.VoteDate from players as p
 					join votes as v on p.id = v.VoteOnPlayerId where p.id in (
-						select distinct VoteOnPlayerId from votes as v
+						SELECT distinct VoteOnPlayerId from votes as v
 						join players as p on p.id = v.VoteOnPlayerId
 						where v.Voter = "' . $voterId . '"
 						order by v.VoteDate desc)
 						and v.IsDeleted = 0
 						group by p.Id
-						order by p.LastName';
+						order by p.LastName');
+    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) 
+    {
+        
+        if ($row[3] == "bramkarz")
+        { 
+            $bramkarze[] = $row;      
+        } 
+        else if ($row[3] == "obrońca")
+        {
+            $obroncy[] = $row;
+        }
+        else if ($row[3] == "pomocnik")
+        {
+            $pomocnicy[] = $row;
+        }
+        else if ($row[3] == "napastnik")
+        {
+            $napastnicy[] = $row;
+        }
+    }
+   
 
-					$result = $polaczenie->query($sql);
-					$userId = $_SESSION['id'];
+    foreach($bramkarze as $bramkarz) 
+    {
+        $playerImage = (playerImgName($bramkarz[1], $bramkarz[2]));	
+        if (!in_array($playerImage, $player_images)) 
+        {
+            $playerImage = 'default.jpg';	
+        }
+        echo
+            '<li>
+                <div class="collection-item avatar" style="width:100%" ;>
+                    <img class="circle" src="images/' . $playerImage . '" style="paddnig-right:10px;" />
+                    <div style="padding-left:10px;"> <span class="title">' . $bramkarz[1] . " " . $bramkarz[2] .
+                            '</span> </div>
+                    <p style="padding-left:10px; color:grey; margin-top:0px; font-size:12px;">' . $bramkarz[3] .
+                        '</p>
+                </div>
+            </li>';
+    }
 
-					$sql_activity = ('INSERT INTO `activities`
-				(`Id`, `OperationDate`, `UserId`, `OperationType`)
-				VALUES (null, null, "' . $userId . '", "63f7ba4b-54a7-11ea-a60f-e4115b471390")');
+    foreach($obroncy as $obronca) 
+    {
+        $playerImage = (playerImgName($obronca[1], $obronca[2]));	
+        if (!in_array($playerImage, $player_images)) 
+        {
+            $playerImage = 'default.jpg';	
+        }
+        echo
+            '<li>
+                <div class="collection-item avatar" style="width:100%" ;>
+                    <img class="circle" src="images/' . $playerImage . '" style="paddnig-right:10px;" />
+                    <div style="padding-left:10px;"> <span class="title">' . $obronca[1] . " " . $obronca[2] .
+                            '</span> </div>
+                    <p style="padding-left:10px; color:grey; margin-top:0px; font-size:12px;">' . $obronca[3] .
+                        '</p>
+                </div>
+            </li>';
+    }
 
-					$result_insert_activity = $polaczenie->query($sql_activity);
+    foreach($pomocnicy as $pomocnik) 
+    {
+        $playerImage = (playerImgName($pomocnik[1], $pomocnik[2]));	
+        if (!in_array($playerImage, $player_images)) 
+        {
+            $playerImage = 'default.jpg';	
+        }
+        echo
+            '<li>
+                <div class="collection-item avatar" style="width:100%" ;>
+                    <img class="circle" src="images/' . $playerImage . '" style="paddnig-right:10px;" />
+                    <div style="padding-left:10px;"> <span class="title">' . $pomocnik[1] . " " . $pomocnik[2] .
+                            '</span> </div>
+                    <p style="padding-left:10px; color:grey; margin-top:0px; font-size:12px;">' . $pomocnik[3] .
+                        '</p>
+                </div>
+            </li>';
+    }
+    
 
-					if ($result->num_rows > 0) {
+    foreach($napastnicy as $napastnik) 
+    {
+        $playerImage = (playerImgName($napastnik[1], $napastnik[2]));	
+        if (!in_array($playerImage, $player_images)) 
+        {
+            $playerImage = 'default.jpg';	
+        }
+        echo
+            '<li>
+                <div class="collection-item avatar" style="width:100%" ;>
+                    <img class="circle" src="images/' . $playerImage . '" style="paddnig-right:10px;" />
+                    <div style="padding-left:10px;"> <span class="title">' . $napastnik[1] . " " . $napastnik[2] .
+                            '</span> </div>
+                    <p style="padding-left:10px; color:grey; margin-top:0px; font-size:12px;">' . $napastnik[3] .
+                        '</p>
+                </div>
+            </li>';
+    }
 
-						while ($row = $result->fetch_assoc()) {
+    echo '<pre>'; print_r($bramkarze); echo '</pre>';			
+		
 
-							$voteDate = $row['VoteDate'];
-							$id = $row["Id"];
-							$name = $row["Name"];
-							$lastname = $row["LastName"];
-							$position = $row["Position"];
-							$playerImage = (playerImgName($name, $lastname));
-							if (!in_array($playerImage, $player_images)) {
-								$playerImage = 'default.jpg';
-							}
-
-							echo
-
-								'<li>	 
-	<div class="collection-item avatar" style="width:100%";>
-		<img class="circle" src="images/' . $playerImage . '" style="paddnig-right:10px;"/>
-		<div style="padding-left:10px;"> <span class="title">' . $name . " " . $lastname . '</span> </div>
-		<p style="padding-left:10px; color:grey; margin-top:0px; font-size:12px;">' . $position . '</p>
-	</div>
-</li>';
-						}
-					} else {
-						echo "Brak wyników";
-					};
-
-					echo '<p style="padding-left:15px; padding-top:-10px;">Głosy oddano:' . $voteDate . ' </p>';
+					echo '<p style="padding-left:15px; padding-top:-10px;">Głosy oddano: ' . $bramkarz[4] . ' </p>';
 					?>
                 </ul>
 
