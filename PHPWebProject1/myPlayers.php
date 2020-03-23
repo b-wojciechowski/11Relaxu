@@ -51,8 +51,6 @@ if (!isset($_SESSION['zalogowany'])) {
         <div class="col s12 m4 l6" style="padding:0px;">
             <div class="" style="background-color:white; margin-top:10px;">
 
-
-
                 <div style="padding:10px 10px 0px 15px;">
                     <p style="margin-bottom: -10px;font-size: 12px;color: darkgrey;">
                         Wyświetlasz listę zawodników, na których oddałeś głos</p>
@@ -61,11 +59,7 @@ if (!isset($_SESSION['zalogowany'])) {
                     </div>
                 </div>
 
-
-
-
                 <ul class="collection collapsible">
-
 
 <?php
 	require_once "sql/connection.php";
@@ -95,7 +89,8 @@ if (!isset($_SESSION['zalogowany'])) {
 					join votes as v on p.id = v.VoteOnPlayerId where p.id in (
 						SELECT distinct VoteOnPlayerId from votes as v
 						join players as p on p.id = v.VoteOnPlayerId
-						where v.Voter = "' . $voterId . '"
+                        where v.Voter = "' . $voterId . '"
+                        and v.IsDeleted = 0
 						order by v.VoteDate desc)
 						and v.IsDeleted = 0
 						group by p.Id
@@ -199,19 +194,18 @@ if (!isset($_SESSION['zalogowany'])) {
             </li>';
     }
 
-    echo '<pre>'; print_r($bramkarze); echo '</pre>';			
+$sql_getVoteDate = 'SELECT VoteDate FROM votes WHERE Voter =  "'.$voterId.'" AND IsDeleted = 0';
+$result_getVoteDate = $polaczenie->query($sql_getVoteDate);
+while($row = $result_getVoteDate->fetch_assoc())
+{
+    $voteDate = $row["VoteDate"];
+}		
 		
-
-					echo '<p style="padding-left:15px; padding-top:-10px;">Głosy oddano: ' . $bramkarz[4] . ' </p>';
-					?>
+    echo '<p style="padding-left:15px; padding-top:-10px;">Głosy oddano: ' . $voteDate . ' </p>';
+?>
                 </ul>
-
-
-
             </div>
-
         </div>
-
         <div class="col s12 m4 l3 hide-on-med-and-down"></div>
     </div>
 
@@ -246,15 +240,11 @@ if (!isset($_SESSION['zalogowany'])) {
     });
     </script>
 
-
     <script>
     $(document).ready(function() {
         $('.collapsible').collapsible();
     });
     </script>
 
-
-
 </body>
-
 </html>
