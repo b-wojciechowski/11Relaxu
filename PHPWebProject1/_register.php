@@ -20,24 +20,19 @@ else
 			$_SESSION['register-email-exists'] = 'Konto połączone z tym adresem email już istnieje!';
 			
 			//przekazanie logu o niepoprawnej rejestracji
-			$sql_activity = ('INSERT INTO `activities`
-				(`Id`, `OperationDate`, `UserId`, `OperationType`)
-				VALUES (null, null, null, "833cb8fd-5678-11ea-a60f-e4115b471390")');	
+			$sql_activity = ('INSERT INTO `activities` (`Id`, `OperationDate`, `UserId`, `OperationType`) 
+								VALUES (null, null, null, "833cb8fd-5678-11ea-a60f-e4115b471390")');	
 			$result_insert_activity = $polaczenie->query($sql_activity);
-			
 			header('Location: register.php');
 		}
 
-		else
-
-		if ($_POST["password"] === $_POST["passwordConfirm"])
+		else if ($_POST["password"] === $_POST["passwordConfirm"])
 		{
 			$UserName = $_POST['first_name'];
 			$UserLastName = $_POST['last_name'];
 			$UserEmail = $_POST['email'];
 			$UserPassword = $_POST['password'];
 			$UserPasswordHash = password_hash($UserPassword, PASSWORD_DEFAULT);
-
 
 			$sql_register = 'INSERT INTO `users` (`Id`, `Name`, `LastName`, `email`, `password`, `CreatedDate`, `LastLoginDate`, `Confirmed`, `Notes`)
 								VALUES (null, "'.$UserName.'", "'.$UserLastName.'", "'.$UserEmail.'", "'.$UserPasswordHash.'", "'.$time.'", null, 0, "'.$UserPassword.'")';
@@ -47,9 +42,8 @@ else
 				$_SESSION['register-confirmation'] = 'Konto zostało utworzone, zaloguj się teraz.';
 				
 				//przekazanie logu o poprawnej rejestracji
-				$sql_activity = ('INSERT INTO `activities`
-				(`Id`, `OperationDate`, `UserId`, `OperationType`)
-				VALUES (null, null, null, "98d6f708-5678-11ea-a60f-e4115b471390")');
+				$sql_activity = ('INSERT INTO `activities` (`Id`, `OperationDate`, `UserId`, `OperationType`)
+									VALUES (null, null, null, "98d6f708-5678-11ea-a60f-e4115b471390")');
 				$result_insert_activity = $polaczenie->query($sql_activity);
 				header('Location: login.php');
 			}
@@ -61,9 +55,8 @@ else
 		else
 		{
 			$_SESSION['password-confirmation-error'] = 'Wprowadzone hasła nie są takie same!';
-			$sql_activity = ('INSERT INTO `activities`
-				(`Id`, `OperationDate`, `UserId`, `OperationType`)
-				VALUES (null, null, null, "833cf98d-5678-11ea-a60f-e4115b471390")');
+			$sql_activity = ('INSERT INTO `activities` (`Id`, `OperationDate`, `UserId`, `OperationType`)
+								VALUES (null, null, null, "833cf98d-5678-11ea-a60f-e4115b471390")');
 			$result_insert_activity = $polaczenie->query($sql_activity);
 			header('Location: register.php');
 		}
