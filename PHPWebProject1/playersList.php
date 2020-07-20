@@ -47,14 +47,15 @@ if (!isset($_SESSION['zalogowany']))
         <div class="col s12 m4 l6" style="padding:0px;">
             <div class="" style="background-color:white; margin-top:10px;">
 
-
-
-                <div style="padding:10px 10px 5px 25px;">
+                <div style="padding:10px 10px 0px 15px;">
+                    <p style="margin-bottom: -10px;font-size: 12px;color: darkgrey;">
+                        Wszyscy zawodnicy, którzy grali w Relaxie Radziwiłłów</p>
                     <div>
-                        <h5><b>Zawodnicy</b></h5>
+                        <h4><b>Lista zawodników</b></h4>
                     </div>
-                  <p>Wszyscy zawodnicy, którzy grali w Relaxie</p>
                 </div>
+
+                <div class="" style="background-color:white; margin-top:10px;">
 
              
                     <ul class="collection collapsible">
@@ -66,7 +67,7 @@ if (!isset($_SESSION['zalogowany']))
 			{
 				echo 'Error: '.$polaczenie->connect_errno. ' Opis: '.$polaczenie->connect_error;
 			}
-			$sql = "SELECT * FROM Players  order by Lastname;";
+			$sql = "SELECT * FROM Players WHERE isDeleted = 0 order by Lastname ;";
 			$result = $polaczenie->query($sql);
 
 			if ($result->num_rows > 0)
@@ -252,63 +253,7 @@ echo '
     })(jQuery); // end of jQuery name space
     </script>
 
-    <script>
-    $("#Summary").html($('.single-checkbox:checked').length).show();
-    $('.single-checkbox').on('change', function() {
-        if ($('.single-checkbox:checked').length > 4) {
-            this.checked = false;
-        }
-        $("#Summary").html($('.single-checkbox:checked').length).show();
-    });
-
-    $('.single-checkbox2').on('change', function() {
-        if ($('.single-checkbox2:checked').length > 1) {
-            this.checked = false;
-        }
-    });
-    </script>
-
-    <script>
-    $("#Summary-goalkeeper").html($('.goalkeeper-checkbox:checked').length).show();
-    $('.goalkeeper-checkbox').on('change', function() {
-        if ($('.goalkeeper-checkbox:checked').length > 1) {
-            this.checked = false;
-            var defenderCheckbox = (('.defender-checkbox:checked').length);
-        }
-        $("#Summary-goalkeeper").html($('.goalkeeper-checkbox:checked').length).show();
-    });
-    var defenderCheckbox = (('.defender-checkbox:checked').length);
-    </script>
-
-    <script>
-    $("#Summary-defender").html($('.defender-checkbox:checked').length).show();
-    $('.defender-checkbox').on('change', function() {
-        if ($('.defender-checkbox:checked').length > 4) {
-            this.checked = false;
-        }
-        $("#Summary-defender").html($('.defender-checkbox:checked').length).show();
-    });
-    </script>
-
-    <script>
-    $("#Summary-midfielder").html($('.midfielder-checkbox:checked').length).show();
-    $('.midfielder-checkbox').on('change', function() {
-        if ($('.midfielder-checkbox:checked').length > 4) {
-            this.checked = false;
-        }
-        $("#Summary-midfielder").html($('.midfielder-checkbox:checked').length).show();
-    });
-    </script>
-
-    <script>
-    $("#Summary-forward").html($('.forward-checkbox:checked').length).show();
-    $('.forward-checkbox').on('change', function() {
-        if ($('.forward-checkbox:checked').length > 2) {
-            this.checked = false;
-        }
-        $("#Summary-forward").html($('.forward-checkbox:checked').length).show();
-    });
-    </script>
+  
 
     <script>
     $(document).ready(function() {
