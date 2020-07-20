@@ -17,8 +17,7 @@ else
 	{
 
 		$sql_0 = ('update votes set IsDeleted = 1 where voter = "'.$voterId.'"');
-		$sql_1 = ('INSERT INTO `activities`
-					(`Id`, `OperationDate`, `UserId`, `OperationType`)
+		$sql_1 = ('INSERT INTO `activities` (`Id`, `OperationDate`, `UserId`, `OperationType`)
 					VALUES (null, null, "'.$voterId.'", "d2acd6fa-54a6-11ea-a60f-e4115b471390")');
 		$result_insert = $polaczenie->query($sql_0);
 		$result_insert2 = $polaczenie->query($sql_1);
@@ -42,6 +41,10 @@ else
 		$_SESSION['sentVotes'] = 'Pomyślnie zapisano Twoje głosy.';
 		header('Location: main.php');
 		exit();
+	}
+	else 
+	{
+		echo "Nie przekazano żadnego głosu do bazy.";
 	}
 };
 ?>

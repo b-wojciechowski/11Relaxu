@@ -59,6 +59,16 @@ if (!isset($_SESSION['zalogowany'])) {
                     </div>
                 </div>
 
+                <div class="" style="background-color:white; margin-top:10px;">
+
+<div style="padding:0px 10px 0px 15px;">
+   
+    <div>
+       <a href="" class="btn-small">Chcę zmień moje głosy</a>
+    </div>
+</div>
+
+
                 <ul class="collection collapsible">
 
 <?php
